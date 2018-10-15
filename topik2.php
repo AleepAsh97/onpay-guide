@@ -166,28 +166,49 @@ li {
 	<!-- menu -->
 		<div id="MainMenu">
 		<div class="list-group panel">
-			<a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">1.1 Pendaftaran Akaun OnPay <i class="fa fa-caret-down"></i></a>
+			<a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.1 Tetapan Sistem <i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo1">
-						<a href="#section1" onclick="closeNav()" class="list-group-item">1.1.1 Layari Laman Web</a>
-						<a href="#section2" onclick="closeNav()" class="list-group-item">1.1.2 Pilih Subdomain</a>
-						<a href="#section3" onclick="closeNav()" class="list-group-item">1.1.3 Pilih Emel</a>
-						<a href="#section4" onclick="closeNav()" class="list-group-item">1.1.4 Pilih ID dan Kata Laluan</a>
-						<a href="#section5" onclick="closeNav()" class="list-group-item">1.1.5 Isi Maklumat Profil Diri</a>
-						<a href="#section6" onclick="closeNav()" class="list-group-item">1.1.6 Pengesahan spam/robot (reCAPTCHA)</a>
-						<a href="#section7" onclick="closeNav()" class="list-group-item">1.1.7 Klik Butang Daftar</a> 
+						<a href="#section1" onclick="closeNav()" class="list-group-item">2.1.1 Perniagaan (WAJIB)</a>
+						<a href="#section2" onclick="closeNav()" class="list-group-item">2.1.2 Staf (optional)</a>
+						<a href="#section3" onclick="closeNav()" class="list-group-item">2.1.3 Affiliate (optional)</a>
+						<a href="#demo214" class="list-group-item list-group-item-success" data-toggle="collapse">2.1.4 Kaedah Pembayaran (WAJIB)<i class="fa fa-caret-down"></i></a>
+						<div class="collapse" id="demo214">
+						<a href="#section8" onclick="closeNav()" class="list-group-item">Penetapan Akaun PayPal</a>
+						<a href="#section9" onclick="closeNav()" class="list-group-item">Penetapan Akaun iPay88</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Akaun MOLPay</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Akaun senangPay</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Fungsi CEK</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Fungsi Wang Pos</a>
+						</div>
+						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Dropship</a>
+						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Pengedar</a>
+						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Emel</a>
+						<a href="#section6" onclick="closeNav()" class="list-group-item">2.1.6 SMS (optional)</a>
+						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 Invois</a>
+						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 Cukai</a>
+						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 API & Webhook</a>
 		</div>
-		<a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">1.2 Pengaktifan Akaun OnPay <i class="fa fa-caret-down"></i></a>
+		<a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.2 Tetapan Templat Emel<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo2">
-						<a href="#section8" onclick="closeNav()" class="list-group-item">1.2.1 Semak Emel "Pendaftaran Akaun OnPay</a>
-						<a href="#section9" onclick="closeNav()" class="list-group-item">1.2.2 Tekan hyperlink pengaktifan akaun</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">1.2.3 Pengaktifan Akaun OnPay Berjaya</a>
+						<a href="#section8" onclick="closeNav()" class="list-group-item">2.2.1 Tetapan Templat Emel Pendaftaran Ejen</a>
+						<a href="#section9" onclick="closeNav()" class="list-group-item">2.2.2 Tetapan Templat Emel Tetapan Semula Kata Laluan Ejen</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">2.2.3 Tetapan Templat Emel Pembayaran Komisen</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">2.2.4 Tetapan Templat Emel Ucapan Hari Lahir</a>
 		</div>
-		<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">1.3 Log Masuk Akaun OnPay <i class="fa fa-caret-down"></i></a>
+		<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.3 Tetapan Penghantar / Kurier<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo3">
-						<a href="#section11" onclick="closeNav()" class="list-group-item">1.3.1 Layari halaman Log Masuk Akaun Anda"</a>
-						<a href="#section12" onclick="closeNav()" class="list-group-item">1.3.2 Masukkan ID Admin dan Kata Laluan</a>
-						<a href="#section13" onclick="closeNav()" class="list-group-item">1.3.3 Log Masuk Akaun OnPay Berjaya</a>
+						<a href="#section11" onclick="closeNav()" class="list-group-item">2.3.1 Tambah Kurier</a>
+						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.2 Kemaskini/Padam Kurier</a>
 		</div>
+		<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.4 Label Penghantaran<i class="fa fa-caret-down"></i></a>
+					<div class="collapse" id="demo4">
+						<a href="#section11" onclick="closeNav()" class="list-group-item">2.3.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a>
+						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.2 Isi Maklumat Anda ke dalam Borang Pos Laju</a>
+						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.3 Cara Cetak Label Penghantaran Pelanggan</a>
+		</div>
+		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.5 Senarai Hitam ID Ejen</a>
+		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.6 Profil Akaun</a>
+		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.7 Tukar Kata Laluan</a>
 	</div>
 	</div>
 	
@@ -200,55 +221,51 @@ li {
 </nav>
 
 <div id="section1" class="container-fluid">
-	<h4>1.1.1 Layari laman web untuk mendaftar.</h4><br>
-			<p>1. Anda perlu melayari laman web <a href="https://onpay.my/register">https://onpay.my/register</a> untuk mendaftar isi semua maklumat di dalam borang tersebut</p>
+	<h4>2.1.1 Perniagaan</h4><br>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/url.jpg">
-					<img src="img/url.jpg" alt="Lights" style="width:70%">
+				<a href="img/borang_sistem_perniagaan.png" target="_blank">
+					<img src="img/borang_sistem_perniagaan.png" alt="Lights" style="width:30%">
 					<div class="caption">
-						<p>Gambar URL untuk pendaftaran OnPay</p>
+						<p>Borang Maklumat Perniagaan</p>
 					</div>
 				</a>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/full.jpg">
-					<img src="img/full.jpg" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar borang pendaftaran OnPay</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<p>1.Ruangan * wajib diisi. Sila isikan ke semua bahagian dengan lengkap untuk tujuan digunakan sebagai templat sistem (emel,invois, etc.)</p>
+		<p>2.Sila isi ruangan ""Laman Web Perniagaan" jika anda mempunyai laman web untuk produk anda</p>
+		<p>3.Mata wang dalam nilai RM (Ringgit Malaysia)</p>
+		<p>4.Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan".</p>
 </div>
 <div id="section2" class="container-fluid">
-	<h4>1.1.2 Pilih Subdomain</h4>
+	<h4>2.1.2 Staf</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/subdomain.jpg">
-					<img src="img/subdomain.jpg" alt="Lights" style="width:60%">
+				<a href="img/staf.png">
+					<img src="img/staf.png" alt="Lights" style="width:60%">
 					<div class="caption">
-						<p>Gambar ruangan subdomain</p>
+						<p>Gambar ruangan staf</p>
 					</div>
 				</a>
 			</div>
 		</div>
-		<p><strong>TIPS MEMILIH SUBDOMAIN</strong></p>
-		<li>mestilah unik.</li>
-		<li>minimum 3 huruf, maksimum 30 huruf.</li>
-		<li>guna kombinasi abjad, nombor, dash dan underscore sahaja.</li><br>
-		<p><strong>***Disarankan menggunakan nama syarikat/nama produk/nama bisnes sebagai nama subdomain anda.***</strong></p>
-		<p><strong>PERINGATAN</strong></p>
-		<p>- Tidak menggunakan menggunakkan nama subdomain yang telah berdaftar.</p>
-		<p>- Satu subdomain untuk satu akaun dan tidak boleh menukar nama subdomain selepas pendaftaran.</p>
+		<p>1.Staf anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Staf" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/formula_komisen.png" target="_blank">
+					<img src="img/formula_komisen.png" alt="Lights" style="width:60%">
+					<div class="caption">
+						<p>Gambar formula komisen. (Klik gambar untuk lihat formula)</p>
+					</div>
+				</a>
+			</div>
+		</div>
 </div>
 <div id="section3" class="container-fluid">
-	<h4>1.1.3 Isi Emel</h4>
+	<h4>2.1.3 Isi Emel</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/emel.jpg">
+				<a href="img/emel.jpg" target="_blank">
 					<img src="img/emel.jpg" alt="Lights" style="width:60%">
 					<div class="caption">
 						<p>Gambar ruangan emel</p>
@@ -267,7 +284,7 @@ li {
 	<h4>1.1.4 Pilih ID dan Kata Laluan</h4>
 <div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/idpass.jpg">
+				<a href="img/idpass.jpg" target="_blank">
 					<img src="img/idpass.jpg" alt="Lights" style="width:60%">
 					<div class="caption">
 						<p>Gambar ruangan emel</p>
@@ -289,7 +306,7 @@ li {
 	<h4>1.1.5 Isi Maklumat Profil Diri</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/profilanda.jpg">
+				<a href="img/profilanda.jpg" target="_blank">
 					<img src="img/profilanda.jpg" alt="Lights" style="width:60%">
 					<div class="caption">
 						<p>Gambar ruangan maklumat diri</p>
@@ -307,7 +324,7 @@ li {
 	<h4>1.1.6 Pengesahan spam/robot (reCAPTCHA)</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/reCAPTCHA.jpg">
+				<a href="img/reCAPTCHA.jpg" target="_blank">
 					<img src="img/reCAPTCHA.jpg" alt="Lights" style="width:50%">
 					<div class="caption">
 						<p>Gambar reCAPTCHA</p>
@@ -317,7 +334,7 @@ li {
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/pengesahanrobot.jpg">
+				<a href="img/pengesahanrobot.jpg" target="_blank">
 					<img src="img/pengesahanrobot.jpg" alt="Lights" style="width:40%">
 					<div class="caption">
 						<p>Gambar borang pengesahan robot</p>
@@ -333,7 +350,7 @@ li {
 	<h4>1.1.7 Klik Butang Daftar</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/terimakasih.jpg">
+				<a href="img/terimakasih.jpg" target="_blank">
 					<img src="img/terimakasih.jpg" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Gambar mesej "Terima Kasih"</p>
@@ -347,7 +364,7 @@ li {
 	<h4>1.2.1 Semak Emel Bertajuk "Pendaftaran Akaun OnPay"</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/newmsg.jpg">
+				<a href="img/newmsg.jpg" target="_blank">
 					<img src="img/newmsg.jpg" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Pendaftaran Akaun OnPay</p>
@@ -359,7 +376,7 @@ li {
 		
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/msgdetail.jpg">
+				<a href="img/msgdetail.jpg" target="_blank">
 					<img src="img/msgdetail.jpg" alt="Lights" style="width:60%">
 				</a>
 			</div>
@@ -369,7 +386,7 @@ li {
 	<h4>1.2.2 Tekan Hyperlink Pengaktifan Akaun</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/hyperlink_pengesahan.jpg">
+				<a href="img/hyperlink_pengesahan.jpg" target="_blank">
 					<img src="img/hyperlink_pengesahan.jpg" alt="Lights" style="width:30%%">
 					<div class="caption">
 						<p>Sila tekan hyperlink pengaktifan seperti di bawah:</p>
@@ -379,7 +396,7 @@ li {
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/hyperlink_pengesahan1.jpg">
+				<a href="img/hyperlink_pengesahan1.jpg" target="_blank">
 					<img src="img/hyperlink_pengesahan1.jpg" alt="Lights" style="width:20%">
 					<div class="caption">
 						<p>Sila gunakan hyperlink (#1). Anda juga boleh masukkan secara manual dengan klik link (#2).</p>
@@ -389,7 +406,7 @@ li {
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/kod_salah.jpg">
+				<a href="img/kod_salah.jpg" target="_blank">
 					<img src="img/kod_salah.jpg" alt="Lights" style="width:20%">
 					<div class="caption">
 						<p>Copy kod pengaktifan dan paste ke ruangan di atas.</p>
@@ -402,7 +419,7 @@ li {
 	<h4>1.2.3 Pengaktifan Akaun OnPay Berjaya</h4>
 	<div class="col-md-6">
 			<div class="thumbnail">
-				<a href="img/pengaktifan_berjaya.jpg">
+				<a href="img/pengaktifan_berjaya.jpg" target="_blank">
 					<img src="img/pengaktifan_berjaya.jpg" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Gambar Pengaktifan Akaun</p>
@@ -416,7 +433,7 @@ li {
 	<p>Terdapat 2 cara untuk melayari ke halaman log masuk untuk akaun anda</p>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/halaman_utama.jpg">
+				<a href="img/halaman_utama.jpg" target="_blank">
 					<img src="img/halaman_utama.jpg" alt="Lights" style="width:50%">
 					<div class="caption">
 						<p>1.Layari halaman subdomain anda kemudian klik butang "Admin".</p>
@@ -426,7 +443,7 @@ li {
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/halaman_log_masuk.jpg">
+				<a href="img/halaman_log_masuk.jpg" target="_blank">
 					<img src="img/halaman_log_masuk.jpg" alt="Lights" style="width:50%">
 					<div class="caption">
 						<p>2.Atau layari "subdomain_anda.onpay.my/admin"</p>
@@ -439,7 +456,7 @@ li {
 	<h4>1.3.2 Masukkan ID Admin dan Kata Laluan</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/log_masuk.png">
+				<a href="img/log_masuk.png" target="_blank">
 					<img src="img/log_masuk.png" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Letakkan ID dan Kata Laluan di ruangan "ID Admin" dan "Kata Laluan".</p>
@@ -452,7 +469,7 @@ li {
 	<h4>1.3.3 Log Masuk Akaun OnPay Berjaya</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/dashboard_admin.jpg">
+				<a href="img/dashboard_admin.jpg" target="_blank">
 					<img src="img/dashboard_admin.jpg" alt="Lights" style="width:70%">
 					<div class="caption">
 						<p>Sekiranya proses log masuk berjaya, anda akan dibawa ke halaman Dashboard Admin seperti di atas:</p>
@@ -462,7 +479,7 @@ li {
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/ralat_log_gagal.jpg">
+				<a href="img/ralat_log_gagal.jpg" target="_blank">
 					<img src="img/ralat_log_gagal.jpg" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Sekiranya ralat "ID atau Kata Laluan salah" terpapar, sila:<br>
