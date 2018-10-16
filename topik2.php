@@ -27,7 +27,7 @@ function closeNav() {
 	document.getElementById("mySidenav").style.width = "0";
 }
 
-		</script>
+</script>
 
 <style>
 div.scrollmenu {
@@ -77,7 +77,7 @@ div.scrollmenu a:hover {
 	z-index: 1; /* Stay on top */
 	top: 0; /* Stay at the top */
 	left: 0;
-	background-color: white; /* Black*/
+	background-color: #6666FF; /* Black*/
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 60px; /* Place content 60px from the top */
 	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -95,7 +95,8 @@ div.scrollmenu a:hover {
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-	color: #008000;
+	color: #101010;
+
 }
 
 /* Position and style the close button (top right corner) */
@@ -171,7 +172,15 @@ li {
 						<a href="#section1" onclick="closeNav()" class="list-group-item">2.1.1 Perniagaan (WAJIB)</a>
 						<a href="#section2" onclick="closeNav()" class="list-group-item">2.1.2 Staf (optional)</a>
 						<a href="#section3" onclick="closeNav()" class="list-group-item">2.1.3 Affiliate (optional)</a>
-						<a href="#demo214" class="list-group-item list-group-item-success" data-toggle="collapse">2.1.4 Kaedah Pembayaran (WAJIB)<i class="fa fa-caret-down"></i></a>
+						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.4 Dropship</a>
+						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Pengedar</a>
+						<a href="#section4" onclick="closeNav()" class="list-group-item">2.1.6 Kaedah Pembayaran</a>
+						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.7 Emel</a>
+						<a href="#section6" onclick="closeNav()" class="list-group-item">2.1.8 SMS (optional)</a>
+						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.9 Invois</a>
+						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.10 Cukai</a>
+		</div>
+		<a href="#demo214" class="list-group-item list-group-item-success" data-toggle="collapse">2.2 Kaedah Pembayaran (WAJIB)<i class="fa fa-caret-down"></i></a>
 						<div class="collapse" id="demo214">
 						<a href="#section8" onclick="closeNav()" class="list-group-item">Penetapan Akaun PayPal</a>
 						<a href="#section9" onclick="closeNav()" class="list-group-item">Penetapan Akaun iPay88</a>
@@ -180,35 +189,27 @@ li {
 						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Fungsi CEK</a>
 						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Fungsi Wang Pos</a>
 						</div>
-						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Dropship</a>
-						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Pengedar</a>
-						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Emel</a>
-						<a href="#section6" onclick="closeNav()" class="list-group-item">2.1.6 SMS (optional)</a>
-						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 Invois</a>
-						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 Cukai</a>
-						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 API & Webhook</a>
-		</div>
-		<a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.2 Tetapan Templat Emel<i class="fa fa-caret-down"></i></a>
+		<a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.3 Tetapan Templat Emel<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo2">
 						<a href="#section8" onclick="closeNav()" class="list-group-item">2.2.1 Tetapan Templat Emel Pendaftaran Ejen</a>
 						<a href="#section9" onclick="closeNav()" class="list-group-item">2.2.2 Tetapan Templat Emel Tetapan Semula Kata Laluan Ejen</a>
 						<a href="#section10" onclick="closeNav()" class="list-group-item">2.2.3 Tetapan Templat Emel Pembayaran Komisen</a>
 						<a href="#section10" onclick="closeNav()" class="list-group-item">2.2.4 Tetapan Templat Emel Ucapan Hari Lahir</a>
 		</div>
-		<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.3 Tetapan Penghantar / Kurier<i class="fa fa-caret-down"></i></a>
+		<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.4 Tetapan Penghantar / Kurier<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo3">
 						<a href="#section11" onclick="closeNav()" class="list-group-item">2.3.1 Tambah Kurier</a>
 						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.2 Kemaskini/Padam Kurier</a>
 		</div>
-		<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.4 Label Penghantaran<i class="fa fa-caret-down"></i></a>
+		<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.5 Label Penghantaran<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo4">
 						<a href="#section11" onclick="closeNav()" class="list-group-item">2.3.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a>
 						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.2 Isi Maklumat Anda ke dalam Borang Pos Laju</a>
 						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.3 Cara Cetak Label Penghantaran Pelanggan</a>
 		</div>
-		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.5 Senarai Hitam ID Ejen</a>
-		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.6 Profil Akaun</a>
-		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.7 Tukar Kata Laluan</a>
+		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.6 Senarai Hitam ID Ejen</a>
+		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.7 Profil Akaun</a>
+		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.8 Tukar Kata Laluan</a>
 	</div>
 	</div>
 	
@@ -224,7 +225,7 @@ li {
 	<h4>2.1.1 Perniagaan</h4><br>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/borang_sistem_perniagaan.png" target="_blank">
+				<a href="img/borang_sistem_perniagaan.png">
 					<img src="img/borang_sistem_perniagaan.png" alt="Lights" style="width:30%">
 					<div class="caption">
 						<p>Borang Maklumat Perniagaan</p>
@@ -252,7 +253,7 @@ li {
 		<p>1.Staf anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Staf" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/formula_komisen.png" target="_blank">
+				<a href="img/formula_komisen.png">
 					<img src="img/formula_komisen.png" alt="Lights" style="width:60%">
 					<div class="caption">
 						<p>Gambar formula komisen. (Klik gambar untuk lihat formula)</p>
@@ -262,110 +263,201 @@ li {
 		</div>
 </div>
 <div id="section3" class="container-fluid">
-	<h4>2.1.3 Isi Emel</h4>
-	<div class="col-md-4">
+	<h4>2.1.3 Affiliate</h4>
+		<p>1.Ejen anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/emel.jpg" target="_blank">
-					<img src="img/emel.jpg" alt="Lights" style="width:60%">
+				<a href="img/konsep_komisen.png">
+					<img src="img/konsep_komisen.png" alt="Lights" style="width:30%">
 					<div class="caption">
-						<p>Gambar ruangan emel</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<p><strong>TIPS MENGISI EMEL</strong></p>
-		<li>Hanya format sah sahaja diterima contoh : (ahmad@gmail.com) .</li>
-		<li>Emel yang pernah wujud di dalam pangkalan data tidak dibenarkan untuk digunakan. Emel yang belum berdaftar sahaja dibenarkan.</li><br>
-		<p><strong>***Anda boleh gunakan emel sebagai ID Admin jika terlupa ID admin anda.***</strong></p>
-		<p><strong>PERINGATAN</strong></p>
-		<p>- Emel notifikasi pendaftaran akaun akan dihantar ke emel yang anda daftarkan. Pastikan anda boleh akses emel tersebut untuk pengesahan pendaftaran akaun.</p>
-</div>
-<div id="section4" class="container-fluid">
-	<h4>1.1.4 Pilih ID dan Kata Laluan</h4>
-<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/idpass.jpg" target="_blank">
-					<img src="img/idpass.jpg" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar ruangan emel</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<p><strong>TIPS MEMILIH ID DAN KATA LALUAN</strong></p>
-		<li>mestilah unik.(ID)</li>
-		<li>Guna kombinasi abjad, nombor, dash dan underscore sahaja.(ID)</li>
-		<li>Maksimum 30 karakter huruf sahaja.(ID & Kata Laluan)</li>
-		<li>Boleh guna apa-apa kombinasi.(Kata Laluan)</li><br>
-		<p></p>
-		<p><strong>PERINGATAN</strong></p>
-		<p>- <strong>*JANGAN KONGSI ID DAN KATA LALUAN KEPADA PIHAK KETIGA.*</strong>.</p>
-		<p>- Boleh kemaskini ID di menu "Tetapan", submenu "Profil Akaun", untuk Kata Laluan pada submenu "Tukar Kata Laluan".</p>
-</div>
-<div id="section5" class="container-fluid">
-	<h4>1.1.5 Isi Maklumat Profil Diri</h4>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/profilanda.jpg" target="_blank">
-					<img src="img/profilanda.jpg" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar ruangan maklumat diri</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<p><strong>TIPS MENGISI RUANGAN MAKLUMAT DIRI</strong></p>
-		<li>Ruangan Nombor HP hanya menerima format (0123456789, 012-3456789, 6012-3456789, +6012-3456789).</li><br>
-		<p><strong>***Sila gunakan NAMA PENUH dan NOMBOR HP yang benar untuk tujuan invois,email dan lain-lain.***</strong></p>
-		<p><strong>PERINGATAN</strong></p>
-		<p>- Anda boleh mengubah maklumat profil anda selepas Log Masuk (log in) dan mengakses "Profil Akaun" melalui menu "Tetapan" di bahagian atas kanan menu navigasi (navbar).</p>
-</div>
-<div id="section6" class="container-fluid">
-	<h4>1.1.6 Pengesahan spam/robot (reCAPTCHA)</h4>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/reCAPTCHA.jpg" target="_blank">
-					<img src="img/reCAPTCHA.jpg" alt="Lights" style="width:50%">
-					<div class="caption">
-						<p>Gambar reCAPTCHA</p>
+						<p>Gambar konsep komisen.</p>
 					</div>
 				</a>
 			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/pengesahanrobot.jpg" target="_blank">
-					<img src="img/pengesahanrobot.jpg" alt="Lights" style="width:40%">
+				<a href="img/cookies.png">
+					<img src="img/cookies.png" alt="Lights" style="width:30%">
 					<div class="caption">
-						<p>Gambar borang pengesahan robot</p>
+						<p>Gambar cookies.</p>
 					</div>
 				</a>
 			</div>
 		</div>
-		<p>- Sila tandakan kotak "Saya Bukan Robot" untuk memaparkan soalan pengesahan.</p>
-		<p>- Jawab soalan dengan betul untuk mengesahkan bahawa anda bukan robot/spam.</p>
-
+				<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/formula_komisen.png">
+					<img src="img/formula_komisen.png" alt="Lights" style="width:30%">
+					<div class="caption">
+						<p>Gambar formula komisen.(Klik gambar untuk lihat formula)</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		
+</div>
+<div id="section4" class="container-fluid">
+	<h4>2.1.4 Dropship</h4>
+<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/dropship.png">
+					<img src="img/dropship.png" alt="Lights" style="width:60%">
+					<div class="caption">
+						<p>Gambar ruangan dropship</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/panduan_asas.png">
+					<img src="img/panduan_asas.png" alt="Lights" style="width:60%">
+					<div class="caption">
+						<p>Gambar panduan asas</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<p>1.Dropship anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+</div>
+<div id="section5" class="container-fluid">
+	<h4>2.1.5 Pengedar</h4>
+	<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/pengedar.png">
+					<img src="img/pengedar.png" alt="Lights" style="width:60%">
+					<div class="caption">
+						<p>Gambar ruangan pengedar</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/panduan_asas.png">
+					<img src="img/panduan_asas.png" alt="Lights" style="width:60%">
+					<div class="caption">
+						<p>Gambar panduan asas</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<p>1.Ejen anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+</div>
+<div id="section6" class="container-fluid">
+	<h4>2.1.6 Kaedah Pembayaran</h4>
+	<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/kaedah_pembayaran.png">
+					<img src="img/kaedah_pembayaran.png" alt="Lights" style="width:50%">
+					<div class="caption">
+						<p>Gambar ruangan kaedah pembayaran</p>
+					</div>
+				</a>
+			</div>
+		</div>
+	<p>- Kedudukan kaedah pembayaran boleh diubah secara drag and drop dengan memegang pada nombor</p>
+	<p>- Tick ruangan "Paparkan Logo" jika anda mahu paparkan logo.</p>
 </div>
 <div id="section7" class="container-fluid">
-	<h4>1.1.7 Klik Butang Daftar</h4>
+	<h4>2.1.7 Emel</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/terimakasih.jpg" target="_blank">
-					<img src="img/terimakasih.jpg" alt="Lights" style="width:100%">
+				<a href="img/emel.png">
+					<img src="img/emel.png" alt="Lights" style="width:100%">
 					<div class="caption">
-						<p>Gambar mesej "Terima Kasih"</p>
+						<p>Gambar ruangan emel</p>
 					</div>
 				</a>
 			</div>
 		</div>
-		<p>Setelah butang "Daftar" ditekan, anda akan dibawa kepada halaman pengesahan penerimaan pendaftaran. Anda akan menerima mesej seperti berikut: </p>
+		<p>1. Anda perlu mengisi ruangan penerima notifikasi dengan emel anda.</p>
+		<p><strong>*** Anda dibenarkan mengisi sebanyak 3 emel sahaja. ***</strong></p><br>
+		<p>2. Di bahagian notifikasi anda boleh custom notifikasi untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
 </div>
-<div id="section8" class="container-fluid">
-	<h4>1.2.1 Semak Emel Bertajuk "Pendaftaran Akaun OnPay"</h4>
+<div id="section7" class="container-fluid">
+	<h4>2.1.8 SMS</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
-				<a href="img/newmsg.jpg" target="_blank">
-					<img src="img/newmsg.jpg" alt="Lights" style="width:100%">
+				<a href="img/sms.png">
+					<img src="img/sms.png" alt="Lights" style="width:100%">
+					<div class="caption">
+						<p>Gambar ruangan SMS</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<p>Sebelum anda menggunakan fungsi SMS, pastikan anda mempunyai kredit yang mencukupi untuk menghantar SMS.</p>
+		<p><strong>*** Anda boleh topup kredit anda di menu utama OnPay ***</strong></p><br>
+		<p>2. Di bahagian notifikasi anda boleh custom notifikasi SMS untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+</div>
+<div id="section7" class="container-fluid">
+	<h4>2.1.9 Invois</h4>
+	<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/invois.png">
+					<img src="img/invois.png" alt="Lights" style="width:30%">
+					<div class="caption">
+						<p>Gambar ruangan invois</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/header_invois.png">
+					<img src="img/header_invois.png" alt="Lights" style="width:30%">
+					<div class="caption">
+						<p>1. Tetapkan Pilihan Templat Kepala Invois dan Masukkan Gambar</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/status_invois.png">
+					<img src="img/status_invois.png" alt="Lights" style="width:30%">
+					<div class="caption">
+						<p>2. Isikan Teks Status Pembayaran</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/contoh_invois.png">
+					<img src="img/contoh_invois.png" alt="Lights" style="width:20%">
+					<div class="caption">
+						<p>3. Tekan Butang Previu untuk paparkan contoh invois</p>
+					</div>
+				</a>
+			</div>
+		</div>
+</div>
+<div id="section7" class="container-fluid">
+	<h4>2.1.10 Cukai</h4>
+	<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/cukai.png">
+					<img src="img/cukai.png" alt="Lights" style="width:100%">
+					<div class="caption">
+						<p>Gambar ruangan cukai</p>
+					</div>
+				</a>
+			</div>
+		</div>
+		<p>Ruangan yang bertanda * wajib diisi sepenuhnya.</p>
+		<p><strong>** Kadar cukai dalam bentuk peratusan sahaja **</strong></p><br>
+		<p>1. Untuk ruangan Jenis Cukai anda boleh tekan samada Ekslusif atau Inklusif</p>
+		<p>2. Jika anda klik kotak Kos Penghantaran, kos tersebut akan dikira secara automatik di dalam pengiraan cukai</p>
+</div>
+<div id="section8" class="container-fluid">
+	<h4>2.2.1 Penetapan Akaun PayPal</h4>
+	<div class="col-md-4">
+			<div class="thumbnail">
+				<a href="img/paypal.png">
+					<img src="img/paypal.png" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Pendaftaran Akaun OnPay</p>
 					</div>
