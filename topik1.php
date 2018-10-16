@@ -66,9 +66,9 @@ div.scrollmenu a:hover {
 	#section7 {padding-top:50px;height:450px;color: #fff; background-color: #fff;}
 	#section8 {padding-top:50px;height:800px;color: #fff; background-color: #fff;}
 	#section9 {padding-top:50px;height:850px;color: #fff; background-color: #fff;}
-	#section10 {padding-top:50px;height:450px;color: #fff; background-color: #fff;}
-	#section11 {padding-top:50px;height:900px;color: #fff; background-color: #fff;}
-	#section12 {padding-top:50px;height:500px;color: #fff; background-color: #fff;}
+	#section10 {padding-top:50px;height:550px;color: #fff; background-color: #fff;}
+	#section11 {padding-top:50px;height:850px;color: #fff; background-color: #fff;}
+	#section12 {padding-top:50px;height:550px;color: #fff; background-color: #fff;}
 	#section13 {padding-top:50px;height:800px;color: #fff; background-color: #fff;}
 
 	/* The side navigation menu */
