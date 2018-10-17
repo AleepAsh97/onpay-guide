@@ -9,7 +9,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="index.js"></script>
 		
-		<script>
+<script>
+
 	$(function(){
 	$('.toggle-menu').click(function(e){
 	e.preventDefault();
@@ -53,21 +54,22 @@ div.scrollmenu a:hover {
 }
 
 	body {
+		background-image: url("img/books.jpg");
 		position: relative; 
 	}
-	#section1 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section2 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section3 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section4 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section5 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section6 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section7 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section8 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section9 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section10 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section11 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section12 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
-	#section13 {padding-top:50px;height:100%;color: #fff; background-color: #fff;}
+	#section1 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section2 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section3 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section4 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section5 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section6 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section7 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section8 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section9 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section10 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section11 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section12 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
+	#section13 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
 
 	/* The side navigation menu */
 .sidenav {
@@ -139,6 +141,11 @@ h4 {
 li {
 	color: black;
 }
+
+#well {
+	display: ruby-base-container;
+}
+
 </style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -220,9 +227,28 @@ li {
 	</div>
 	</div>
 </nav>
-
+<div class="container">
+	<div class="row">
+		<div class="well">
 <div id="section1" class="container-fluid">
-	<h4>2.1.1 Perniagaan</h4><br>
+	<h4><strong>2.1.1 Perniagaan</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan</div>
+	  <div class="panel-body">
+	  	<p><strong>a) Isikan maklumat anda.</strong><br> 
+		- Item bertanda * adalah wajib diisi.<br>
+		- Isikan kesemua bahagian ini dengan lengkap. Ini bertujuan untuk digunakan di dalam template sistem (ex: emel, invois etc).</p>
+
+		<p><strong>b) Laman Web Perniagaan</strong><br> 
+		- Isi sekiranya anda mempunyai laman web mempromosikan / mempamerkan produk anda seperti blog atau lain.</p>
+
+		<p><strong>c) Matawang</strong><br> 
+		- Ringgit Malaysia : RM</p>
+
+		<p><strong>d) Maklumat Tambahan</strong><br> 
+		- Tandakan kotak "Paparkan maklumat utama di halaman utama" demi memaparkan maklumat tambahan di halaman utama subdomain anda.</p> 
+	  </div>
+	</div>
 		<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/borang_sistem_perniagaan.png">
@@ -233,10 +259,6 @@ li {
 				</a>
 			</div>
 		</div>
-		<p>1.Ruangan * wajib diisi. Sila isikan ke semua bahagian dengan lengkap untuk tujuan digunakan sebagai templat sistem (emel,invois, etc.)</p>
-		<p>2.Sila isi ruangan ""Laman Web Perniagaan" jika anda mempunyai laman web untuk produk anda</p>
-		<p>3.Mata wang dalam nilai RM (Ringgit Malaysia)</p>
-		<p>4.Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan".</p>
 </div>
 <div id="section2" class="container-fluid">
 	<h4>2.1.2 Staf</h4>
@@ -581,6 +603,9 @@ li {
 				</a>
 			</div>
 		</div>
+</div>
+</div>
+</div>
 </div>
 </body>
 </hmtl>
