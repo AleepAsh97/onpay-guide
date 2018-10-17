@@ -3,6 +3,7 @@
 <head>
 		<title>Tutorial OnPay</title>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -57,19 +58,6 @@ div.scrollmenu a:hover {
 		position: relative;
 		background-image: url("img/books.jpg"); 
 	}
-	#section1 {padding-top:50px;height:850px;color: #fff; background-color: #fff;}
-	#section2 {padding-top:50px;height:1200px;color: #fff; background-color: #fff;}
-	#section3 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section4 {padding-top:50px;height:1500px;color: #fff; background-color: #fff;}
-	#section5 {padding-top:50px;height:1550px;color: #fff; background-color: #fff;}
-	#section6 {padding-top:50px;height:900px;color: #fff; background-color: #fff;}
-	#section7 {padding-top:50px;height:500px;color: #fff; background-color: #fff;}
-	#section8 {padding-top:50px;height:800px;color: #fff; background-color: #fff;}
-	#section9 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section10 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section11 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section12 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section13 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
 
 	/* The side navigation menu */
 .sidenav {
@@ -142,12 +130,13 @@ li {
 	color: black;
 }
 
-#well {
-	display: ruby-base-container;
-}
-
 #MainMenu{
 	background-color: black;
+}
+
+.subtopic {
+	padding: 40px;
+	background-color: #fff;
 }
 
 </style>
@@ -210,16 +199,16 @@ li {
 	</div>
 	</div>
 </nav>
-<div class="container">
-<div class="row" id="row">
-	<div class="well" id="well">
-<div id="section1" class="container-fluid">
+<div class="container" style="margin-top: 50px">
+<div class="row">
+<div class="subtopic col-md-12" id="section1">
 	<h4><strong>1.1.1 Layari laman web untuk mendaftar.</strong></h4><br>
 	<div class="panel panel-info">
 	  <div class="panel-heading">Langkah Pertama</div>
 	  <div class="panel-body"><p>1. Anda perlu melayari laman web <a href="https://onpay.my/register">https://onpay.my/register</a> untuk mendaftar isi semua maklumat di dalam borang tersebut</p>
 		<p>2. Selepas itu, anda akan dibawa ke halaman Borang Pendaftaran OnPay</p></div>
 	</div>
+	<div class="row">
 		<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/url.jpg">
@@ -240,8 +229,9 @@ li {
 			</div>
 			<p>Gambar borang pendaftaran OnPay</p>
 		</div>
+	</div>
 </div>
-<div id="section2" class="container-fluid">
+<div class="subtopic col-md-12" id="section2">
 	<h4><strong>1.1.2 Pilih Subdomain</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan Memilih Subdomain</div>
@@ -269,6 +259,7 @@ li {
 		<p>Sebarang kesilapan dalam pengisian borang akan dipaparkan kesilapan yang berlaku. Sila rujuk paparan tersebut untuk memperbetulkan kesilapan anda.</p>
 </div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/subdomain.jpg">
@@ -279,8 +270,9 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section3" class="container-fluid">
+<div class="subtopic col-md-12" id="section3">
 	<h4><strong>1.1.3 Isi Emel</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan Mengisi Emel</div>
@@ -300,6 +292,7 @@ li {
 	  <div class="panel-body"><p>Sekiranya anda telah memilih "ahmad@gmail.com", maka emel notifikasi tentang pendaftaran akaun akan dihantar kepada emel tersebut. 
 	  <strong>Anda perlu mengakses emel ini demi mengesahkan pendaftaran akaun anda.</strong></p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/emel.jpg">
@@ -310,8 +303,9 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section4" class="container-fluid">
+<div class="subtopic col-md-12" id="section4">
 	<h4><strong>1.1.4 Pilih ID dan Kata Laluan</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan Memilih ID dan Kata Laluan</div>
@@ -337,6 +331,7 @@ li {
 		<p>3) Kata Laluan juga boleh diubah melalui menu "navbar" "Tetapan" > "Tukar Kata Laluan" di bawah menu "Profil Akaun".</p>
 	</div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/idpass.jpg">
@@ -347,8 +342,9 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section5" class="container-fluid">
+<div class="subtopic col-md-12" id="section5">
 	<h4><strong>1.1.5 Isi Maklumat Profil Diri</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan Mengisi Maklumat Profil Diri</div>
@@ -380,6 +376,7 @@ li {
 	  <div class="panel-heading"><strong>PERINGATAN</strong></div>
 	  <div class="panel-body"><p>1) Anda boleh mengubah maklumat profil anda selepas Log Masuk (log in) dan mengakses "Profil Akaun" melalui menu "Tetapan" di bahagian atas kanan menu navigasi (navbar).</p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/profilanda.jpg">
@@ -390,14 +387,16 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section6" class="container-fluid">
+<div class="subtopic col-md-12" id="section6">
 	<h4><strong>1.1.6 Pengesahan spam/robot (reCAPTCHA)</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan Mengenai Pengesahan SPAM/Robot (reCAPTCHA)</div>
 	  <div class="panel-body"><li>Sila tandakan kotak "Saya Bukan Robot" untuk memaparkan soalan pengesahan.</li>
 		<li>Jawab soalan dengan betul untuk mengesahkan bahawa anda bukan robot/spam.</li></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/reCAPTCHA.jpg">
@@ -418,13 +417,15 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section7" class="container-fluid">
+<div class="subtopic col-md-12" id="section7">
 	<h4><strong>1.1.7 Klik Butang Daftar</strong></h4><br>
 	<div class="panel panel-info">
 	  <div class="panel-heading">Info</div>
 	  <div class="panel-body"><p>Setelah butang "Daftar" ditekan, anda akan dibawa kepada halaman pengesahan penerimaan pendaftaran. Anda akan menerima mesej seperti berikut: </p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/terimakasih.jpg">
@@ -435,14 +436,16 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section8" class="container-fluid">
+<div class="subtopic col-md-12" id="section8">
 	<h4><strong>1.2.1 Semak Emel Bertajuk "Pendaftaran Akaun OnPay"</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Info</div>
 	  <div class="panel-body"><p>1. Sila semak di emel anda emel bertajuk "Pendaftaran Akaun OnPay"</p>
 		<p>2. Sila buka emel dari "admin@onpay.my" yang bertajuk <strong>"Pendaftaran Akaun OnPay"</strong>.</p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/newmsg.jpg">
@@ -461,8 +464,9 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section9" class="container-fluid">
+<div class="subtopic col-md-12" id="section9">
 	<h4><strong>1.2.2 Tekan Hyperlink Pengaktifan Akaun</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan Pengaktifan Akaun</div>
@@ -470,6 +474,7 @@ li {
 		<p>2) Sekiranya hyperlink (#1) gagal berfungsi, sila klik hyperlink (2.1) untuk pengaktifan secara manual. Copy kod pengaktifan dari Gambar 2 dan gunakan di halaman pengaktifan.</p>
 		<p>Sila pastikan anda copy & paste kod pengaktifan demi mengelakkan ralat <strong>"kod pengaktifan tidak sah"</strong> seperti di Gambar 3.</p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/hyperlink_pengesahan.jpg">
@@ -500,13 +505,15 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section10" class="container-fluid">
+<div class="subtopic col-md-12" id="section10">
 	<h4><strong>1.2.3 Pengaktifan Akaun OnPay Berjaya</strong></h4><br>
 	<div class="panel panel-info">
 	  <div class="panel-heading">Info</div>
 	  <div class="panel-body"><p>Pengaktifan Akaun anda berjaya apabila keluar mesej seperti di dalam Gambar Pengaktifan Akaun</p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-6">
 			<div class="thumbnail">
 				<a href="img/pengaktifan_berjaya.jpg">
@@ -517,8 +524,9 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section11" class="container-fluid">
+<div class="subtopic col-md-12" id="section11">
 	<h4><strong>1.3.1 Layari Halaman Log Masuk Akaun anda</strong></h4><br>
 	<div class="panel panel-info">
 	  <div class="panel-heading">Info</div>
@@ -533,6 +541,7 @@ li {
 
 	  </div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/halaman_utama.jpg">
@@ -553,13 +562,15 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section12" class="container-fluid">
+<div class="subtopic col-md-12" id="section12">
 	<h4><strong>1.3.2 Masukkan ID Admin dan Kata Laluan</strong></h4><br>
 	<div class="panel panel-info">
 	  <div class="panel-heading">Info</div>
 	  <div class="panel-body"><p>Letakkan ID dan Kata Laluan di ruangan "ID Admin" dan "Kata Laluan".</p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/log_masuk.png">
@@ -570,8 +581,9 @@ li {
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
-<div id="section13" class="container-fluid">
+<div class="subtopic col-md-12" id="section13">
 	<h4><strong>1.3.3 Log Masuk Akaun OnPay Berjaya</strong></h4><br>
 	<div class="panel panel-info">
 	  <div class="panel-heading">Info</div>
@@ -580,6 +592,7 @@ li {
 							1.Isikan semula ID dan Kata Laluan<br>
 							2.Tekan hyperlink Terlupa Kata Laluan</p></div>
 	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/dashboard_admin.jpg">
@@ -600,7 +613,7 @@ li {
 				</a>
 			</div>
 		</div>
-</div>
+	</div>
 </div>
 </div>
 </div>

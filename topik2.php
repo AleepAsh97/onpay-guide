@@ -57,19 +57,6 @@ div.scrollmenu a:hover {
 		background-image: url("img/books.jpg");
 		position: relative; 
 	}
-	#section1 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section2 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section3 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section4 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section5 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section6 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section7 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section8 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section9 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section10 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section11 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section12 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
-	#section13 {padding-top:50px;height:1000px;color: #fff; background-color: #fff;}
 
 	/* The side navigation menu */
 .sidenav {
@@ -142,9 +129,11 @@ li {
 	color: black;
 }
 
-#well {
-	display: ruby-base-container;
+.subtopic {
+	padding: 40px;
+	background-color: #fff;
 }
+
 
 </style>
 </head>
@@ -227,10 +216,9 @@ li {
 	</div>
 	</div>
 </nav>
-<div class="container">
+<div class="container" style="margin-top: 50px">
 	<div class="row">
-		<div class="well">
-<div id="section1" class="container-fluid">
+<div id="section1" class="subtopic col-md-12">
 	<h4><strong>2.1.1 Perniagaan</strong></h4><br>
 	<div class="panel panel-primary">
 	  <div class="panel-heading">Panduan</div>
@@ -260,7 +248,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section2" class="container-fluid">
+<div id="section2" class="subtopic col-md-12">
 	<h4>2.1.2 Staf</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -284,7 +272,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section3" class="container-fluid">
+<div id="section3" class="subtopic col-md-12">
 	<h4>2.1.3 Affiliate</h4>
 		<p>1.Ejen anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
 		<div class="col-md-4">
@@ -319,7 +307,7 @@ li {
 		</div>
 		
 </div>
-<div id="section4" class="container-fluid">
+<div id="section4" class="subtopic col-md-12">
 	<h4>2.1.4 Dropship</h4>
 <div class="col-md-4">
 			<div class="thumbnail">
@@ -343,7 +331,7 @@ li {
 		</div>
 		<p>1.Dropship anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
 </div>
-<div id="section5" class="container-fluid">
+<div id="section5" class="subtopic col-md-12">
 	<h4>2.1.5 Pengedar</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -367,7 +355,7 @@ li {
 		</div>
 		<p>1.Ejen anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
 </div>
-<div id="section6" class="container-fluid">
+<div id="section6" class="subtopic col-md-12">
 	<h4>2.1.6 Kaedah Pembayaran</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -382,7 +370,7 @@ li {
 	<p>- Kedudukan kaedah pembayaran boleh diubah secara drag and drop dengan memegang pada nombor</p>
 	<p>- Tick ruangan "Paparkan Logo" jika anda mahu paparkan logo.</p>
 </div>
-<div id="section7" class="container-fluid">
+<div id="section7" class="subtopic col-md-12">
 	<h4>2.1.7 Emel</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -398,7 +386,7 @@ li {
 		<p><strong>*** Anda dibenarkan mengisi sebanyak 3 emel sahaja. ***</strong></p><br>
 		<p>2. Di bahagian notifikasi anda boleh custom notifikasi untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
 </div>
-<div id="section7" class="container-fluid">
+<div id="section8" class="subtopic col-md-12">
 	<h4>2.1.8 SMS</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -414,7 +402,7 @@ li {
 		<p><strong>*** Anda boleh topup kredit anda di menu utama OnPay ***</strong></p><br>
 		<p>2. Di bahagian notifikasi anda boleh custom notifikasi SMS untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
 </div>
-<div id="section7" class="container-fluid">
+<div id="section9" class="subtopic col-md-12">
 	<h4>2.1.9 Invois</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -457,7 +445,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section7" class="container-fluid">
+<div id="section10" class="subtopic col-md-12">
 	<h4>2.1.10 Cukai</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -474,7 +462,7 @@ li {
 		<p>1. Untuk ruangan Jenis Cukai anda boleh tekan samada Ekslusif atau Inklusif</p>
 		<p>2. Jika anda klik kotak Kos Penghantaran, kos tersebut akan dikira secara automatik di dalam pengiraan cukai</p>
 </div>
-<div id="section8" class="container-fluid">
+<div id="section11" class="subtopic col-md-12">
 	<h4>2.2.1 Penetapan Akaun PayPal</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -496,7 +484,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section9" class="container-fluid">
+<div id="section12" class="subtopic col-md-12">
 	<h4>1.2.2 Tekan Hyperlink Pengaktifan Akaun</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -529,7 +517,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section10" class="container-fluid">
+<div id="section13" class="subtopic col-md-12">
 	<h4>1.2.3 Pengaktifan Akaun OnPay Berjaya</h4>
 	<div class="col-md-6">
 			<div class="thumbnail">
@@ -542,7 +530,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section11" class="container-fluid">
+<div id="section14" class="subtopic col-md-12">
 	<h4>1.3.1 Layari Halaman Log Masuk Akaun anda</h4>
 	<p>Terdapat 2 cara untuk melayari ke halaman log masuk untuk akaun anda</p>
 	<div class="col-md-4">
@@ -566,7 +554,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section12" class="container-fluid">
+<div id="section15" class="subtopic col-md-12">
 	<h4>1.3.2 Masukkan ID Admin dan Kata Laluan</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -579,7 +567,7 @@ li {
 			</div>
 		</div>
 </div>
-<div id="section13" class="container-fluid">
+<div id="section16" class="subtopic col-md-12">
 	<h4>1.3.3 Log Masuk Akaun OnPay Berjaya</h4>
 	<div class="col-md-4">
 			<div class="thumbnail">
@@ -603,7 +591,6 @@ li {
 				</a>
 			</div>
 		</div>
-</div>
 </div>
 </div>
 </div>
