@@ -6,140 +6,82 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="index.js"></script>
-		
+
 <script>
 
-	$(function(){
-	$('.toggle-menu').click(function(e){
-	e.preventDefault();
-	$('.sidebar').toggleClass('toggled');
-		});
-	});
+	$(document).ready(function(){
 
-/* Set the width of the side navigation to 250px */
-function openNav() {
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+	/* Set the width of the side navigation to 250px */
+	function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
-}
-
-/* Set the width of the side navigation to 0 */
-function closeNav() {
-	document.getElementById("mySidenav").style.width = "0";
-}
-
-</script>
-
-<style>
-div.scrollmenu {
-	white-space: nowrap; /* [1] */
-	overflow-x: auto; /* [2] */
-	-webkit-overflow-scrolling: touch; /* [3] */
-	-ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ 
-}
-
-div.scrollmenu::-webkit-scrollbar {
-	display: none; }
-
-div.scrollmenu a {
-		display: inline-block;
-		color: white;
-		text-align: center;
-		padding: 14px;
-		text-decoration: none;
-}
-
-div.scrollmenu a:hover {
-		background-color: #777;
-}
-
-	body {
-		position: relative;
-		background-image: url("img/books.jpg"); 
 	}
 
-	/* The side navigation menu */
-.sidenav {
-	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Stay on top */
-	top: 0; /* Stay at the top */
-	left: 0;
-	background-color: #6666ff; /* Black*/
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
-	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	/* Set the width of the side navigation to 0 */
+	function closeNav() {
+	document.getElementById("mySidenav").style.width = "0";
 }
+</script>
 
-/* The navigation menu links */
-.sidenav a {
-	padding: 4px 4px 4px 32px;
-	text-decoration: none;
-	font-size: 20px;
-	color: #101010;
-	display: block;
-	transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-	color: #008000;
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-	position: absolute;
-	color: red;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-	transition: margin-left .5s;
-	padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-	.sidenav {padding-top: 15px;}
-	.sidenav a {font-size: 18px;}
-}
-
-div.panel-body li {
-	color: black;
-}
-
-div.panel-body p {
-	color: black;
-}
-
-p {
-	color: black;
-}
-
-h4 {
-	color: black;
-}
-
-li {
-	color: black;
-}
-
-#MainMenu{
-	background-color: black;
-}
-
-.subtopic {
-	padding: 40px;
-	background-color: #fff;
-}
-
-</style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -209,26 +151,18 @@ li {
 		<p>2. Selepas itu, anda akan dibawa ke halaman Borang Pendaftaran OnPay</p></div>
 	</div>
 	<div class="row">
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/url.jpg">
-					<img src="img/url.jpg" alt="Lights" style="width:100%">
-					<div class="caption">	
-					</div>
-				</a>
-			</div>
-			<p>Anda boleh taip URL seperti di dalam gambar ini.</p>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/full.jpg">
-					<img src="img/full.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-					</div>
-				</a>
-			</div>
-			<p>Gambar borang pendaftaran OnPay</p>
-		</div>
+		 <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar URL Pendaftaran OnPay"  data-image="img/url.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/url.jpg" alt="Another alt text">
+            </a>
+             <p>Klik untuk melihat gambar</p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pendaftaran OnPay"  data-image="img/full.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/full.jpg" alt="Another alt text">
+            </a>
+           <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section2">
@@ -260,16 +194,12 @@ li {
 </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/subdomain.jpg">
-					<img src="img/subdomain.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan subdomain</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Subdomain"  data-image="img/subdomain.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/subdomain.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section3">
@@ -293,16 +223,12 @@ li {
 	  <strong>Anda perlu mengakses emel ini demi mengesahkan pendaftaran akaun anda.</strong></p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/emel.jpg">
-					<img src="img/emel.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan emel</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Emel"  data-image="img/emel.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/emel.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section4">
@@ -332,16 +258,12 @@ li {
 	</div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/idpass.jpg">
-					<img src="img/idpass.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan ID dan Kata Laluan</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan ID dan Kata Laluan"  data-image="img/idpass.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/idpass.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section5">
@@ -377,16 +299,12 @@ li {
 	  <div class="panel-body"><p>1) Anda boleh mengubah maklumat profil anda selepas Log Masuk (log in) dan mengakses "Profil Akaun" melalui menu "Tetapan" di bahagian atas kanan menu navigasi (navbar).</p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/profilanda.jpg">
-					<img src="img/profilanda.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan maklumat diri</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Maklumat Diri"  data-image="img/profilanda.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/profilanda.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section6">
@@ -397,26 +315,18 @@ li {
 		<li>Jawab soalan dengan betul untuk mengesahkan bahawa anda bukan robot/spam.</li></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/reCAPTCHA.jpg">
-					<img src="img/reCAPTCHA.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar reCAPTCHA</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/pengesahanrobot.jpg">
-					<img src="img/pengesahanrobot.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar borang pengesahan robot</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar reCAPTCHA"  data-image="img/reCAPTCHA.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/reCAPTCHA.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pengesahan Robot"  data-image="img/pengesahanrobot.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/pengesahanrobot.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section7">
@@ -426,16 +336,12 @@ li {
 	  <div class="panel-body"><p>Setelah butang "Daftar" ditekan, anda akan dibawa kepada halaman pengesahan penerimaan pendaftaran. Anda akan menerima mesej seperti berikut: </p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/terimakasih.jpg">
-					<img src="img/terimakasih.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar mesej "Terima Kasih"</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Mesej Terima Kasih"  data-image="img/terimakasih.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/terimakasih.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section8">
@@ -446,24 +352,18 @@ li {
 		<p>2. Sila buka emel dari "admin@onpay.my" yang bertajuk <strong>"Pendaftaran Akaun OnPay"</strong>.</p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/newmsg.jpg">
-					<img src="img/newmsg.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Pendaftaran Akaun OnPay</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/msgdetail.jpg">
-					<img src="img/msgdetail.jpg" alt="Lights" style="width:100%">
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Email Pendaftaran Akaun OnPay"  data-image="img/newmsg.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/newmsg.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Contoh Emel Pendaftaran Akaun OnPay"  data-image="img/msgdetail.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/msgdetail.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section9">
@@ -475,36 +375,24 @@ li {
 		<p>Sila pastikan anda copy & paste kod pengaktifan demi mengelakkan ralat <strong>"kod pengaktifan tidak sah"</strong> seperti di Gambar 3.</p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/hyperlink_pengesahan.jpg">
-					<img src="img/hyperlink_pengesahan.jpg" alt="Lights" style="width:100%%">
-					<div class="caption">
-						<p>Gambar 1</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/hyperlink_pengesahan1.jpg">
-					<img src="img/hyperlink_pengesahan1.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar 2</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/kod_salah.jpg">
-					<img src="img/kod_salah.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar 3</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/hyperlink_pengesahan.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/hyperlink_pengesahan.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 1</p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/hyperlink_pengesahan1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/hyperlink_pengesahan1.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 2</p>
+        </div>
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 3"  data-image="img/kod_salah.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/kod_salah.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 3</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section10">
@@ -514,16 +402,12 @@ li {
 	  <div class="panel-body"><p>Pengaktifan Akaun anda berjaya apabila keluar mesej seperti di dalam Gambar Pengaktifan Akaun</p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-6">
-			<div class="thumbnail">
-				<a href="img/pengaktifan_berjaya.jpg">
-					<img src="img/pengaktifan_berjaya.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar Pengaktifan Akaun</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Pengaktifan Akaun"  data-image="img/pengaktifan_berjaya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/pengaktifan_berjaya.jpg" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section11">
@@ -542,26 +426,18 @@ li {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/halaman_utama.jpg">
-					<img src="img/halaman_utama.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Langkah 1</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/halaman_log_masuk.jpg">
-					<img src="img/halaman_log_masuk.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Langkah 2</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 1"  data-image="img/halaman_utama.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/halaman_utama.jpg" alt="Another alt text">
+            </a>
+            <p>Langkah 1</p>
+        </div>
+	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 2"  data-image="img/halaman_log_masuk.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/halaman_log_masuk.jpg" alt="Another alt text">
+            </a>
+            <p>Langkah 2</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section12">
@@ -571,16 +447,12 @@ li {
 	  <div class="panel-body"><p>Letakkan ID dan Kata Laluan di ruangan "ID Admin" dan "Kata Laluan".</p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/log_masuk.png">
-					<img src="img/log_masuk.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan "ID Admin" dan "Kata Laluan".</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan ID Admin dan Kata Laluan"  data-image="img/log_masuk.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/log_masuk.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div class="subtopic col-md-12" id="section13">
@@ -593,29 +465,36 @@ li {
 							2.Tekan hyperlink Terlupa Kata Laluan</p></div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/dashboard_admin.jpg">
-					<img src="img/dashboard_admin.jpg" alt="Lights" style="width:70%">
-					<div class="caption">
-						<p>Gambar 1</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/ralat_log_gagal.jpg">
-					<img src="img/ralat_log_gagal.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar 2</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/dashboard_admin.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/dashboard_admin.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 1</p>
+        </div>
+	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/ralat_log_gagal.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/ralat_log_gagal.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 2</p>
+        </div>
 	</div>
 </div>
 </div>
+</div>
+<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </hmtl>

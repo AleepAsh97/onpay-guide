@@ -5,18 +5,13 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="style.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="index.js"></script>
 		
 <script>
-
-	$(function(){
-	$('.toggle-menu').click(function(e){
-	e.preventDefault();
-	$('.sidebar').toggleClass('toggled');
-		});
-	});
 
 /* Set the width of the side navigation to 250px */
 function openNav() {
@@ -30,112 +25,7 @@ function closeNav() {
 
 </script>
 
-<style>
-div.scrollmenu {
-	white-space: nowrap; /* [1] */
-	overflow-x: auto; /* [2] */
-	-webkit-overflow-scrolling: touch; /* [3] */
-	-ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ 
-}
 
-div.scrollmenu::-webkit-scrollbar {
-	display: none; }
-
-div.scrollmenu a {
-		display: inline-block;
-		color: white;
-		text-align: center;
-		padding: 14px;
-		text-decoration: none;
-}
-
-div.scrollmenu a:hover {
-		background-color: #777;
-}
-
-	body {
-		background-image: url("img/books.jpg");
-		position: relative; 
-	}
-
-	/* The side navigation menu */
-.sidenav {
-	height: 100%; /* 100% Full-height */
-	width: 0; /* 0 width - change this with JavaScript */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Stay on top */
-	top: 0; /* Stay at the top */
-	left: 0;
-	background-color: #6666FF; /* Black*/
-	overflow-x: hidden; /* Disable horizontal scroll */
-	padding-top: 60px; /* Place content 60px from the top */
-	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
-}
-
-/* The navigation menu links */
-.sidenav a {
-	padding: 4px 4px 4px 32px;
-	text-decoration: none;
-	font-size: 20px;
-	color: #101010;
-	display: block;
-	transition: 0.3s;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover {
-	color: #101010;
-
-}
-
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
-	font-size: 36px;
-	margin-left: 50px;
-}
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-	transition: margin-left .5s;
-	padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-	.sidenav {padding-top: 15px;}
-	.sidenav a {font-size: 18px;}
-}
-
-div.panel-body li {
-	color: black;
-}
-
-div.panel-body p {
-	color: black;
-}
-
-p {
-	color: black;
-}
-
-h4 {
-	color: black;
-}
-
-li {
-	color: black;
-}
-
-.subtopic {
-	padding: 40px;
-	background-color: #fff;
-}
-
-
-</style>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -234,7 +124,11 @@ li {
 		- Ringgit Malaysia : RM</p>
 
 		<p><strong>d) Maklumat Tambahan</strong><br> 
-		- Tandakan kotak "Paparkan maklumat utama di halaman utama" demi memaparkan maklumat tambahan di halaman utama subdomain anda.</p> 
+		- Tandakan kotak "Paparkan maklumat utama di halaman utama" demi memaparkan maklumat tambahan di halaman utama subdomain anda.</p>
+
+		<p><strong>Simpan maklumat.</strong><br> 
+		- Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
+
 	  </div>
 	</div>
 		<div class="col-md-4">
@@ -249,32 +143,77 @@ li {
 		</div>
 </div>
 <div id="section2" class="subtopic col-md-12">
-	<h4>2.1.2 Staf</h4>
+	<h4><strong>2.1.2 Staf</strong></h4><br>
+		<div class="panel panel-primary">
+	  <div class="panel-heading">Tandakan tick jika anda ingin mengaktifkan fungsi staf.</div>
+	  <div class="panel-body">
+	  <p>Staf anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Staf" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+	  <p>Formula Nombor Invois Komisyen<br>
+		Formula ini akan digunakan untuk menentukan format nombor invois bagi komisyen ejen anda. Anda boleh menentukan formatnya menggunakan kod pemboleh ubah yang disediakan.<br><br>
+		Contohnya:<br><br>
+		Formula:<br> 
+		@tahun_penuh@bulan@hari-@nombor_komisyen<br><br>
+		Dimana:<br><br>
+		@tahun_pendek = 16<br> 
+		@tahun_penuh = 2016<br>
+		@bulan = 03<br>
+		@hari = 26<br>
+		@nombor_komisyen = 139<br><br> 
+		akan menghasilkan:
+		20160326-139</p>
+		<p><strong>Simpan maklumat.</strong><br> 
+		- Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
+
+	  </div>
+	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/staf.png">
-					<img src="img/staf.png" alt="Lights" style="width:60%">
+					<img src="img/staf.png" alt="Lights" style="width:100%">
 					<div class="caption">
 						<p>Gambar ruangan staf</p>
 					</div>
 				</a>
 			</div>
 		</div>
-		<p>1.Staf anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Staf" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/formula_komisen.png">
-					<img src="img/formula_komisen.png" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar formula komisen. (Klik gambar untuk lihat formula)</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	</div>
 </div>
 <div id="section3" class="subtopic col-md-12">
-	<h4>2.1.3 Affiliate</h4>
-		<p>1.Ejen anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+	<h4><strong>2.1.3 Affiliate</strong></h4><br>
+	<div class="panel panel-info">
+	  <div class="panel-heading">Maklumat Konsep Komisen</div>
+	  <div class="panel-body">
+	  <p>Secara dasarnya, website akan menyimpan cookies.<br><br>
+	  Untuk lebih memahami konsep pembayaran "Pertama" / "Terkini",<br><br>
+
+		1) Ejen A mempromosikan link affiliate-nya kepada seorang pelanggan bernama Abu, namun Abu membatalkan hasratnya untuk membeli.<br>
+		Disini, Ejen A akan disimpan di dalam senarai cookies sebagai penama komisen "pertama".<br><br> 
+
+		2) Pada masa yang lain pula, Ejen B juga mempromosikan link affiliate-nya kepada pelanggan yang sama, iaitu Abu, tetapi kali ini, Ejen B berjaya CLOSE SALE. 
+		Ejen B juga akan disimpan di dalam senarai cookies sebagai penama terakhir / "terkini".
+		Jadi, Pilihan Konsep Komisyen:<br><br> 
+		<strong>Pertama</strong> : Ejen A - dibayar komisyen	(kerana menimbulkan kesedaran kepada pelanggan)<br><br>
+		<strong>Terkini</strong> : Ejen B - dibayar komisyen (kerana berjaya CLOSE SALE)<br><br>
+		<strong>Anda bebas untuk memilih konsep komisyen yang anda gemari.</strong></p>
+	  </div>
+	</div>
+	<div class="panel panel-info">
+	  <div class="panel-heading">Maklumat Hayat Cookie</div>
+	  <div class="panel-body">
+	  <p>Cookies yang disimpan pelayar web seperti Chrome, Firefox dan sebagainya mempunyai tarikh luput. Anda boleh menetapkan tempoh aktif cookie tersebut.<br><br>
+	  Selain itu, Cookies juga boleh dipadamkan melalui cara manual, ataupun melalui penggunaan software pihak ketiga seperti software pembersih komputer "CCleaner".</p>
+	  </div>
+	</div>
+	<div class="panel panel-success">
+	  <div class="panel-heading">Terma dan Syarat</div>
+	  <div class="panel-body">
+	  <p>Tujuan terma & syarat sebagai penetapan dan pematuhan kepada undang-undang oleh semua ejen di saat pengguna mendaftar sebagai ejen. Terma dan syarat menyelamatkan penganjur dari terjebak dari tuntutan diluar jangkaan. Terma dan syarat juga boleh digunakan untuk meletakkan batasan terhadap khidmat yang dianjurkan. </p>
+	  </div>
+	</div>
+	<p><strong>Simpan maklumat.</strong><br> 
+	- Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
+	<div class="row">
 		<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/konsep_komisen.png">
@@ -305,11 +244,24 @@ li {
 				</a>
 			</div>
 		</div>
-		
+	</div>
 </div>
 <div id="section4" class="subtopic col-md-12">
-	<h4>2.1.4 Dropship</h4>
-<div class="col-md-4">
+	<h4><strong>2.1.4 Dropship</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan Dropship</div>
+	  <div class="panel-body">
+	  <p>Dropship anda boleh melihat carta Top 10 Ejen dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+	  </div>
+	</div>
+	<div class="panel panel-success">
+	  <div class="panel-heading">Terma dan Syarat</div>
+	  <div class="panel-body">
+	  <p>Tujuan terma & syarat sebagai penetapan dan pematuhan kepada undang-undang oleh semua ejen di saat pengguna mendaftar sebagai ejen. Terma dan syarat menyelamatkan penganjur dari terjebak dari tuntutan diluar jangkaan. Terma dan syarat juga boleh digunakan untuk meletakkan batasan terhadap khidmat yang dianjurkan. </p>
+	  </div>
+	</div>
+	<div class="row">
+	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/dropship.png">
 					<img src="img/dropship.png" alt="Lights" style="width:60%">
@@ -319,20 +271,23 @@ li {
 				</a>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/panduan_asas.png">
-					<img src="img/panduan_asas.png" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar panduan asas</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<p>1.Dropship anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+	</div>
 </div>
 <div id="section5" class="subtopic col-md-12">
-	<h4>2.1.5 Pengedar</h4>
+	<h4><strong>2.1.5 Pengedar</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan Pengedar</div>
+	  <div class="panel-body">
+	  <p>Pengedar anda boleh melihat carta Top 10 Ejen dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+	  </div>
+	</div>
+	<div class="panel panel-success">
+	  <div class="panel-heading">Terma dan Syarat</div>
+	  <div class="panel-body">
+	  <p>Tujuan terma & syarat sebagai penetapan dan pematuhan kepada undang-undang oleh semua ejen di saat pengguna mendaftar sebagai ejen. Terma dan syarat menyelamatkan penganjur dari terjebak dari tuntutan diluar jangkaan. Terma dan syarat juga boleh digunakan untuk meletakkan batasan terhadap khidmat yang dianjurkan. </p>
+	  </div>
+	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/pengedar.png">
@@ -343,20 +298,18 @@ li {
 				</a>
 			</div>
 		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/panduan_asas.png">
-					<img src="img/panduan_asas.png" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar panduan asas</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<p>1.Ejen anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 ejen" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+	</div>
 </div>
 <div id="section6" class="subtopic col-md-12">
-	<h4>2.1.6 Kaedah Pembayaran</h4>
+	<h4><strong>2.1.6 Kaedah Pembayaran</strong></h4><br>
+	<div class="panel panel-success">
+	  <div class="panel-heading">Panduan Kaedah Pembayaran</div>
+	  <div class="panel-body">
+	  <p>- Tick ruangan "Paparkan Logo" jika anda mahu paparkan logo.<br><br>
+		 <strong>Kedudukan kaedah pembayaran boleh diubah secara drag and drop dengan memegang pada nombor</strong></p>
+	  </div>
+	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/kaedah_pembayaran.png">
@@ -367,11 +320,19 @@ li {
 				</a>
 			</div>
 		</div>
-	<p>- Kedudukan kaedah pembayaran boleh diubah secara drag and drop dengan memegang pada nombor</p>
-	<p>- Tick ruangan "Paparkan Logo" jika anda mahu paparkan logo.</p>
+	</div>
 </div>
 <div id="section7" class="subtopic col-md-12">
-	<h4>2.1.7 Emel</h4>
+	<h4><strong>2.1.7 Emel</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan Emel</div>
+	  <div class="panel-body">
+	  <p>1. Anda perlu mengisi ruangan penerima notifikasi dengan emel anda.</p>
+		<p><strong>*** Anda dibenarkan mengisi sebanyak 3 emel sahaja. ***</strong></p>
+		<p>2. Di bahagian notifikasi anda boleh custom notifikasi untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+	  </div>
+	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/emel.png">
@@ -382,12 +343,19 @@ li {
 				</a>
 			</div>
 		</div>
-		<p>1. Anda perlu mengisi ruangan penerima notifikasi dengan emel anda.</p>
-		<p><strong>*** Anda dibenarkan mengisi sebanyak 3 emel sahaja. ***</strong></p><br>
-		<p>2. Di bahagian notifikasi anda boleh custom notifikasi untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+	</div>
 </div>
 <div id="section8" class="subtopic col-md-12">
-	<h4>2.1.8 SMS</h4>
+	<h4><strong>2.1.8 SMS</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan SMS</div>
+	  <div class="panel-body">
+	  <p>Sebelum anda menggunakan fungsi SMS, pastikan anda mempunyai kredit yang mencukupi untuk menghantar SMS.</p>
+		<p><strong>*** Anda boleh topup kredit anda di menu utama OnPay ***</strong></p>
+		<p>2. Di bahagian notifikasi anda boleh custom notifikasi SMS untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+	  </div>
+	</div>
+	<div class="row">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/sms.png">
@@ -398,12 +366,19 @@ li {
 				</a>
 			</div>
 		</div>
-		<p>Sebelum anda menggunakan fungsi SMS, pastikan anda mempunyai kredit yang mencukupi untuk menghantar SMS.</p>
-		<p><strong>*** Anda boleh topup kredit anda di menu utama OnPay ***</strong></p><br>
-		<p>2. Di bahagian notifikasi anda boleh custom notifikasi SMS untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+	</div>
 </div>
 <div id="section9" class="subtopic col-md-12">
-	<h4>2.1.9 Invois</h4>
+	<h4><strong>2.1.9 Invois</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan Invois</div>
+	  <div class="panel-body">
+	  <p>1. Tetapkan Pilihan Templat Kepala Invois dan Masukkan Gambar<br>
+	  2. Isikan Teks Status Pembayaran<br>
+	  3. Tekan Butang Previu untuk paparkan contoh invois</p>
+	  </div>
+	</div>
+	<div class="div">
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/invois.png">
@@ -419,7 +394,7 @@ li {
 				<a href="img/header_invois.png">
 					<img src="img/header_invois.png" alt="Lights" style="width:30%">
 					<div class="caption">
-						<p>1. Tetapkan Pilihan Templat Kepala Invois dan Masukkan Gambar</p>
+						<p>Langkah 1</p>
 					</div>
 				</a>
 			</div>
@@ -429,7 +404,7 @@ li {
 				<a href="img/status_invois.png">
 					<img src="img/status_invois.png" alt="Lights" style="width:30%">
 					<div class="caption">
-						<p>2. Isikan Teks Status Pembayaran</p>
+						<p>Langkah 2</p>
 					</div>
 				</a>
 			</div>
@@ -439,14 +414,24 @@ li {
 				<a href="img/contoh_invois.png">
 					<img src="img/contoh_invois.png" alt="Lights" style="width:20%">
 					<div class="caption">
-						<p>3. Tekan Butang Previu untuk paparkan contoh invois</p>
+						<p>Langkah 3</p>
 					</div>
 				</a>
 			</div>
 		</div>
+	</div>
 </div>
 <div id="section10" class="subtopic col-md-12">
-	<h4>2.1.10 Cukai</h4>
+	<h4><strong>2.1.10 Cukai</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan Invois</div>
+	  <div class="panel-body">
+	  <p>Ruangan yang bertanda <strong style="color: red;">*</strong> wajib diisi sepenuhnya.</p>
+		<p><strong>** Kadar cukai dalam bentuk peratusan sahaja **</strong></p><br>
+		<p>1. Untuk ruangan Jenis Cukai anda boleh tekan samada Ekslusif atau Inklusif</p>
+		<p>2. Jika anda klik kotak Kos Penghantaran, kos tersebut akan dikira secara automatik di dalam pengiraan cukai</p>
+	  </div>
+	</div>
 	<div class="col-md-4">
 			<div class="thumbnail">
 				<a href="img/cukai.png">
@@ -457,10 +442,6 @@ li {
 				</a>
 			</div>
 		</div>
-		<p>Ruangan yang bertanda * wajib diisi sepenuhnya.</p>
-		<p><strong>** Kadar cukai dalam bentuk peratusan sahaja **</strong></p><br>
-		<p>1. Untuk ruangan Jenis Cukai anda boleh tekan samada Ekslusif atau Inklusif</p>
-		<p>2. Jika anda klik kotak Kos Penghantaran, kos tersebut akan dikira secara automatik di dalam pengiraan cukai</p>
 </div>
 <div id="section11" class="subtopic col-md-12">
 	<h4>2.2.1 Penetapan Akaun PayPal</h4>

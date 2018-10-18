@@ -9,4 +9,12 @@ jQuery(document).ready(function($){
 	var target = $('nav a[href="'+path+'"]');
 
 	target.addClass('active');
+
+	$(function(){
+	$('.toggle-menu').click(function(e){
+	e.preventDefault();
+	$('.sidebar').toggleClass('toggled');
+		});
+	});
+
 });

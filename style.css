@@ -1,0 +1,113 @@
+div.scrollmenu {
+	white-space: nowrap; /* [1] */
+	overflow-x: auto; /* [2] */
+	-webkit-overflow-scrolling: touch; /* [3] */
+	-ms-overflow-style: -ms-autohiding-scrollbar; /* [4] */ 
+}
+
+div.scrollmenu::-webkit-scrollbar {
+	display: none; }
+
+div.scrollmenu a {
+		display: inline-block;
+		font-family: 'Open Sans', sans-serif;
+		color: white;
+		text-align: center;
+		padding: 14px;
+		text-decoration: none;
+}
+
+div.scrollmenu a:hover {
+		background-color: #777;
+}
+
+	body {
+		position: relative;
+		background-image: url("img/books.jpg"); 
+	}
+
+	/* The side navigation menu */
+.sidenav {
+	height: 100%; /* 100% Full-height */
+	width: 0; /* 0 width - change this with JavaScript */
+	position: fixed; /* Stay in place */
+	z-index: 1; /* Stay on top */
+	top: 0; /* Stay at the top */
+	left: 0;
+	background-color: #6666ff; /* Black*/
+	overflow-x: hidden; /* Disable horizontal scroll */
+	padding-top: 60px; /* Place content 60px from the top */
+	transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+	padding: 4px 4px 4px 32px;
+	text-decoration: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 20px;
+	color: #101010;
+	display: block;
+	transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+	color: #008000;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+	position: absolute;
+	color: red;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+	transition: margin-left .5s;
+	padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+}
+
+div.panel-body li {
+	color: black;
+	font-family: 'Open Sans', sans-serif;
+}
+
+div.panel-body p {
+	color: black;
+	font-family: 'Open Sans', sans-serif;
+}
+
+p {
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+}
+
+h4 {
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+}
+
+li {
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+}
+
+#MainMenu{
+	background-color: black;
+}
+
+.subtopic {
+	padding: 40px;
+	background-color: #fff;
+}
