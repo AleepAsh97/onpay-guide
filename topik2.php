@@ -13,6 +13,63 @@
 		
 <script>
 
+	$(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
 /* Set the width of the side navigation to 250px */
 function openNav() {
 	document.getElementById("mySidenav").style.width = "250px";
@@ -31,7 +88,7 @@ function closeNav() {
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<a class="navbar-brand" onclick="openNav()"><span class="glyphicon glyphicon-list"></span></a>
-	<a class="navbar-brand" href="index.php">Halaman Utama</a>
+	<a class="navbar-brand" href="index.php">Utama</a>
 	<div class="container-fluid" id="con-flu">
 	<div class="navbar-header">
 		<div class="scrollmenu">
@@ -53,49 +110,58 @@ function closeNav() {
 	<!-- menu -->
 		<div id="MainMenu">
 		<div class="list-group panel">
-			<a href="#demo1" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.1 Tetapan Sistem <i class="fa fa-caret-down"></i></a>
+			<a href="#demo1" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">2.1 Tetapan Sistem <i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo1">
 						<a href="#section1" onclick="closeNav()" class="list-group-item">2.1.1 Perniagaan (WAJIB)</a>
 						<a href="#section2" onclick="closeNav()" class="list-group-item">2.1.2 Staf (optional)</a>
 						<a href="#section3" onclick="closeNav()" class="list-group-item">2.1.3 Affiliate (optional)</a>
-						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.4 Dropship</a>
+						<a href="#section4" onclick="closeNav()" class="list-group-item">2.1.4 Dropship</a>
 						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.5 Pengedar</a>
-						<a href="#section4" onclick="closeNav()" class="list-group-item">2.1.6 Kaedah Pembayaran</a>
-						<a href="#section5" onclick="closeNav()" class="list-group-item">2.1.7 Emel</a>
-						<a href="#section6" onclick="closeNav()" class="list-group-item">2.1.8 SMS (optional)</a>
-						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.9 Invois</a>
-						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.10 Cukai</a>
+						<a href="#section6" onclick="closeNav()" class="list-group-item">2.1.6 Kaedah Pembayaran</a>
+						<a href="#section7" onclick="closeNav()" class="list-group-item">2.1.7 Emel</a>
+						<a href="#section8" onclick="closeNav()" class="list-group-item">2.1.8 SMS (optional)</a>
+						<a href="#section9" onclick="closeNav()" class="list-group-item">2.1.9 Invois</a>
+						<a href="#section10" onclick="closeNav()" class="list-group-item">2.1.10 Cukai</a>
 		</div>
-		<a href="#demo214" class="list-group-item list-group-item-success" data-toggle="collapse">2.2 Kaedah Pembayaran (WAJIB)<i class="fa fa-caret-down"></i></a>
+		<a href="#demo214" class="list-group-item list-group-item-success active" data-toggle="collapse">2.2 Kaedah Pembayaran (WAJIB)<i class="fa fa-caret-down"></i></a>
 						<div class="collapse" id="demo214">
-						<a href="#section8" onclick="closeNav()" class="list-group-item">Penetapan Akaun PayPal</a>
-						<a href="#section9" onclick="closeNav()" class="list-group-item">Penetapan Akaun iPay88</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Akaun MOLPay</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Akaun senangPay</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Fungsi CEK</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">Penetapan Fungsi Wang Pos</a>
+							<a href="#section11" onclick="closeNav()" class="list-group-item">Penetapan Akaun Bank</a>
+						<a href="#section12" onclick="closeNav()" class="list-group-item">Penetapan Akaun PayPal</a>
+						<a href="#section13" onclick="closeNav()" class="list-group-item">Penetapan Akaun iPay88</a>
+						<a href="#section14" onclick="closeNav()" class="list-group-item">Penetapan Akaun MOLPay</a>
+						<a href="#section15" onclick="closeNav()" class="list-group-item">Penetapan Akaun senangPay</a>
+						<a href="#section16" onclick="closeNav()" class="list-group-item">Penetapan Akaun BillPlz</a>
+						<a href="#section17" onclick="closeNav()" class="list-group-item">Penetapan Fungsi CEK</a>
+						<a href="#section18" onclick="closeNav()" class="list-group-item">Penetapan Fungsi Wang Pos</a>
 						</div>
-		<a href="#demo2" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.3 Tetapan Templat Emel<i class="fa fa-caret-down"></i></a>
+		<a href="#demo2" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">2.3 Tetapan Templat Emel<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo2">
-						<a href="#section8" onclick="closeNav()" class="list-group-item">2.2.1 Tetapan Templat Emel Pendaftaran Ejen</a>
-						<a href="#section9" onclick="closeNav()" class="list-group-item">2.2.2 Tetapan Templat Emel Tetapan Semula Kata Laluan Ejen</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">2.2.3 Tetapan Templat Emel Pembayaran Komisen</a>
-						<a href="#section10" onclick="closeNav()" class="list-group-item">2.2.4 Tetapan Templat Emel Ucapan Hari Lahir</a>
+						<a href="#section19" onclick="closeNav()" class="list-group-item">2.2.1 Tetapan Templat Emel Pendaftaran Ejen</a>
+						<a href="#section20" onclick="closeNav()" class="list-group-item">2.2.2 Tetapan Templat Emel Tetapan Semula Kata Laluan Ejen</a>
+						<a href="#section21" onclick="closeNav()" class="list-group-item">2.2.3 Tetapan Templat Emel Pembayaran Komisen</a>
+						<a href="#section22" onclick="closeNav()" class="list-group-item">2.2.4 Tetapan Templat Emel Ucapan Hari Lahir</a>
 		</div>
-		<a href="#demo3" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.4 Tetapan Penghantar / Kurier<i class="fa fa-caret-down"></i></a>
+		<a href="#demo21" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">2.4 Tetapan Templat SMS<i class="fa fa-caret-down"></i></a>
+					<div class="collapse" id="demo21">
+						<a href="#section23" onclick="closeNav()" class="list-group-item">2.4.1 Tetapan Templat SMS Pendaftaran Ejen</a>
+						<a href="#section24" onclick="closeNav()" class="list-group-item">2.4.2 Tetapan Templat SMS Tetapan Semula Kata Laluan Ejen</a>
+						<a href="#section25" onclick="closeNav()" class="list-group-item">2.4.3 Tetapan Templat SMS Pembayaran Komisen</a>
+						<a href="#section26" onclick="closeNav()" class="list-group-item">2.4.4 Tetapan Templat SMS Ucapan Hari Lahir</a>
+		</div>
+		<a href="#demo3" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">2.5 Tetapan Penghantar / Kurier<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo3">
-						<a href="#section11" onclick="closeNav()" class="list-group-item">2.3.1 Tambah Kurier</a>
-						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.2 Kemaskini/Padam Kurier</a>
+						<a href="#section27" onclick="closeNav()" class="list-group-item">2.5.1 Tambah Kurier</a>
+						<a href="#section28" onclick="closeNav()" class="list-group-item">2.5.2 Kemaskini/Padam Kurier</a>
 		</div>
-		<a href="#demo4" class="list-group-item list-group-item-success" data-toggle="collapse" data-parent="#MainMenu">2.5 Label Penghantaran<i class="fa fa-caret-down"></i></a>
+		<a href="#demo4" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">2.6 Label Penghantaran<i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo4">
-						<a href="#section11" onclick="closeNav()" class="list-group-item">2.3.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a>
-						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.2 Isi Maklumat Anda ke dalam Borang Pos Laju</a>
-						<a href="#section12" onclick="closeNav()" class="list-group-item">2.3.3 Cara Cetak Label Penghantaran Pelanggan</a>
+						<a href="#section29" onclick="closeNav()" class="list-group-item">2.6.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a>
+						<a href="#section30" onclick="closeNav()" class="list-group-item">2.6.2 Isi Maklumat Anda ke dalam Borang Pos Laju</a>
+						<a href="#section31" onclick="closeNav()" class="list-group-item">2.6.3 Cara Cetak Label Penghantaran Pelanggan</a>
 		</div>
-		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.6 Senarai Hitam ID Ejen</a>
-		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.7 Profil Akaun</a>
-		<a href="#section10" onclick="closeNav()" class="list-group-item list-group-item-success">2.8 Tukar Kata Laluan</a>
+		<a href="#section32" onclick="closeNav()" class="list-group-item list-group-item-success active">2.7 Senarai Hitam ID Ejen</a>
+		<a href="#section33" onclick="closeNav()" class="list-group-item list-group-item-success active">2.8 Profil Akaun</a>
+		<a href="#section34" onclick="closeNav()" class="list-group-item list-group-item-success active">2.9 Tukar Kata Laluan</a>
 	</div>
 	</div>
 	
@@ -131,16 +197,14 @@ function closeNav() {
 
 	  </div>
 	</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/borang_sistem_perniagaan.png">
-					<img src="img/borang_sistem_perniagaan.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Borang Maklumat Perniagaan</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<div class="row">
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Perniagaan"  data-image="img/borang_sistem_perniagaan.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/borang_sistem_perniagaan.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
+	</div>
 </div>
 <div id="section2" class="subtopic col-md-12">
 	<h4><strong>2.1.2 Staf</strong></h4><br>
@@ -167,16 +231,12 @@ function closeNav() {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/staf.png">
-					<img src="img/staf.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan staf</p>
-					</div>
-				</a>
-			</div>
-		</div>
+   <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Staf"  data-image="img/staf.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/staf.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section3" class="subtopic col-md-12">
@@ -214,36 +274,12 @@ function closeNav() {
 	<p><strong>Simpan maklumat.</strong><br> 
 	- Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
 	<div class="row">
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/konsep_komisen.png">
-					<img src="img/konsep_komisen.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Gambar konsep komisen.</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/cookies.png">
-					<img src="img/cookies.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Gambar cookies.</p>
-					</div>
-				</a>
-			</div>
-		</div>
-				<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/formula_komisen.png">
-					<img src="img/formula_komisen.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Gambar formula komisen.(Klik gambar untuk lihat formula)</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Affiliate"  data-image="img/affiliate.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/affiliate.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section4" class="subtopic col-md-12">
@@ -261,16 +297,12 @@ function closeNav() {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/dropship.png">
-					<img src="img/dropship.png" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar ruangan dropship</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Dropship"  data-image="img/dropship.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/dropship.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section5" class="subtopic col-md-12">
@@ -288,16 +320,12 @@ function closeNav() {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/pengedar.png">
-					<img src="img/pengedar.png" alt="Lights" style="width:60%">
-					<div class="caption">
-						<p>Gambar ruangan pengedar</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Pengedar"  data-image="img/pengedar.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/pengedar.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section6" class="subtopic col-md-12">
@@ -310,16 +338,12 @@ function closeNav() {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/kaedah_pembayaran.png">
-					<img src="img/kaedah_pembayaran.png" alt="Lights" style="width:50%">
-					<div class="caption">
-						<p>Gambar ruangan kaedah pembayaran</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Kaedah Pembayaran"  data-image="img/kaedah_pembayaran.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/kaedah_pembayaran.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section7" class="subtopic col-md-12">
@@ -333,16 +357,12 @@ function closeNav() {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/emel.png">
-					<img src="img/emel.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan emel</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Emel"  data-image="img/emel.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/emel.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section8" class="subtopic col-md-12">
@@ -356,16 +376,12 @@ function closeNav() {
 	  </div>
 	</div>
 	<div class="row">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/sms.png">
-					<img src="img/sms.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan SMS</p>
-					</div>
-				</a>
-			</div>
-		</div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan SMS"  data-image="img/sms.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/sms.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
 	</div>
 </div>
 <div id="section9" class="subtopic col-md-12">
@@ -378,47 +394,27 @@ function closeNav() {
 	  3. Tekan Butang Previu untuk paparkan contoh invois</p>
 	  </div>
 	</div>
-	<div class="div">
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/invois.png">
-					<img src="img/invois.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Gambar ruangan invois</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/header_invois.png">
-					<img src="img/header_invois.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Langkah 1</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/status_invois.png">
-					<img src="img/status_invois.png" alt="Lights" style="width:30%">
-					<div class="caption">
-						<p>Langkah 2</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/contoh_invois.png">
-					<img src="img/contoh_invois.png" alt="Lights" style="width:20%">
-					<div class="caption">
-						<p>Langkah 3</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<div class="row">
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Invois"  data-image="img/invois.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/invois.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+                       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 2"  data-image="img/status_invois.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/status_invois.png" alt="Another alt text">
+            </a>
+            <p>Langkah 2</p>
+        </div>
+		<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 1"  data-image="img/header_invois.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/header_invois.png" alt="Another alt text">
+            </a>
+            <p>Langkah 1</p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 3"  data-image="img/contoh_invois.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/contoh_invois.png" alt="Another alt text">
+            </a>
+            <p>Langkah 3</p>
+        </div>
 	</div>
 </div>
 <div id="section10" class="subtopic col-md-12">
@@ -432,148 +428,521 @@ function closeNav() {
 		<p>2. Jika anda klik kotak Kos Penghantaran, kos tersebut akan dikira secara automatik di dalam pengiraan cukai</p>
 	  </div>
 	</div>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/cukai.png">
-					<img src="img/cukai.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar ruangan cukai</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<div class="row">
+	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Cukai"  data-image="img/cukai.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/cukai.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>
+	</div>
 </div>
 <div id="section11" class="subtopic col-md-12">
-	<h4>2.2.1 Penetapan Akaun PayPal</h4>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/paypal.png">
-					<img src="img/paypal.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Pendaftaran Akaun OnPay</p>
-					</div>
-				</a>
-			</div>
-			<p>Sila buka emel dari "admin@onpay.my" yang bertajuk <strong>"Pendaftaran Akaun OnPay"</strong>.</p>
-		</div>
-		
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/msgdetail.jpg" target="_blank">
-					<img src="img/msgdetail.jpg" alt="Lights" style="width:60%">
-				</a>
-			</div>
-		</div>
+	<h4><strong>2.2.1 Penetapan Akaun Bank</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Panduan Penetapan Akaun Bank</div>
+	  <div class="panel-body">
+	  <p>Anda boleh tetapkan Akaun Bank anda di menu <strong>"Tetapan"</strong> kemudian <strong>"Akaun Bank"</strong>.<br><br>
+	  1.Sila pilih nama bank anda, diikuti dengan nama akaun anda serta nombor akaun anda<br>
+	  2.Setelah selesai, sila tekan butang <strong>"Tambah Akaun Bank"</strong></p>
+	  <p>Anda boleh kemaskini maklumat akaun bank anda dengan menekan butang <strong>"Kemaskini"</strong> atau memadam maklumat akaun bank anda dengan menekan butang <strong>"Buang"</strong></p>
+	  </div>
+	</div>
+	<div class="row">
+	<div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Akaun Bank"  data-image="img/akaun_bank.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/akaun_bank.png" alt="Another alt text">
+            </a>
+            <p>Klik untuk melihat gambar</p>
+        </div>	
+	</div>
 </div>
 <div id="section12" class="subtopic col-md-12">
-	<h4>1.2.2 Tekan Hyperlink Pengaktifan Akaun</h4>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/hyperlink_pengesahan.jpg" target="_blank">
-					<img src="img/hyperlink_pengesahan.jpg" alt="Lights" style="width:30%%">
-					<div class="caption">
-						<p>Sila tekan hyperlink pengaktifan seperti di bawah:</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/hyperlink_pengesahan1.jpg" target="_blank">
-					<img src="img/hyperlink_pengesahan1.jpg" alt="Lights" style="width:20%">
-					<div class="caption">
-						<p>Sila gunakan hyperlink (#1). Anda juga boleh masukkan secara manual dengan klik link (#2).</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/kod_salah.jpg" target="_blank">
-					<img src="img/kod_salah.jpg" alt="Lights" style="width:20%">
-					<div class="caption">
-						<p>Copy kod pengaktifan dan paste ke ruangan di atas.</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<h4><strong>2.2.2 Penetapan Akaun PayPal</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Cara mendapatkan Token Identity Paypal:</div>
+	  <div class="panel-body">
+	  	<p>1. Log Masuk akaun PayPal</p>
+	  	<p>2. Setelah berjaya akses halaman profil anda, sila tekan butang <strong>"My Selling Tools"</strong></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/paypal_profile_navbar.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/paypal_profile_navbar.png" alt="Another alt text">
+            </a>
+            <p>3. Tekan <strong>"Update"</strong> pada pilihan <strong>"Instant Payment Notification"</strong></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/paypal_ipn.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/paypal_ipn.png" alt="Another alt text">
+            </a>
+            <p>- Tekan butang "Choose IPN setting" di bahagian paling bawah.<br>
+			- Masukkan URL IPN dari halaman tetapan paypal:</p>
+			<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/paypal_kod_ar_ipn.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/paypal_kod_ar_ipn.png" alt="Another alt text">
+            </a>
+            <p>- Save untuk simpan tetapan paypal.</p>
+            <p>4. Tekan <strong>"Update"</strong>  pada pilihan <strong>"Website Preference"</strong></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/paypal_web_preference.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/paypal_web_preference.png" alt="Another alt text">
+            </a>
+	  </div>
+	</div>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Aktifkan "Auto Return"</div>
+	  <div class="panel-body">
+	  <p>1. Isikan "Return URL": Copy dari halaman tetapan paypal:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/paypal_kod_ar_ipn.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/paypal_kod_ar_ipn.png" alt="Another alt text">
+            </a>	
+	  </div>
+	</div>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Aktifkan "Payment Data Transfer". </div>
+	  <div class="panel-body">
+	  <p>- ubah setting "Encrypted Website Payment" : OFF<br> 
+	  - ubah setting "Paypal Account Optional" : ON<br>
+      - ubah setting "Contact Telephone Number" : OFF<br>
+      - ubah setting "Express Checkout" : NO<br><br>
+      5) Save dan copy Kod Token Identiti.<br>
+      - Gunakan kod yang di"copy" kedalam tetapan paypal OnPay.</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/cas.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/cas.png" alt="Another alt text">
+            </a>
+            <p><a href="https://www.paypal.com/my/webapps/mpp/paypal-fees">Rujuk Cas Transaksi PayPal</a></p>
+	  </div>
+	</div>
 </div>
 <div id="section13" class="subtopic col-md-12">
-	<h4>1.2.3 Pengaktifan Akaun OnPay Berjaya</h4>
-	<div class="col-md-6">
-			<div class="thumbnail">
-				<a href="img/pengaktifan_berjaya.jpg" target="_blank">
-					<img src="img/pengaktifan_berjaya.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Gambar Pengaktifan Akaun</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<h4><strong>2.2.3 Penetapan Akaun iPay88</strong></h4><br>	
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Penetapan Akaun iPay88 </div>
+	  <div class="panel-body">
+	  	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun iPay88"  data-image="img/borang_tetapan_ipay88.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/borang_tetapan_ipay88.png" alt="Another alt text">
+            </a>
+            <p>1. Isikan Kod Pedagang iPay88 dan Kod Kunci Pedagang iPay88 kedalam kotak berkaitan.<br> 
+			2. masukkan caj pengendalian sekiranya diperlukan.</p>
+
+			<p>Saranan Kadar Cas Pengendalian :<br>
+			- Credit Card : 4%<br> 
+			- Interbank-Transfer : 4%</p>
+	  </div>
+	</div>
 </div>
 <div id="section14" class="subtopic col-md-12">
-	<h4>1.3.1 Layari Halaman Log Masuk Akaun anda</h4>
-	<p>Terdapat 2 cara untuk melayari ke halaman log masuk untuk akaun anda</p>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/halaman_utama.jpg" target="_blank">
-					<img src="img/halaman_utama.jpg" alt="Lights" style="width:50%">
-					<div class="caption">
-						<p>1.Layari halaman subdomain anda kemudian klik butang "Admin".</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/halaman_log_masuk.jpg" target="_blank">
-					<img src="img/halaman_log_masuk.jpg" alt="Lights" style="width:50%">
-					<div class="caption">
-						<p>2.Atau layari "subdomain_anda.onpay.my/admin"</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<h4><strong>2.2.4 Penetapan Akaun MOLPay</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Penetapan Akaun MOLPay </div>
+	  <div class="panel-body">
+	  	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun MOLPay"  data-image="img/borang_tetapan_molpay.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/borang_tetapan_molpay.png" alt="Another alt text">
+            </a>
+            <p>1. Log masuk ke akaun MOLPay anda.<br> 
+			2. Tetapkan Return URL seperti di dalam halaman "Tetapan MOLPay" di OnPay.<br> 
+			3. Tetapkan Notification URL seperti di dalam halaman "Tetapan MOLPay" di OnPay.<br> 
+			4. Tetapkan Callback URL seperti di dalam halaman "Tetapan MOLPay" di OnPay.<br> 
+			5. Masukkan ID Pedagang dan Kunci Pengesahan ke dalam tetapan MOLPay di OnPay.</p>
+	  </div>
+	</div>
 </div>
 <div id="section15" class="subtopic col-md-12">
-	<h4>1.3.2 Masukkan ID Admin dan Kata Laluan</h4>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/log_masuk.png" target="_blank">
-					<img src="img/log_masuk.png" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Letakkan ID dan Kata Laluan di ruangan "ID Admin" dan "Kata Laluan".</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<h4><strong>2.2.5 Penetapan Akaun senangPay</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Penetapan Akaun senangPay </div>
+	  <div class="panel-body">
+	  	<p>1. Log masuk ke akaun senangPay anda dan buka halaman tetapan profil senangPay.</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun senangPay"  data-image="img/senangpay_1.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/senangpay_1.png" alt="Another alt text">
+    </a>
+    	<p>2. Tetapkan Return URL seperti di dalam halaman "Tetapan senangPay" di OnPay.<br>
+			3. Tetapkan Callback URL seperti di dalam halaman "Tetapan senangPay" di OnPay.<br> 
+			4. Masukkan ID Pedagang dan Kunci Pengesahan ke dalam tetapan senangPay di OnPay.</p>
+			<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun senangPay"  data-image="img/senangpay_2.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/senangpay_2.png" alt="Another alt text">
+    </a>
+	  </div>
+	</div>
 </div>
 <div id="section16" class="subtopic col-md-12">
-	<h4>1.3.3 Log Masuk Akaun OnPay Berjaya</h4>
-	<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/dashboard_admin.jpg" target="_blank">
-					<img src="img/dashboard_admin.jpg" alt="Lights" style="width:70%">
-					<div class="caption">
-						<p>Sekiranya proses log masuk berjaya, anda akan dibawa ke halaman Dashboard Admin seperti di atas:</p>
-					</div>
-				</a>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="thumbnail">
-				<a href="img/ralat_log_gagal.jpg" target="_blank">
-					<img src="img/ralat_log_gagal.jpg" alt="Lights" style="width:100%">
-					<div class="caption">
-						<p>Sekiranya ralat "ID atau Kata Laluan salah" terpapar, sila:<br>
-							1.Isikan semula ID dan Kata Laluan<br>
-							2.Tekan hyperlink Terlupa Kata Laluan</p>
-					</div>
-				</a>
-			</div>
-		</div>
+	<h4><strong>2.2.6 Penetapan Akaun BillPlz</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Penetapan Akaun BillPlz</div>
+	  <div class="panel-body">
+	  <p>1. Log masuk ke akaun BillPlz anda dan buka halaman tetapan profil anda.</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/billplzmenu.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/billplzmenu.png" alt="Another alt text">
+		</a>
+    <p>2. Sila isikan ruangan Kunci Rahsia API dan ID Kutipan. Anda boleh dapatkan Kunci Rahsia API dan ID Kutipan di akaun BillPlz anda</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/billpz.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/billplz.png" alt="Another alt text">
+	</a>
+    <p>Menu untuk mendapatkan Kunci Rahsia API</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/apikey.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/apikey.png" alt="Another alt text">
+	</a>
+	<p>Menu untuk mendapatkan ID Kutipan</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/billplz_1.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/billplz_1.jpg" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+</div>
+<div id="section17" class="subtopic col-md-12">
+	<h4><strong>2.2.7 Penetapan Fungsi CEK</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Penetapan Fungsi CEK</div>
+	  <div class="panel-body">
+	  <p>1. Isikan keterangan yang anda ingin paparkan di bahagian keterangan cek pada borang anda.</p>
+	  </div>
+	</div>
+</div>
+<div id="section18" class="subtopic col-md-12">
+	<h4><strong>2.2.8 Penetapan Fungsi Wang Pos</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Penetapan Fungsi Wang Pos</div>
+	  <div class="panel-body">
+	  <p>1. Isikan keterangan yang anda ingin paparkan di bahagian keterangan Wang Pos pada borang anda.</p>
+	  </div>
+	</div>
+</div>
+<div id="section19" class="subtopic col-md-12">
+	<h4><strong>2.3.1 Tetapan Templat Emel Pendaftaran Ejen</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat Emel Pendaftaran Ejen</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi ejen : Pendaftaran Ejen.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Ejen"  data-image="img/borang_emel_pembolehubah_pendaftaran.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_emel_pembolehubah_pendaftaran.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat Emel Pendaftaran Ejen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Ejen"  data-image="img/contohemel.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/contohemel.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section20" class="subtopic col-md-12">
+	<h4><strong>2.3.2 Tetapan Templat Emel Tetapan Semula Kata Laluan Ejen</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat Tetapan Semula Kata Laluan Ejen</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi ejen : Penemtapan Semula Kata Laluan Ejen.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penemtapan Semula Kata Laluan Ejen"  data-image="img/borang_emel_pembolehubah_password.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_emel_pembolehubah_password.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat Emel Pendaftaran Ejen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penemtapan Semula Kata Laluan Ejen"  data-image="img/contohemelpassword.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/contohemelpassword.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section21" class="subtopic col-md-12">
+	<h4><strong>2.3.3 Tetapan Templat Emel Pembayaran Komisen</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat Pembayaran Komisen</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi ejen : Pembayaran Komisen.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pembayaran Komisen"  data-image="img/borang_emel_pembolehubah_komisen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_emel_pembolehubah_komisen.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat Emel Pendaftaran Ejen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pembayaran Komisen"  data-image="img/contohemelkomisen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/contohemelkomisen.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section22" class="subtopic col-md-12">
+	<h4><strong>2.3.4 Tetapan Templat Emel Ucapan Hari Lahir</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat Ucapan Hari Lahir</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi ejen : Ucapan Hari Lahir.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Ucapan Hari Lahir"  data-image="img/borang_emel_pembolehubah_birthday.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_emel_pembolehubah_birthday.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat Emel Pendaftaran Ejen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Ucapan Hari Lahir"  data-image="img/contohemelbirthday.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/contohemelbirthday.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section23" class="subtopic col-md-12">
+	<h4><strong>2.4.1 Tetapan Templat SMS Pendaftaran Ejen</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat SMS Pendaftaran Ejen</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi ejen : Pendaftaran Ejen.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Ejen"  data-image="img/smsdaftarejen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smsdaftarejen.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat SMS Pendaftaran Ejen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Ejen"  data-image="img/contohsmsdaftarejen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/contohsmsdaftarejen.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section24" class="subtopic col-md-12">
+	<h4><strong>2.4.2 Tetapan Templat SMS Tetapan Semula Kata Laluan Ejen</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat SMS Tetapan Semula Kata Laluan Ejen</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi ejen : Penemtapan Semula Kata Laluan Ejen.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Ejen"  data-image="img/smsdaftarejen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smsdaftarejen.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat SMS Tetapan Semula Kata Laluan Ejen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Ejen"  data-image="img/contohsmspassword.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/contohsmspassword.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section25" class="subtopic col-md-12">
+	<h4><strong>2.4.3 Tetapan Templat SMS Pembayaran & Pengesahan Komisen</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat SMS Pembayaran & Pengesahan Komisen</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi ejen : Pembayaran & Pengesahan Komisen.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Pembayaran & Pengesahan Komisen"  data-image="img/smsdaftarejen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smsdaftarejen.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat SMS Pembayaran Komisen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Pembayaran & Pengesahan Komisen"  data-image="img/smsbayarkomisen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smsbayarkomisen.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat SMS Pengesahan Komisen</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Pembayaran & Pengesahan Komisen"  data-image="img/smssahkomisen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smssahkomisen.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section26" class="subtopic col-md-12">
+	<h4><strong>2.4.4 Tetapan Templat Emel Ucapan Hari Jadi</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Templat SMS Ucapan Hari Jadi</div>
+	  <div class="panel-body">
+	  <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi ejen : Ucapan Hari Jadi.</p>
+	  <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Pembayaran & Pengesahan Komisen"  data-image="img/smsdaftarejen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smsdaftarejen.png" alt="Another alt text">
+	</a>
+	<p>Contoh Penulisan Templat SMS Ucapan Hari Jadi</p>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Pembayaran & Pengesahan Komisen"  data-image="img/smsharijadi.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/smsharijadi.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section27" class="subtopic col-md-12">
+	<h4><strong>2.5.1 Tambah Kurier</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tambah Kurier</div>
+	  <div class="panel-body">
+	  <p>Sila gunakan borang di bawah untuk menambah kurier. Isikan maklumat dengan tepat. </p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/borang_tetapan_kurier.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_kurier.png" alt="Another alt text">
+	</a>
+	<p><strong>Integrasi Pihak Ketiga (EasyParcel dan MyParcelAsia)</strong></p>
+	<p><strong>EasyParcel</strong></p>
+	<p>Untuk tutorial integrasi bersama EasyParcel anda boleh <a href="https://www.easyparcel.my/blog/announcement/tutorial-easyparcel-integration-with-onpay/">klik halaman ini</a></p>
+	<p><strong>MyParcelAsia</strong></p>
+	<li>Anda perlu dapatkan <strong>Kunci API</strong> dan <strong>Kunci Rahsia</strong> di akaun MyParcelAsia anda</li>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/myparcelasia1.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/myparcelasia1.png" alt="Another alt text">
+	</a>
+	<li>Kemudian Isi semua Maklumat di ruangan bawah.</li>
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/ruanganparcelasia.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/ruanganparcelasia.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section28" class="subtopic col-md-12">
+	<h4><strong>2.5.2 Kemaskini/Padam Kurier</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Kemaskini/Padam Kurier</div>
+	  <div class="panel-body">
+	  <p><strong>KEMASKINI:</strong></p>	
+	<p>1. Tekan butang <strong>Kemaskini</strong> disebelah kiri .<br> 
+	2. Borang tambah kurier akan bertukar menjadi borang kemaskini kurier. Pilihan kurier yang sedang dikemaskini akan ditanda dengan warna biru seperti gambar di bawah.<br> 
+	3. Kemaskini maklumat yang diinginkan dan tekan butang <strong>Kemaskini Penghantar</strong></p> 
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Kemaskini Kurier"  data-image="img/borang_tetapan_kurier_kemaskini.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_kurier_kemaskini.png" alt="Another alt text">
+	</a>
+	<p><strong>PADAM:</strong></p> 
+	<p>1. Tekan butang <strong>x</strong> pada pilihan kurier yang ingin dipadam.<br>
+	2). Tekan <strong>Ya</strong> di kotak popup pengesahan pemadaman.</p> 
+	<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Kemaskini Kurier"  data-image="img/borang_tetapan_kurier_padam.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_kurier_padam.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section29" class="subtopic col-md-12">
+	<h4><strong>2.6.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</div>
+	  <div class="panel-body">
+	  <p>Anda boleh rujuk tutorial Bahasa Inggeris di bawah:</p>
+	  <li><a href="http://windowsitpro.com/windows-7/q-how-do-i-create-custom-paper-size-printing-windows-7">http://windowsitpro.com/windows-7/q-how-do-i-create-custom-paper-size-printing-windows-7</a></li>
+	  <li><a href="https://support.apple.com/kb/PH18619?locale=en_US">https://support.apple.com/kb/PH18619?locale=en_US</a></li><br><br>
+	  <p><strong>Tutorial dalam Bahasa Melayu</strong></p>
+	  <p><strong>1. Buka Control Panel</strong></p>
+	  <p>(Windows vista - Windows 10) = Tekan "start" dan taip "Control Panel"</p>
+	  <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/control_panel_10.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/control_panel_10.png" alt="Another alt text">
+	</a>
+	<p>(Windows XP) = Tekan "start" > "settings" > "Control Panel"</p>
+	 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/control_panel_xp.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/control_panel_xp.png" alt="Another alt text">
+	</a>
+	<p>Mana mana windows = Buka "My Computer" > Taip "Control Panel" pada "address bar".</p>
+	 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/control_panel_addressbar.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/control_panel_addressbar.png" alt="Another alt text">
+	</a>
+	<p><strong>2. Tekan "View Devices and Printers"</strong></p>
+	<p><strong>3. Buka "Print Server Properties"</strong></p>
+	<li> Tekan mana-mana printer yang ada.</li> 
+	<li> Tekan "Print Server Properties" pada bahagian atas.</li>
+	 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/control_panel_print_server.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/control_panel_print_server.png" alt="Another alt text">
+	</a>
+	<p><strong>4. Tandakan kotak "Create New Form". Isikan saiz (Lebar × Tinggi = 21 cm × 10.1 cm)</strong></p>
+	 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/control_panel_print_server_new.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/control_panel_print_server_new.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+</div>
+<div id="section30" class="subtopic col-md-12">
+	<h4><strong>2.6.2 Isi Maklumat Anda kedalam Borang Pos Laju</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Isi Maklumat Anda kedalam Borang Pos Laju</div>
+	  <div class="panel-body">
+	  <p>Sila isikan maklumat anda dengan lengkap. Maklumat ini akan digunakan bagi setiap percetakan borang pos laju.<br> 
+		Maklumat pelanggan akan di masukkan secara automatik apabila anda menekan butang <strong>Jana Label</strong> di Senarai Jualan.</p>
+		 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/borang_tetapan_label_penghantaran_poslaju.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_label_penghantaran_poslaju.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+</div>
+<div id="section31" class="subtopic col-md-12">
+	<h4><strong>2.6.3 Cara Cetak Label Penghantaran Pelanggan</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Cara Cetak Label Penghantaran Pelanggan</div>
+	  <div class="panel-body">
+	  <p>Anda boleh mencetak label pos laju pelanggan melalui :<br> 
+		1. Log masuk kepada halaman dashboard admin anda.<br> 
+		2. Buka Senarai Jualan.<br>
+		3. Tekan butang <strong>Jana Label</strong> bagi pelanggan yang dikehendaki.<br>
+		4. Pilih Pos Laju.<br>
+		5. Tekan butang <strong>Jana Label</strong>.</p>
+		<p><strong>Nota : Hanya pembayaran yang disahkan sahaja dibenarkan untuk menjana label penghantaran.</strong></p>
+		 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/senarai_jualan.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/senarai_jualan.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section32" class="subtopic col-md-12">
+	<h4><strong>2.7 Senarai Hitam ID Ejen</strong></h4><br>
+	<p><strong>Fungsi Senarai Hitam ID Ejen</strong></p>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Senarai Hitam ID Ejen</div>
+	  <div class="panel-body">
+	<p>Fungsi ini membolehkan anda menetapkan ID Ejen yang tidak boleh digunakan oleh ejen-ejen anda sebagai ID mereka.<br> 
+	Hal ini adalah demi mengelakkan penipuan yang mungkin berlaku terhadap pelanggan. Contohnya, sekiranya ejen mendaftar sebagai admin, maka mereka boleh menyamar sebagai admin/pemilik bisnes anda dan menipu pelanggan. 
+	Contoh-contohnya ayat yang tidak boleh digunakan adalah:<br><br>
+	admin<br>
+	owner<br>
+	pemilik<br>
+	billing<br>
+	janganreply<br>
+	mail<br>
+	help<br>
+	customerservice<br>
+	service<br><br>
+
+	Atau sebagainya mengikut keperluan anda.</p><br>
+	<p><strong>Tambah Rekod Senarai Hitam</strong><br><br> 
+	1. Isikan ID Ejen yang ingin disenarai hitam.<br> 
+	2. Tekan butang <strong>Tambah</strong>.<br><br> 
+
+
+	<strong>Padam Rekod Senarai Hitam</strong><br><br> 
+	1. Tekan butang <strong>x</strong> pada lajur ejen yang ingin dipadamkan rekod senarai hitam.</p>
+		 <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/borang_tetapan_senarai_hitam_ejen.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_senarai_hitam_ejen.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section33" class="subtopic col-md-12">
+	<h4><strong>2.8 Profil Akaun (Kemaskini maklumat akaun)</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Profil Akaun</div>
+	  <div class="panel-body">
+	  <p>1. Anda boleh mengemaskini maklumat akaun anda melalui borang tetapan ini.<br>
+		2. Sila lengkapkan borang ini dan tekan butang <strong>Kemaskini Profil</strong></p>
+		<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/borang_tetapan_profil.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_profil.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
+</div>
+<div id="section34" class="subtopic col-md-12">
+	<h4><strong>2.9 Tukar Kata Laluan (Kemaskini Kata Laluan)</strong></h4><br>
+	<div class="panel panel-primary">
+	  <div class="panel-heading">Tukar Kata Laluan</div>
+	  <div class="panel-body">
+	  	<p>1. Sila isikan kata laluan sekarang pada kotak pertama, dan isikan kata laluan baru kedalam kotak kedua dan ketiga.<br>
+		- Kata laluan mestilah sekurang-kurangnya 8 huruf<br>
+		2. Sila lengkapkan borang ini dan tekan butang <strong>Tukar</strong></p>
+		<a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/borang_tetapan_tukar_password.png" data-target="#image-gallery">
+    <img class="img-responsive" src="img/borang_tetapan_tukar_password.png" alt="Another alt text">
+	</a>
+	  </div>
+	</div>
+	
 </div>
 </div>
+</div>
+<div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </hmtl>

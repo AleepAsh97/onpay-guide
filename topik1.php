@@ -87,7 +87,7 @@
 
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<a class="navbar-brand" onclick="openNav()"><span class="glyphicon glyphicon-list"></span></a>
-	<a class="navbar-brand" href="index.php">Halaman Utama</a>
+	<a class="navbar-brand" href="index.php">Utama</a>
 	<div class="container-fluid" id="con-flu">
 	<div class="navbar-header">
 		<div class="scrollmenu">
@@ -109,7 +109,7 @@
 	<!-- menu -->
 		<div id="MainMenu">
 		<div class="list-group panel">
-			<a href="#demo1" class="list-group-item list-group-item-default" data-toggle="collapse" data-parent="#MainMenu">1.1 Pendaftaran Akaun OnPay <i class="fa fa-caret-down"></i></a>
+			<a href="#demo1" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">1.1 Pendaftaran Akaun OnPay <i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo1">
 						<a href="#section1" onclick="closeNav()" class="list-group-item">1.1.1 Layari Laman Web</a>
 						<a href="#section2" onclick="closeNav()" class="list-group-item">1.1.2 Pilih Subdomain</a>
@@ -119,13 +119,13 @@
 						<a href="#section6" onclick="closeNav()" class="list-group-item">1.1.6 Pengesahan spam/robot (reCAPTCHA)</a>
 						<a href="#section7" onclick="closeNav()" class="list-group-item">1.1.7 Klik Butang Daftar</a> 
 		</div>
-		<a href="#demo2" class="list-group-item list-group-item-default" data-toggle="collapse" data-parent="#MainMenu">1.2 Pengaktifan Akaun OnPay <i class="fa fa-caret-down"></i></a>
+		<a href="#demo2" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">1.2 Pengaktifan Akaun OnPay <i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo2">
 						<a href="#section8" onclick="closeNav()" class="list-group-item">1.2.1 Semak Emel "Pendaftaran Akaun OnPay</a>
 						<a href="#section9" onclick="closeNav()" class="list-group-item">1.2.2 Tekan hyperlink pengaktifan akaun</a>
 						<a href="#section10" onclick="closeNav()" class="list-group-item">1.2.3 Pengaktifan Akaun OnPay Berjaya</a>
 		</div>
-		<a href="#demo3" class="list-group-item list-group-item-default" data-toggle="collapse" data-parent="#MainMenu">1.3 Log Masuk Akaun OnPay <i class="fa fa-caret-down"></i></a>
+		<a href="#demo3" class="list-group-item list-group-item-success active" data-toggle="collapse" data-parent="#MainMenu">1.3 Log Masuk Akaun OnPay <i class="fa fa-caret-down"></i></a>
 					<div class="collapse" id="demo3">
 						<a href="#section11" onclick="closeNav()" class="list-group-item">1.3.1 Layari halaman Log Masuk Akaun Anda"</a>
 						<a href="#section12" onclick="closeNav()" class="list-group-item">1.3.2 Masukkan ID Admin dan Kata Laluan</a>
