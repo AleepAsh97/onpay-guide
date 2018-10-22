@@ -93,7 +93,7 @@
 		<div class="scrollmenu">
 			<a href="topik1.php">Topik 1</a>
 			<a href="topik2.php">Topik 2</a>
-			<a href="#about">Topik 3</a>
+			<a href="topik3.php">Topik 3</a>
 			<a href="#support">Topik 4</a>
 			<a href="#blog">Topik 5</a>
 			<a href="#tools">Topik 6</a>  

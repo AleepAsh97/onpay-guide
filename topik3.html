@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 3 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 3 : Senarai (Produk + Kupon + Borang)</p>
+                    <li>
+                        <a href="#produk" data-toggle="collapse" aria-expanded="false">3.1 Produk</a>
+                        <ul class="collapse list-unstyled" id="produk">
+                            <li><a href="#section1">3.1.1 Tambah Rekod Produk</a></li>
+                            <li><a href="#section2">3.1.2 Kemaskini Rekod Produk</a></li>
+                            <li><a href="#section3">3.1.3 Padam Rekod Produk</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#kupon" data-toggle="collapse" aria-expanded="false">3.2 Kupon</a>
+                        <ul class="collapse list-unstyled" id="kupon">
+                            <li><a href="#section4">3.2.1 Tambah Rekod Kupon</a></li>
+                            <li><a href="#section5">3.2.2 Kemaskini Rekod Kupon</a></li>
+                            <li><a href="#section6">3.2.3 Padam Rekod Kupon</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#borang" data-toggle="collapse" aria-expanded="false">3.3 Borang</a>
+                        <ul class="collapse list-unstyled" id="borang">
+                            <li><a href="#section7">3.3.1 Tambah Rekod Borang</a></li>
+                            <li><a href="#section8">3.3.2 Kemaskini Rekod Borang</a></li>
+                            <li><a href="#section9">3.3.3 Padam Rekod Borang</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1-new.html">Topik 1</a></li>
+                                <li><a href="topik2-new.html">Topik 2</a></li>
+                                <li><a href="topik3.html">Topik 3</a></li>
+                                <li><a href="topik4.html">Topik 4</a></li>
+                                <li><a href="topik5.html">Topik 5</a></li>
+                                <li><a href="#">Topik 6</a></li>
+                                <li><a href="#">Topik 7</a></li>
+                                <li><a href="#">Topik 8</a></li>
+                                <li><a href="#">Topik 9</a></li>
+                                <li><a href="#">Topik 10</a></li>
+                                <li><a href="#">Topik 11</a></li>
+                                <li><a href="#">Topik 12</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="section1" class="subtopic col-md-12">
+    <h2>Topik 3 : Senarai (Produk + Kupon + Borang)</h2><hr><br>
+    <h4><strong>3.1.1 Tambah Rekod Produk</strong> Lokasi(Senarai > Produk)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Tekan Butang <strong>Bina Borang Baru</strong>
+            <br>- Lokasi : Atas Kiri halaman (di bawah tajuk "Senarai Borang").</p>
+             <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/tambah-produk.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/tambah-produk.png" alt="Another alt text">
+            </a>
+            <p>2. Isi Maklumat Produk.<br>
+                - Pastikan semua kotak bertanda * diisi dengan lengkap.<br> 
+                - Kod Produk adalah Kata Kunci Unik. Pastikan anda mengisi kod produk berlainan bagi setiap produk.<br><br>
+                3. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat produk anda.<br><br>
+                4. Produk terbaru anda akan berada didalam Senarai Produk sebagai # 1.<br> 
+                - Senarai produk adalah disusun mengikut kepada masa produk ditambah secara menurun. (Paling Baru - Paling Lama)</p>
+                <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/senarai-produk.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/senarai-produk.png" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+ <div id="section2" class="subtopic col-md-12">
+    <h4><strong>3.1.2 Kemaskini Rekod Produk</strong> Lokasi(Senarai > Produk)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) produk yang ingin dikemaskini<br><br>
+            2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br>
+            - Lokasi : pada lajur "Tindakan" di hujung baris.<br><br></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/kemaskini-produk.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/kemaskini-produk.png" alt="Another alt text">
+            </a>
+        <p>3. Isi Maklumat Produk.<br>
+            - Pastikan semua kotak bertanda * diisi dengan lengkap.<br> 
+            - Kod Produk adalah Kata Kunci Unik. Pastikan anda mengisi kod produk berlainan bagi setiap produk.
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/kemaskini.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/kemaskini.png" alt="Another alt text">
+            </a>
+            4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat produk anda.</p>
+      </div>
+    </div>
+</div>
+<div id="section3" class="subtopic col-md-12">
+    <h4><strong>3.1.3 Padam Rekod Produk</strong> Lokasi(Senarai > Produk)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) produk yang ingin dipadam.<br><br>
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/padam-produk.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/padam-produk.png" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/padam-pilihan.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/padam-pilihan.png" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="section4" class="subtopic col-md-12">
+    <h4><strong>3.2.1 Tambah Rekod Kupon</strong> Lokasi(Senarai > Kupon)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1) Tekan butang <strong>Tambah Kupon Baru</strong>  
+        - Lokasi : Atas Kiri halaman (di bawah tajuk "Senarai Kupon").</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/tambah-kupon.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/tambah-kupon.png" alt="Another alt text">
+            </a>
+         <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+          2. Isi Maklumat Kupon. (Buka untuk penjelasan)</a>
+        </h4>
+      </div>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+         i- Pastikan semua kotak bertanda * diisi dengan lengkap.<br><br>
+
+        ii- <strong>KOD KUPON</strong> : Kod Kupon adalah Kata Kunci Unik. Pastikan anda mengisi kod Kupon berlainan bagi setiap kupon.<br><br>
+
+        iii- <strong>JENIS KUPON</strong> :<br><br>
+        1. <strong>Tetap</strong> : adalah nilai diskaun tetap. Contohnya : RM 10<br><br>
+
+        2. <strong>Peratus</strong> : adalah nilai dinamik berdasarkan nilai item.<br><br>
+        - Contohnya jika kadar diskaun = 10%,<br>
+        - Jika barang berharga = RM 250<br>
+        - Jadi nilai diskaun adalah = RM250 * 10% = RM 25<br><br>
+
+        iv- <strong>Kesan Kupon</strong> :<br><br>
+        1. <strong>Jumlah Harga</strong>:<br>
+        - Nilai diskaun kupon ditolak terus kepada jumlah harga.<br>
+        - FORMULA : (JUMLAH HARGA) - (NILAI KUPON)<br>
+        - Walaupun pelanggan membeli 10 item, hanya RM10 (nilai kupon) sahaja ditolak.<br><br>
+    
+        2. <strong>Setiap Item</strong>:<br>
+        - Nilai diskaun didarab dengan bilangan item.<br> 
+        - FORMULA : (JUMLAH HARGA) - (Bil item)*(nilai kupon)<br> 
+        - Jika pelanggan membeli 10 item, 10(bil. item)*RM10(nilai kupon) = RM100 akan ditolak.<br><br>
+
+        v- <strong>Nilai Kupon</strong>:<br><br> 
+        - Masukkan nombor sahaja<br>
+        - Nombor perpuluhan (10.50) adalah dibenarkan<br> 
+        - Sekiranya "Jenis Tetap" dipilih, ia akan ditukar menjadi nilai tetap. ex: 10.50 akan menjadi RM 10.50<br> 
+        - Sekiranya "Jenis Peratus" dipilih, ia akan ditukar menjadi nilai dinamik. ex: 10.50 akan menjadi 10.5%<br><br>
+
+        vi-<strong>Syarat Sah</strong><br> 
+        - Isikan sekiranya terdapat syarat khas untuk membuatkan kod promo itu sah.<br>
+        Kuantiti minimum<br>
+        Jumlah harga minimum<br>
+        Perlukan produk khas untuk dibeli (Sila tekan kotak untuk memaparkan senarai produk)<br><br>
+
+        vii-<strong>Kuantiti Kupon</strong><br> 
+        - Aktifkan terhad sekiranya anda ingin menghadkan bilangan kupon yang boleh digunakan.<br>
+        - Contohnya kupon hanya sah untuk 100 orang pertama sahaja.<br><br>
+
+        viii-<strong>Tempoh Sah</strong>:<br>
+        - Aktifkan jika anda ingin menghadkan tempoh penggunaan kupon.<br> 
+        - Contohnya kupon hanya sah dalam bulan perayaan sahaja. (Tekan kotak untuk memaparkan pilihan masa/tarikh)</p>
+        </div>
+      </div>
+    </div>
+     <p>3. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat kupon anda.<br><br>
+     4. Kupon terbaru anda akan berada didalam Senarai kupon sebagai # 1.<br> 
+        - Senarai kupon adalah disusun mengikut kepada masa kupon ditambah secara menurun. (Paling Baru - Paling Lama)<br><br>
+    <strong>Cara menggunakan kupon</strong><br>
+    - Kupon dicipta terlebih dahulu dan diaktifkan semasa membuat/mengemaskini borang.<br>
+    - Sila rujuk 3.3 penggunaan borang</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/senarai-kupon.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/senarai-kupon.png" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="section5" class="subtopic col-md-12">
+    <h4><strong>3.2.2 Kemaskini Rekod Kupon</strong> Lokasi(Senarai > Kupon)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) Kupon yang ingin dikemaskini<br><br>
+        2. Tekan butang  untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/kemaskini-kupon.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/kemaskini-kupon.png" alt="Another alt text">
+            </a>
+        <p>2) Isi Maklumat kupon.<br> 
+        - Pastikan semua kotak bertanda <strong style="color: red;">*</strong> diisi dengan lengkap.<br> 
+        - Kod kupon adalah Kata Kunci Unik. Pastikan anda mengisi kod kupon berlainan bagi setiap kupon.<br><br>
+        3. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat kupon anda.</p>
+      </div>
+    </div>
+</div>
+<div id="section6" class="subtopic col-md-12">
+    <h4><strong>3.2.3 Padam Rekod Kupon</strong> Lokasi(Senarai > Kupon)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) kupon yang ingin dipadam<br><br>
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/padam-kupon.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/padam-kupon.png" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/padamkupon.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/padamkupon.png" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="section7" class="subtopic col-md-12">
+    <h4><strong>3.3.1 Tambah Rekod Borang</strong> Lokasi(Senarai > Borang)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Tekan butang <strong>Bina Borang Baru</strong><br>  
+        - Lokasi : Atas Kiri halaman (di bawah tajuk "Senarai Borang").</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/bina-borang.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/bina-borang.png" alt="Another alt text">
+            </a>
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+          2. Isi Maklumat Borang. (Buka untuk penjelasan)</a>
+        </h4>
+      </div>
+      <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+        Pastikan semua kotak bertanda <strong style="color: red">*</strong> diisi dengan lengkap.<br><br> 
+        
+        <h2>Butiran Borang</h2>
+        i- <strong>Kod Borang</strong><br> 
+        Kod Borang adalah Kata Kunci Unik. Pastikan anda mengisi kod Borang berlainan bagi setiap Borang.<br> 
+        Kod Borang hendaklah dibuat berdasarkan kombinasi huruf, nombor, dan simbol dash(-) atau underscore(_).<br>
+        Kod Borang juga akan membentuk sebahagian daripada URL borang tempahan.<br> 
+        Contohnya, jika anda mengisi "Ayam_Penyet", url borang tersebut akan menjadi http://demo.onpay.my/order/form/ayam_penyet<br><br>
+
+        ii- <strong>Tajuk Borang</strong><br> 
+        Isikan tajuk borang yang sesuai dengan produk yang diiklankan.<br><br>
+
+        iii- <strong>Penerangan</strong><br> 
+        Isikan penerangan ringkan tentang produk yang dijual didalam borang ini untuk dipaparkan sebagai keterangan ringkas di senarai borang pada halaman utama anda.<br><br>
+
+        iv- <strong>Pelbagai</strong><br> 
+        Tandakan pilihan fungsi tambahan pada borang yang anda ingin aktifkan.<br>
+        Anda dinasihatkan untuk menanda "Paparkan bantuan dalam bentuk pop-up" demi membantu bakal pelanggan anda untuk mudah memahami proses pembelian di borang anda.<br> 
+        Pengesahan automatik untuk jualan tanpa pembayaran bermaksud bagi produk yang tiada pembayaran (percuma), order pelanggan akan disahkan terus secara automatik.<br><br>
+
+        v- <strong>Jenis Jualan</strong><br> 
+        Sila pilih jenis jualan bagi borang anda.<br> 
+        <strong>Produk Percuma</strong> tidak memerlukan proses pembayaran.<br> 
+        - Sila pastikan anda berhati hati ketika memilih produk. Sebarang kerugian yang berlaku adalah tanggungjawab anda.<br> 
+        <strong>Jualan Produk</strong> adalah proses penjualan seperti biasa.<br> 
+        Pendaftaran Acara adalah proses penjualan tiket.<br> 
+        - Proses Pendaftaran Acara adalah sedikit berlainan dengan proses penjualan produk. Pelanggan boleh memilih untuk membeli tiket untuk diri sendiri, atau untuk membeli tiket untuk orang lain.<br><br>
+
+        vi- <strong>Susun Atur</strong><br> 
+        - Klasik bermaksud, semua elemen borang, iaitu proses pembelian dipaparkan secara penuh. (memenuhi page).<br> 
+        - Moden bermaksud, elemen borang dibahagikan kepada kategori dan hanya dipaparkan apabila pelanggan menekan butang <strong>Seterusnya</strong>.<br><br>
+
+        vii- <strong>Gambar</strong><br> 
+        Sila masukkan gambar sekiranya anda ingin memaparkan gambar bagi borang anda.<br>
+        Gambar ini juga akan dipaparkan sebagai gambar borang pada senarai borang di halaman utama anda.<br> 
+        Saiz cadangan untuk gambar ialah 800px × 400px<br><br>
+
+        viii- <strong>Teks</strong><br> 
+        Isikan keterangan penuh tentang produk yang sedang disenaraikan di dalam borang anda.<br><br>
+
+
+        <h2>Butiran Pelanggan</h2>
+
+        - Isikan mengikut kesesuaian.<br>
+        <li><strong>Panjang Minimum Untuk Nama</strong></li> 
+        Fungsi ini adalah untuk mengurangkan spam atau pengisian nama yang tidak betul oleh pelanggan.<br>
+        Antara contoh minimum untuk nama adalah 10 karakter.<br><br>
+
+        <li><strong>Ruangan Tambahan</strong></li> 
+        Sila aktifkan sekiranya anda inginkan maklumat tambahan dari pelanggan.<br>
+        Contohnya pekerjaan, atau pendapatan pelanggan.<br><br>
+
+        <h2>Pengesahan</h2>
+
+        - Pengesahan berfungsi seperti "Terms & Condition". Anda dinasihatkan mengaktifkan fungsi ini dan mengisi syarat syarat anda demi mengelakkan kejadian yang tidak diingini pada masa hadapan.<br>
+        -Anda juga boleh menggunakan kod keselamatan reCAPTCHA untuk mengelakkan robot menggunakan borang anda.<br><br>
+
+        <h2>Templat Emel dan SMS</h2>
+
+        - Digunakan untuk memberi maklumat tempahan ke pelanggan dan admin, membuat follow up dengan pelanggan, dan juga untuk kemaskini pembayaran dan pengesahan pembayaran<br><br>
+
+        <h2>Auto Follow Up Emel dan SMS</h2>
+
+        - Emel dan SMS follow up yang pertama akan dihantar selepas jualan disahkan secara automatik. boleh disetkan untuk dihantar dalam beberapa jam atau beberapa hari selepas jualan disahkan<br><br>
+
+        <h2>Halaman Terima Kasih</h2>
+
+        - Ini adalah templat halaman terima kasih yang dipaparkan kepada pelanggan setelah mengisi borang anda. Sila tekan butang <strong></strong> untuk memaparkan senarai pembolehubah yang boleh digunakan dalam templat ini.<br><br>
+
+        <h2>Nombor Invois</h2>
+
+        - Secara asalnya, nombor invois bagi setiap jualan yang dibuat melalui borang ini ialah nombor jualan sistem. Anda boleh membuat formula untuk menghasilkan nombor invois yang unik berdasarkan pembolehubah-pembolehubah yang disediakan. Anda juga boleh membuat ekspresi matematik untuk melakukan pengiraan untuk menghasilkan nilai yang unik. Untuk membuat ekspresi matematik, anda perlu memasukan pembolehubah dan nilai di dalam kurungan segi empat iaitu [ dan ]. Sebagai contoh, sila tengok formula berikut:<br><br>
+        @tahun_pendek-INV-[10000 + @nombor_jualan]<br><br>
+
+        - Sekiranya nilai pembolehubah @tahun_pendek = 16 dan @nombor_jualan = 79.<br> 
+        - Hasilnya adalah:<br><br>
+        16-INV-10079<br><br>
+
+        - Sila tekan butang  untuk memaparkan popup simulasi formula.<br><br> 
+
+        <h2>Templat Emel dan Templat SMS</h2>
+
+        - Sila isikan templat emel dan templat sms yang akan di hantar kepada pelanggan anda.<br> 
+        - Tekan  untuk memaparkan pembolehubah yang boleh digunakan dalam proses penulisan templat ini.
+        </div>
+      </div>
+    </div>
+    <p>3. Tekan Butang <strong>Simpan</strong> untuk simpan borang anda<br><br>
+    4) Borang terbaru anda akan berada didalam Senarai Borang sebagai # 1.<br> 
+    - Senarai Borang adalah disusun mengikut kepada masa Borang ditambah secara menurun. (Paling Baru - Paling Lama)</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/senarai-borang.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/senarai-borang.png" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="section8" class="subtopic col-md-12">
+    <h4><strong>3.3.2 Kemaskini Rekod Borang</strong> Lokasi(Senarai > Borang)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) borang yang ingin dikemaskini<br><br>
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/kemaskini-borang.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/kemaskini-borang.png" alt="Another alt text">
+            </a>
+        <p>3. Isi Maklumat Borang.<br> 
+        - Pastikan semua kotak bertanda <strong style="color: red">*</strong> diisi dengan lengkap.<br>
+        - Kod Borang adalah Kata Kunci Unik. Pastikan anda mengisi kod Borang berlainan bagi setiap Borang.<br><br>
+        4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat Borang anda.</p>
+      </div>
+    </div>
+</div>
+<div id="section9" class="subtopic col-md-12">
+    <h4><strong>3.3.3 Padam Rekod Borang</strong> Lokasi(Senarai > Borang)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) Borang yang ingin dipadam<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/padam-borang.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/padam-borang.png" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod. </p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/3-popup_pengesahan_padam.png" data-target="#image-gallery">
+                <img class="img-responsive" src="img/3-popup_pengesahan_padam.png" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>  
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+    </body>
+</html>
