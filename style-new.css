@@ -79,6 +79,7 @@ a, a:hover, a:focus {
     -o-transition: all 0.3s;
     transition: all 0.3s;
 }
+
 #dismiss:hover {
     background: #fff;
     color: #7386D5;
@@ -92,6 +93,7 @@ a, a:hover, a:focus {
     z-index: 998;
     display: none;
 }
+
 
 #sidebar .sidebar-header {
     padding: 20px;
@@ -156,14 +158,6 @@ ul.CTAs a {
     display: block;
     border-radius: 5px;
     margin-bottom: 5px;
-}
-a.download {
-    background: #fff;
-    color: #7386D5;
-}
-a.article, a.article:hover {
-    background: #6d7fcc !important;
-    color: #fff !important;
 }
 
 
