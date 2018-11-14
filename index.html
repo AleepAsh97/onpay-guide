@@ -14,6 +14,29 @@
         <link rel="stylesheet" href="style-new.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+            #myBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed/sticky position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 30px; /* Place the button 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: grey; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+            font-size: 18px; /* Increase font size */
+            }
+
+        #myBtn:hover {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+
+        </style>
         
     </head>
     <body>
@@ -31,6 +54,7 @@
                             <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
                                 <span>Tutorial OnPay</span>
                             </button>
+                             <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
                             <span class="sr-only">Toggle navigation</span>
                             <span class="icon-bar"></span>
@@ -41,7 +65,6 @@
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="active"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom">Menu Utama</a></li>
                                 <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
                                 <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
                                 <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
@@ -58,7 +81,6 @@
                         </div>
                          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                             <ul class="nav navbar-toggle">
-                                <li class="active"><a href="index.html">Menu Utama</a></li>
                                 <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
                                 <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
                                 <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
@@ -109,14 +131,14 @@
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik4.html">TOPIK 4 : STAF</a></strong></h3>
+                <h2><strong><a href="topik4.html">TOPIK 4 : STAF</a></strong></h2>
                 <p>Topik 4 akan membantu anda dalam :</p>
                 <li>Menambah, Mengemaskini dan Memadam Kumpulan Staf</li>
                 <li>Menambah, Mengemaskini, Memadam dan Menggantung Staf</li>
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik5.html">TOPIK 5 : EJEN (AFFILIATE + DROPSHIP + PENGEDAR)</a></strong></h3>
+                <h2><strong><a href="topik5.html">TOPIK 5 : EJEN (AFFILIATE + DROPSHIP + PENGEDAR)</a></strong></h2>
                 <p>Topik 5 akan membantu anda dalam :</p>
                 <li>Menambah Ejen Affiliate, Dropship dan Pengedar</li>
                 <li>Mengemaskini Maklumat Ejen Affiliate, Dropship dan Pengedar</li>
@@ -125,7 +147,7 @@
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik6.html">TOPIK 6 : PROSPEK</a></strong></h3>
+                <h2><strong><a href="topik6.html">TOPIK 6 : PROSPEK</a></strong></h2>
                 <p>Topik 6 akan membantu anda dalam :</p>
                 <li>Menambah, Mengemaskini dan Memadam Kumpulan Prospek</li>
                 <li>Menambah, Mengemaskini dan Memadam Borang Prospek</li>
@@ -133,14 +155,14 @@
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik7.html">TOPIK 7 : PELANGGAN + PESERTA</a></strong></h3>
+                <h2><strong><a href="topik7.html">TOPIK 7 : PELANGGAN + PESERTA</a></strong></h2>
                 <p>Topik 7 akan membantu anda dalam :</p>
                 <li>Menambah, Mengemaskini dan Memadam Rekod Pelanggan</li>
                 <li>Menambah, Mengemaskini dan Memadam Rekod Peserta</li>
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik8.html">TOPIK 8 : PENGURUSAN JUALAN</a></strong></h3>
+                <h2><strong><a href="topik8.html">TOPIK 8 : PENGURUSAN JUALAN</a></strong></h2>
                 <p>Topik 8 akan membantu anda dalam :</p>
                 <li>Memahami Jadual Senarai Jualan</li>
                 <li>Memahami Fungsi Paparan</li>
@@ -148,7 +170,7 @@
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik9.html">TOPIK 9 : PENGURUSAN AFIILIATE</a></strong></h3>
+                <h2><strong><a href="topik9.html">TOPIK 9 : PENGURUSAN AFIILIATE</a></strong></h2>
                 <p>Topik 9 akan membantu anda dalam :</p>
                 <li>Menambah Media Affiliate</li>
                 <li>Melihat Trafik Dari Affiliate</li>
@@ -156,14 +178,14 @@
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik10.html">TOPIK 10 : ANALISIS - STATISTIK</a></strong></h3>
+                <h2><strong><a href="topik10.html">TOPIK 10 : ANALISIS - STATISTIK</a></strong></h2>
                 <p>Topik 10 akan membantu anda dalam :</p>
                 <li>Melihat Statistik</li>
                 <li>Mengubah paparan statistik</li>
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik11.html">TOPIK 11 : JANA LAPORAN</a></strong></h3>
+                <h2><strong><a href="topik11.html">TOPIK 11 : JANA LAPORAN</a></strong></h2>
                 <p>Topik 11 : akan membantu anda dalam :</p>
                 <li>Pilih Medan dan Kategori Status yang ingin dipaparkan</li>
                 <li>Tapis maklumat yang ingin dipaparkan</li>
@@ -172,7 +194,7 @@
 
                 <div class="line"></div>
 
-                <h3><strong><a href="topik12.html">TOPIK 12 : HEBAHAN</a></strong></h3>
+                <h2><strong><a href="topik12.html">TOPIK 12 : HEBAHAN</a></strong></h2>
                 <p>Topik 12 : akan membantu anda dalam :</p>
                 <li>Pilih Medium Penjanaan Senarai Penerima</li>
                 <li>Ubahsuai kandungan hebahan</li>
@@ -180,7 +202,7 @@
             </div>
         </div>
 
-
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up"></span></button>
 
         <div class="overlay"></div>
 
@@ -210,6 +232,25 @@
                     $('a[aria-expanded=true]').attr('aria-expanded', 'false');
                 });
             });
+        </script>
+        <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        }
+
         </script>
     </body>
 </html>
