@@ -10,30 +10,71 @@
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="style-new.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
         <style>
-            #myBtn {
-            display: none; /* Hidden by default */
-            position: fixed; /* Fixed/sticky position */
-            bottom: 20px; /* Place the button at the bottom of the page */
-            right: 30px; /* Place the button 30px from the right */
-            z-index: 99; /* Make sure it does not overlap */
-            border: none; /* Remove borders */
-            outline: none; /* Remove outline */
-            background-color: grey; /* Set a background color */
-            color: white; /* Text color */
-            cursor: pointer; /* Add a mouse pointer on hover */
-            padding: 15px; /* Some padding */
-            border-radius: 10px; /* Rounded corners */
-            font-size: 18px; /* Increase font size */
-            }
+           
+        .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
 
-        #myBtn:hover {
-            background-color: #555; /* Add a dark-grey background on hover */
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
         }
 
         </style>
@@ -57,31 +98,31 @@
                     <li>
                         <a href="#affiliate" data-toggle="collapse" aria-expanded="false">5.1 Affiliate</a>
                         <ul class="collapse list-unstyled" id="affiliate">
-                            <li><a href="#tambah-affiliate-baru">5.1.1 Tambah Affiliate Baru</a></li>
-                            <li><a href="#kemaskini-rekod-affiliate">5.1.2 Kemaskini Rekod Affiliate</a></li>
-                            <li><a href="#padam-rekod-affiliate">5.1.3 Padam Rekod Affiliate</a></li>
-                            <li><a href="#gantung-affiliate">5.1.4 Gantung Affiliate</a></li>
+                            <li><a href="#tambah-affiliate-baru" id="subtopic">5.1.1 Tambah Affiliate Baru</a></li>
+                            <li><a href="#kemaskini-rekod-affiliate" id="subtopic">5.1.2 Kemaskini Rekod Affiliate</a></li>
+                            <li><a href="#padam-rekod-affiliate" id="subtopic">5.1.3 Padam Rekod Affiliate</a></li>
+                            <li><a href="#gantung-affiliate" id="subtopic">5.1.4 Gantung Affiliate</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#dropship" data-toggle="collapse" aria-expanded="false">5.2 Dropship</a>
                         <ul class="collapse list-unstyled" id="dropship">
-                            <li><a href="#tambah-dropship-baru">5.2.1 Tambah Dropship Baru</a></li>
-                            <li><a href="#kemaskini-rekod-dropship">5.2.2 Kemaskini Rekod Dropship</a></li>
-                            <li><a href="#padam-rekod-dropship">5.2.3 Padam Rekod Dropship</a></li>
-                            <li><a href="#gantung-dropship">5.2.4 Gantung Dropship</a></li>
+                            <li><a href="#tambah-dropship-baru" id="subtopic">5.2.1 Tambah Dropship Baru</a></li>
+                            <li><a href="#kemaskini-rekod-dropship" id="subtopic">5.2.2 Kemaskini Rekod Dropship</a></li>
+                            <li><a href="#padam-rekod-dropship" id="subtopic">5.2.3 Padam Rekod Dropship</a></li>
+                            <li><a href="#gantung-dropship" id="subtopic">5.2.4 Gantung Dropship</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#pengedar" data-toggle="collapse" aria-expanded="false">5.3 Pengedar</a>
                         <ul class="collapse list-unstyled" id="pengedar">
-                            <li><a href="#tambah-kumpulan-pengedar">5.3.1 Tambah Kumpulan Pengedar</a></li>
-                            <li><a href="#kemaskini-kumpulan-pengedar">5.3.2 Kemaskini Kumpulan Pengedar</a></li>
-                            <li><a href="#padam-kumpulan-pengedar">5.3.3 Padam Kumpulan Pengedar</a></li>
-                            <li><a href="#tambah-pengedar-baru">5.3.4 Tambah Pengedar Baru</a></li>
-                            <li><a href="#kemaskini-rekod-pengedar">5.3.5 Kemaskini Rekod Pengedar</a></li>
-                            <li><a href="#padam-rekod-pengedar">5.3.6 Padam Rekod Pengedar</a></li>
-                            <li><a href="#gantung-pengedar">5.3.7 Gantung Pengedar</a></li>
+                            <li><a href="#tambah-kumpulan-pengedar" id="subtopic">5.3.1 Tambah Kumpulan Pengedar</a></li>
+                            <li><a href="#kemaskini-kumpulan-pengedar" id="subtopic">5.3.2 Kemaskini Kumpulan Pengedar</a></li>
+                            <li><a href="#padam-kumpulan-pengedar" id="subtopic">5.3.3 Padam Kumpulan Pengedar</a></li>
+                            <li><a href="#tambah-pengedar-baru" id="subtopic">5.3.4 Tambah Pengedar Baru</a></li>
+                            <li><a href="#kemaskini-rekod-pengedar" id="subtopic">5.3.5 Kemaskini Rekod Pengedar</a></li>
+                            <li><a href="#padam-rekod-pengedar" id="subtopic">5.3.6 Padam Rekod Pengedar</a></li>
+                            <li><a href="#gantung-pengedar" id="subtopic">5.3.7 Gantung Pengedar</a></li>
                         </ul>
                     </li>
                      
@@ -442,13 +483,14 @@
     </div>
 </div>
 
-         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up"></span></button>
+        <a href="#0" class="cd-top js-cd-top">Top</a>
 
         <div class="overlay"></div>
 
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
         <!-- Bootstrap Js CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -461,7 +503,7 @@
                     theme: "minimal"
                 });
 
-                $('#dismiss, .overlay').on('click', function () {
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
                     $('#sidebar').removeClass('active');
                     $('.overlay').fadeOut();
                 });
@@ -539,24 +581,5 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-<script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-
-        </script>
     </body>
 </html>

@@ -10,30 +10,71 @@
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="style-new.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
         <style>
-            #myBtn {
-            display: none; /* Hidden by default */
-            position: fixed; /* Fixed/sticky position */
-            bottom: 20px; /* Place the button at the bottom of the page */
-            right: 30px; /* Place the button 30px from the right */
-            z-index: 99; /* Make sure it does not overlap */
-            border: none; /* Remove borders */
-            outline: none; /* Remove outline */
-            background-color: grey; /* Set a background color */
-            color: white; /* Text color */
-            cursor: pointer; /* Add a mouse pointer on hover */
-            padding: 15px; /* Some padding */
-            border-radius: 10px; /* Rounded corners */
-            font-size: 18px; /* Increase font size */
-            }
+           
+           .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
 
-        #myBtn:hover {
-            background-color: #555; /* Add a dark-grey background on hover */
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
         }
 
         </style>
@@ -57,29 +98,29 @@
                     <li>
                         <a href="#daftar" data-toggle="collapse" aria-expanded="false">1.1 Pendaftaran OnPay</a>
                         <ul class="collapse list-unstyled" id="daftar">
-                            <li><a href="#layari-laman-onpay">1.1.1 Layari Laman Web</a></li>
-                            <li><a href="#pilih-subdomain">1.1.2 Pilih Subdomain</a></li>
-                            <li><a href="#pilih-email">1.1.3 Pilih Emel</a></li>
-                            <li><a href="#pilih-ID-dan-kata-laluan">1.1.4 Pilih ID dan Kata Laluan</a></li>
-                            <li><a href="#isi-maklumat-profil-diri">1.1.5 Isi Maklumat Profil Diri</a></li>
-                            <li><a href="#pengesahan-spam">1.1.6 Pengesahan Spam/Robot (reCAPTCHA)</a></li>
-                            <li><a href="#klik-butang-daftar">1.1.7 Klik Butang Daftar</a></li>
+                            <li><a href="#layari-laman-onpay" id="subtopic">1.1.1 Layari Laman Web</a></li>
+                            <li><a href="#pilih-subdomain" id="subtopic">1.1.2 Pilih Subdomain</a></li>
+                            <li><a href="#pilih-emel" id="subtopic">1.1.3 Pilih Emel</a></li>
+                            <li><a href="#pilih-ID-dan-kata-laluan" id="subtopic">1.1.4 Pilih ID dan Kata Laluan</a></li>
+                            <li><a href="#isi-maklumat-profil-diri" id="subtopic">1.1.5 Isi Maklumat Profil Diri</a></li>
+                            <li><a href="#pengesahan-spam" id="subtopic">1.1.6 Pengesahan Spam/Robot (reCAPTCHA)</a></li>
+                            <li><a href="#klik-butang-daftar" id="subtopic">1.1.7 Klik Butang Daftar</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#aktif" data-toggle="collapse" aria-expanded="false">1.2 Pengaktifan Akaun</a>
                         <ul class="collapse list-unstyled" id="aktif">
-                            <li><a href="#semak-emel-pendaftaran-onpay">1.2.1 Semak Emel "Pendaftaran Akaun OnPay"</a></li>
-                            <li><a href="#tekan-hyperlink-pengaktifan-akaun">1.2.2 Tekan Hyperlink Pengaktifan Akaun</a></li>
-                            <li><a href="#pengaktifan-akaun-onpay-berjaya">1.2.3 Pengaktifan Akaun Berjaya</a></li>
+                            <li><a href="#semak-emel-pendaftaran-onpay" id="subtopic">1.2.1 Semak Emel "Pendaftaran Akaun OnPay"</a></li>
+                            <li><a href="#tekan-hyperlink-pengaktifan-akaun" id="subtopic">1.2.2 Tekan Hyperlink Pengaktifan Akaun</a></li>
+                            <li><a href="#pengaktifan-akaun-onpay-berjaya" id="subtopic">1.2.3 Pengaktifan Akaun Berjaya</a></li>
                         </ul>
                     </li>
                      <li>
                         <a href="#logmasuk" data-toggle="collapse" aria-expanded="false">1.3 Log Masuk Akaun OnPay</a>
                         <ul class="collapse list-unstyled" id="logmasuk">
-                            <li><a href="#layari-halaman-log-masuk-akaun">1.3.1 Layari Halaman Log Masuk Akaun Anda</a></li>
-                            <li><a href="#masukkan-id-admin-dan-kata-laluan">1.3.2 Masukkan ID Admin dan Kata Laluan</a></li>
-                            <li><a href="#log-masuk-akaun-onpay-berjaya">1.3.3 Log Masuk OnPay Berjaya</a></li>
+                            <li><a href="#layari-halaman-log-masuk-akaun" id="subtopic">1.3.1 Layari Halaman Log Masuk Akaun Anda</a></li>
+                            <li><a href="#masukkan-id-admin-dan-kata-laluan" id="subtopic">1.3.2 Masukkan ID Admin dan Kata Laluan</a></li>
+                            <li><a href="#log-masuk-akaun-onpay-berjaya" id="subtopic">1.3.3 Log Masuk OnPay Berjaya</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -149,8 +190,8 @@
       <div class="panel-heading">Langkah Pertama</div>
       <div class="panel-body"><p>1. Anda perlu melayari laman web <a style="color: red" href="https://onpay.my/register">https://onpay.my/register</a> untuk mendaftar isi semua maklumat di dalam borang tersebut</p>
         <p>2. Selepas itu, anda akan dibawa ke halaman Borang Pendaftaran OnPay</p></div>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pendaftaran OnPay"  data-image="img/daftar-akaun.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/daftar-akaun.jpg" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pendaftaran OnPay"  data-image="img/Topik 1/1-daftar-akaun.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-daftar-akaun.jpg" alt="Another alt text">
             </a>
     </div>
 </div>
@@ -163,8 +204,8 @@
             <p>2) Minimum 3 karakter huruf.</p>
             <p>3) Maksimum 30 karakter huruf.</p> 
             <p>4) Nama subdomain hendaklah mengandungi kombinasi abjad, nombor, dash dan underscore sahaja.</p></div>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Subdomain"  data-image="img/subdomain.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/subdomain.jpg" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Subdomain"  data-image="img/Topik 1/1-subdomain.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-subdomain.jpg" alt="Another alt text">
             </a>
     </div>
     <div class="panel panel-info">
@@ -186,8 +227,8 @@
 </div>
     </div>
 </div>
-<div class="subtopic col-md-12" id="isi-emel">
-    <h4><strong>1.1.3 Isi Emel</strong></h4><br>
+<div class="subtopic col-md-12" id="pilih-emel">
+    <h4><strong>1.1.3 Pilih Emel</strong></h4><br>
     <div class="panel panel-primary">
       <div class="panel-heading">Panduan Mengisi Emel</div>
       <div class="panel-body">
@@ -195,8 +236,8 @@
         <p>Format emel: nama_emel@domain.suffix</p> 
         <p>Contoh emel : ahmad@gmail.com</p> 
         <p>2) Hanya emel yang belum didaftarkan sahaja yang dibenarkan. Emel yang telah wujud di dalam pangkalan data tidak akan dibenarkan untuk digunakan.</p>
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Emel"  data-image="img/emel.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/emel.jpg" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Emel"  data-image="img/Topik 1/1-emel.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-emel.jpg" alt="Another alt text">
         </a>
       </div>
     </div>
@@ -226,8 +267,8 @@
         <p>2) Demi tujuan keselamatan, anda dinasihatkan untuk memilih Kata Laluan yang hanya diketahui oleh anda.</p> 
         <p>3) Hanya 30 kombinasi karakter sahaja yang dibenarkan.</p> 
         <p>4) Sila isikan kombinasi kata laluan yang sama demi tujuan pengesahan di kotak pengesahan kata laluan.</p>
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan ID dan Kata Laluan"  data-image="img/idpass.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/idpass.jpg" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan ID dan Kata Laluan"  data-image="img/Topik 1/1-idpass.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-idpass.jpg" alt="Another alt text">
         </a>
         </div>
     </div>
@@ -261,15 +302,15 @@
 
         <p><strong>Tarikh Lahir:</strong></p> 
         <p>Sila tekan kotak input atau ikon kalendar untuk memaparkan kalendar bagi memudahkan proses pemilihan tarikh.  Format tarikh yang terbaik adalah seperti berikut: "30 Mac 2016"</p>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Maklumat Diri"  data-image="img/profilanda.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/profilanda.jpg" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Maklumat Diri"  data-image="img/Topik 1/1-profilanda.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-profilanda.jpg" alt="Another alt text">
         </a>      
       </div>
     </div>
     <div class="panel panel-info">
       <div class="panel-heading">Cadangan pengisian Profil Pengguna:</div>
-      <div class="panel-body"><p><strong>1) Nama anda perlulah NAMA PENUH ANDA untuk tujuan rasmi Syarikat seperti Invois, email dan lain-lain.<br>
-      2) Pastikan No. HP anda boleh dihubungi jika terdapat masalah berkenaan akaun anda jika tidak dapat</strong></p></div>
+      <div class="panel-body"><p>1) <strong>Nama anda perlulah NAMA PENUH ANDA untuk tujuan rasmi Syarikat seperti Invois, email dan lain-lain.</strong><br>
+      2) <strong>Pastikan No. HP anda boleh dihubungi jika terdapat masalah berkenaan akaun anda jika tidak dapat</strong></p></div>
     </div>
     <div class="panel panel-danger">
       <div class="panel-heading"><strong>PERINGATAN</strong></div>
@@ -282,11 +323,11 @@
       <div class="panel-heading">Panduan Mengenai Pengesahan SPAM/Robot (reCAPTCHA)</div>
       <div class="panel-body"><li>Sila tandakan kotak "Saya Bukan Robot" untuk memaparkan soalan pengesahan.</li>
         <li>Jawab soalan dengan betul untuk mengesahkan bahawa anda bukan robot/spam.</li></div>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar reCAPTCHA"  data-image="img/reCAPTCHA.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/reCAPTCHA.jpg" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar reCAPTCHA"  data-image="img/Topik 1/1-reCAPTCHA.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-reCAPTCHA.jpg" alt="Another alt text">
         </a>
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pengesahan Robot"  data-image="img/pengesahanrobot.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/pengesahanrobot.jpg" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pengesahan Robot"  data-image="img/Topik 1/1-pengesahanrobot.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-pengesahanrobot.jpg" alt="Another alt text">
         </a>
     </div>
 </div>
@@ -295,8 +336,8 @@
     <div class="panel panel-info">
       <div class="panel-heading">Info</div>
       <div class="panel-body"><p>Setelah butang "Daftar" ditekan, anda akan dibawa kepada halaman pengesahan penerimaan pendaftaran. Anda akan menerima mesej seperti berikut: </p>
-     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Mesej Terima Kasih"  data-image="img/terima-kasih-mesej.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/terima-kasih-mesej.jpg" alt="Another alt text">
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Mesej Terima Kasih"  data-image="img/Topik 1/1-terima-kasih-mesej.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-terima-kasih-mesej.jpg" alt="Another alt text">
             </a>
       </div>
     </div>
@@ -312,11 +353,11 @@
       <div class="panel-heading">Info</div>
       <div class="panel-body"><p>1. Sila semak di emel anda emel bertajuk "Pendaftaran Akaun OnPay"</p>
         <p>2. Sila buka emel dari "admin@onpay.my" yang bertajuk <strong>"Pendaftaran Akaun OnPay"</strong>.</p>
-     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Email Pendaftaran Akaun OnPay"  data-image="img/email-popup.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/email-popup.jpg" alt="Another alt text">
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Email Pendaftaran Akaun OnPay"  data-image="img/Topik 1/1-email-popup.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-email-popup.jpg" alt="Another alt text">
     </a>
-     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Contoh Emel Pendaftaran Akaun OnPay"  data-image="img/emel-daftar-akaun.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/emel-daftar-akaun.jpg" alt="Another alt text">
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Contoh Emel Pendaftaran Akaun OnPay"  data-image="img/Topik 1/1-emel-daftar-akaun.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-emel-daftar-akaun.jpg" alt="Another alt text">
     </a>
     </div>
     </div>
@@ -329,15 +370,15 @@
         <p>2) Sekiranya hyperlink (#1) gagal berfungsi, sila klik hyperlink (2.1) untuk pengaktifan secara manual. Copy kod pengaktifan dari Gambar 2 dan gunakan di halaman pengaktifan.</p>
         <p>Sila pastikan anda copy & paste kod pengaktifan demi mengelakkan ralat <strong>"kod pengaktifan tidak sah"</strong> seperti di Gambar 3.</p>
     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/hyperlink1.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/hyperlink1.jpg" alt="Another alt text">
+                <img class="img-responsive" src="img/Topik 1/1-hyperlink1.jpg" alt="Another alt text">
             </a>
             <p>Gambar 1</p>
     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/hyperlink2.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/hyperlink2.jpg" alt="Another alt text">
+                <img class="img-responsive" src="img/Topik 1/1-hyperlink2.jpg" alt="Another alt text">
             </a>
             <p>Gambar 2</p>
-            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 3"  data-image="img/kod_salah.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/kod_salah.jpg" alt="Another alt text">
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 3"  data-image="img/Topik 1/1-kod_salah.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-kod_salah.jpg" alt="Another alt text">
             </a>
             <p>Gambar 3</p>
     </div>
@@ -348,8 +389,8 @@
     <div class="panel panel-info">
       <div class="panel-heading">Info</div>
       <div class="panel-body"><p>Pengaktifan Akaun anda berjaya apabila keluar mesej seperti di dalam Gambar Pengaktifan Akaun</p>
-       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Pengaktifan Akaun"  data-image="img/pengaktifan_berjaya.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/pengaktifan_berjaya.jpg" alt="Another alt text">
+       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Pengaktifan Akaun"  data-image="img/Topik 1/1-pengaktifan_berjaya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-pengaktifan_berjaya.jpg" alt="Another alt text">
             </a>
     </div>
     </div>
@@ -367,7 +408,7 @@
         Contoh: demo.onpay.my/admin<br>
         Anda akan dibawa ke halaman seperti di bawah:</p>
         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 1"  data-image="img/main-menu.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/main-menu.jpg" alt="Another alt text">
+                <img class="img-responsive" src="img/Topik 1/1-main-menu.jpg" alt="Another alt text">
             </a>
          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 2"  data-image="img/admin-login.jpg" data-target="#image-gallery">
                 <img class="img-responsive" src="img/Topik 1/1-admin-login.jpg" alt="Another alt text">
@@ -394,12 +435,12 @@
         <p>Sekiranya ralat "ID atau Kata Laluan salah" terpapar seperti di Gambar 2, sila:<br>
                             1.Isikan semula ID dan Kata Laluan<br>
                             2.Tekan hyperlink Terlupa Kata Laluan</p>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/main-page-onpay.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/main-page-onpay.jpg" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/Topik 1/1-main-page-onpay.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-main-page-onpay.jpg" alt="Another alt text">
             </a>
         <p>Gambar 1</p>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/ralat_log_gagal.jpg" data-target="#image-gallery">
-                <img class="img-responsive" src="img/ralat_log_gagal.jpg" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/Topik 1/1-ralat_log_gagal.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-ralat_log_gagal.jpg" alt="Another alt text">
             </a>
         <p>Gambar 2</p>
     </div>
@@ -428,13 +469,13 @@
 </div>
 </div>
 
-         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up"></span></button>
-         <button id="myBtn1" title="Go to top"><span class="glyphicon glyphicon-home"></span></button>
+        <a href="#0" class="cd-top js-cd-top">Top</a>
 
         <div class="overlay"></div>
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
         <!-- Bootstrap Js CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -447,7 +488,7 @@
                     theme: "minimal"
                 });
 
-                $('#dismiss, .overlay').on('click', function () {
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
                     $('#sidebar').removeClass('active');
                     $('.overlay').fadeOut();
                 });
@@ -525,23 +566,5 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-<script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-        </script>
     </body>
 </html>

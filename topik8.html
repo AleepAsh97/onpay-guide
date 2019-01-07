@@ -10,30 +10,71 @@
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="style-new.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
         <style>
-            #myBtn {
-            display: none; /* Hidden by default */
-            position: fixed; /* Fixed/sticky position */
-            bottom: 20px; /* Place the button at the bottom of the page */
-            right: 30px; /* Place the button 30px from the right */
-            z-index: 99; /* Make sure it does not overlap */
-            border: none; /* Remove borders */
-            outline: none; /* Remove outline */
-            background-color: grey; /* Set a background color */
-            color: white; /* Text color */
-            cursor: pointer; /* Add a mouse pointer on hover */
-            padding: 15px; /* Some padding */
-            border-radius: 10px; /* Rounded corners */
-            font-size: 18px; /* Increase font size */
-            }
+        
+        .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
 
-        #myBtn:hover {
-            background-color: #555; /* Add a dark-grey background on hover */
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
         }
 
         </style>
@@ -57,8 +98,8 @@
                     <li>
                         <a href="#jualan" data-toggle="collapse" aria-expanded="false">8.1 Memahami Jadual<br> Senarai Jualan</a>
                         <ul class="collapse list-unstyled" id="jualan">
-                            <li><a href="#penerangan-fungsi-paparan">8.1.1 Penerangan Fungsi Paparan</a></li>
-                            <li><a href="#penerangan-kolum-jadual">8.1.2 Penerangan Kolum Jadual</a></li>
+                            <li><a href="#penerangan-fungsi-paparan" id="subtopic">8.1.1 Penerangan Fungsi Paparan</a></li>
+                            <li><a href="#penerangan-kolum-jadual" id="subtopic">8.1.2 Penerangan Kolum Jadual</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -130,8 +171,8 @@
         <p><h3>Paparan</h3>
         <strong>Fungsi paparan adalah untuk menapis senarai jualan mengikut status jualan.</strong><br><br>
 
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-senarai-papar.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-senarai-papar.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-senarai-papar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-senarai-papar.jpg" alt="Another alt text">
             </a>
 
         <strong>Langkah untuk menapis jualan</strong>
@@ -153,8 +194,8 @@
         <h3>Tapisan / Carian</h3>
         <p><strong>Fungsi tapisan adalah untuk menapis senarai jualan dengan menggunakan kata kunci. Dalam kata lain, fungsi tapisan adalah juga fungsi carian. Terdapat dua faktor utama dalam fungsi carian ini, iaitu kategori tapisan dan kata kunci tapisan.</strong><br><br>
  
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-senarai-tapis.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-senarai-tapis.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-senarai-tapis.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-senarai-tapis.jpg" alt="Another alt text">
             </a>
 
         <strong>Langkah untuk menapis jualan</strong>
@@ -174,8 +215,8 @@
         1. <strong>Indeks</strong><br><br>
         - Kolum ini berfungsi untuk mengindekskan (membilang) senarai rekod yang dipaparkan.<br> 
         - Kolum ini juga mempunyai checkbox untuk menyenangkan proses pengurusan rekod secara pukal.
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-indeks-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-indeks-kolum.png" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-indeks-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-indeks-kolum.jpg" alt="Another alt text">
         </a>
         2. <strong>Pelanggan</strong><br><br>
         - Kolum ini menyenaraikan maklumat pelanggan seperti:<br>
@@ -184,8 +225,8 @@
         iii- No. Telefon<br> 
         iv- Alamat<br>
         v- Maklumat Tambahan - (maklumat tambahan boleh ditambah kepada borang semasa proses pembinaan borang)
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-pelanggan-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-pelanggan-kolum.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-pelanggan-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-pelanggan-kolum.jpg" alt="Another alt text">
         </a>
         3. <strong>Pembelian</strong><br><br> 
         - Kolum ini menyenaraikan maklumat pembelian seperti:<br>
@@ -195,12 +236,12 @@
         iv- Senarai Pembelian<br>
         v- Senarai Peserta<br>
         vi- Fail Invois/Resit
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-beli-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-beli-kolum.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-beli-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-beli-kolum.jpg" alt="Another alt text">
         </a>
         4.<strong>Pembayaran</strong><br><br>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-bayar-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-bayar-kolum.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-bayar-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-bayar-kolum.jpg" alt="Another alt text">
         </a> 
         - Kolum ini menyenaraikan maklumat pembayaran seperti:<br>
         i- <strong>Medium Pembayaran</strong> 
@@ -222,8 +263,8 @@
         - Bagi penggunaan mesin pendeposit tunai, pelanggan diminta untuk memuat naik bukti pemindahan dana iaitu resit. Resit ini dipaparkan dalam pautan di tepi <strong style="color: purple">kotak ungu</strong><br><br>
 
         5. <strong>Jualan</strong><br><br>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-jual-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-jual-kolum.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-jual-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-jual-kolum.jpg" alt="Another alt text">
         </a>
         - Kolum ini menyenaraikan maklumat jualan seperti:<br>
          i- Jenis Jualan (Produk/Acara)<br>
@@ -247,8 +288,8 @@
          iii- Alamat IP<br>
          iv- Bilangan Follow Up<br>
          v- URL Status - URL Status adalah URL yang diberikan kepada pelanggan untuk track status pembelian pelanggan. Sila berikan url ini sekiranya pelanggan kehilangan url tracking pembeliannya.
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-info-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-info-kolum.png" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-info-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-info-kolum.jpg" alt="Another alt text">
         </a>
 
         7. <strong>Status Jualan</strong><br><br>
@@ -258,18 +299,18 @@
         <strong style="color: orange">DIBATALKAN</strong><br><br>
 
         Tambahan status untuk Easy Parcel dan My Parcel Asia
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-status-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-status-kolum.png" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-status-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-status-kolum.jpg" alt="Another alt text">
         </a>
 
 
         8. <strong>Tindakan</strong><br><br>
-        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-tindakan-kolum.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-tindakan-kolum.png" alt="Another alt text">
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-tindakan-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-tindakan-kolum.jpg" alt="Another alt text">
         </a>
         Antara tindakan pengurusan rekod jualan yang ada adalah:<br>
-         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-butang.png" data-target="#image-gallery">
-                <img class="img-responsive" src="img/Topik 8/8-butang.png" alt="Another alt text">
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-butang.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-butang.jpg" alt="Another alt text">
         </a>
          1.<strong>Kemaskini</strong> Kemaskini Rekod Jualan<br> 
         - Anda akan dibawa kepada halaman pengemaskinian rekod.<br><br> 
@@ -317,13 +358,14 @@
 </div>
 </div>
 
-         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up"></span></button>
+        <a href="#0" class="cd-top js-cd-top">Top</a>
 
         <div class="overlay"></div>
 
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
         <!-- Bootstrap Js CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -336,7 +378,7 @@
                     theme: "minimal"
                 });
 
-                $('#dismiss, .overlay').on('click', function () {
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
                     $('#sidebar').removeClass('active');
                     $('.overlay').fadeOut();
                 });
@@ -414,24 +456,5 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-<script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-
-        </script>
     </body>
 </html>

@@ -10,30 +10,71 @@
         <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="style-new.css">
         <!-- Scrollbar Custom CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
         <style>
-            #myBtn {
-            display: none; /* Hidden by default */
-            position: fixed; /* Fixed/sticky position */
-            bottom: 20px; /* Place the button at the bottom of the page */
-            right: 30px; /* Place the button 30px from the right */
-            z-index: 99; /* Make sure it does not overlap */
-            border: none; /* Remove borders */
-            outline: none; /* Remove outline */
-            background-color: grey; /* Set a background color */
-            color: white; /* Text color */
-            cursor: pointer; /* Add a mouse pointer on hover */
-            padding: 15px; /* Some padding */
-            border-radius: 10px; /* Rounded corners */
-            font-size: 18px; /* Increase font size */
-            }
+           
+           .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
 
-        #myBtn:hover {
-            background-color: #555; /* Add a dark-grey background on hover */
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
         }
 
         </style>
@@ -57,30 +98,31 @@
                     <li>
                         <a href="#tetapansistem" data-toggle="collapse" aria-expanded="false">2.1 Tetapan Sistem</a>
                         <ul class="collapse list-unstyled" id="tetapansistem">
-                            <li><a href="#perniagaan">2.1.1 Perniagaan</a></li>
-                            <li><a href="#staf">2.1.2 Staf</a></li>
-                            <li><a href="#affiliate">2.1.3 Affiliate</a></li>
-                            <li><a href="#dropship">2.1.4 Dropship</a></li>
-                            <li><a href="#pengedar">2.1.5 Pengedar</a></li>
-                            <li><a href="#kaedah-pembayaran">2.1.6 Kaedah Pembayaran</a></li>
-                            <li><a href="#emel">2.1.7 Emel</a></li>
-                            <li><a href="#sms">2.1.8 SMS</a></li>
-                            <li><a href="#invois">2.1.9 Invois</a></li>
-                            <li><a href="#cukai">2.1.10 Cukai</a></li>
+                            <li><a href="#perniagaan" id="subtopic">2.1.1 Perniagaan</a></li>
+                            <li><a href="#staf" id="subtopic">2.1.2 Staf</a></li>
+                            <li><a href="#affiliate" id="subtopic">2.1.3 Affiliate</a></li>
+                            <li><a href="#dropship" id="subtopic">2.1.4 Dropship</a></li>
+                            <li><a href="#pengedar" id="subtopic">2.1.5 Pengedar</a></li>
+                            <li><a href="#kaedah-pembayaran" id="subtopic">2.1.6 Kaedah Pembayaran</a></li>
+                            <li><a href="#emel" id="subtopic">2.1.7 Emel</a></li>
+                            <li><a href="#sms" id="subtopic">2.1.8 SMS</a></li>
+                            <li><a href="#invois" id="subtopic">2.1.9 Invois</a></li>
+                            <li><a href="#cukai" id="subtopic">2.1.10 Cukai</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#kaedah" data-toggle="collapse" aria-expanded="false">2.2 Kaedah Pembayaran</a>
                         <ul class="collapse list-unstyled" id="kaedah">
-                            <li><a href="#penetapan-akaun-bank">2.2.1 Penetapan Akaun Bank</a></li>
-                            <li><a href="#penetapan-akaun-paypal">2.2.2 Penetapan Akaun PayPal</a></li>
-                            <li><a href="#penetapan-akaun-ipay88">2.2.3 Penetapan Akaun iPay88</a></li>
-                            <li><a href="#penetapan-akaun-molpay">2.2.4 Penetapan Akaun MOLPay</a></li>
-                            <li><a href="#penetapan-akaun-senangpay">2.2.5 Penetapan Akaun senangPay</a></li>
-                            <li><a href="#penetapan-akaun-billplz">2.2.6 Penetapan Akaun BillPlz</a></li>
-                            <li><a href="#penetapan-fungsi-cek">2.2.7 Penetapan Fungsi Cek</a></li>
-                            <li><a href="#penetapan-fungsi-wang-pos">2.2.8 Penetapan Fungsi Wang Pos</a></li>
-                            <li><a href="#penetapan-fungsi-tunai">2.2.9 Penetapan Fungsi Tunai</a></li>
+                            <li><a href="#penetapan-akaun-bank" id="subtopic">2.2.1 Penetapan Akaun Bank</a></li>
+                            <li><a href="#penetapan-akaun-paypal" id="subtopic">2.2.2 Penetapan Akaun PayPal</a></li>
+                            <li><a href="#penetapan-akaun-ipay88" id="subtopic">2.2.3 Penetapan Akaun iPay88</a></li>
+                            <li><a href="#penetapan-akaun-molpay" id="subtopic">2.2.4 Penetapan Akaun MOLPay</a></li>
+                            <li><a href="#penetapan-akaun-senangpay" id="subtopic">2.2.5 Penetapan Akaun senangPay</a></li>
+                            <li><a href="#penetapan-akaun-billplz" id="subtopic">2.2.6 Penetapan Akaun BillPlz</a></li>
+                            <li><a href="#penetapan-akaun-paydibs" id="subtopic">2.2.7 Penetapan Akaun Paydibs</a></li>
+                            <li><a href="#penetapan-fungsi-cek" id="subtopic">2.2.8 Penetapan Fungsi Cek</a></li>
+                            <li><a href="#penetapan-fungsi-wang-pos" id="subtopic">2.2.9 Penetapan Fungsi Wang Pos</a></li>
+                            <li><a href="#penetapan-fungsi-tunai" id="subtopic">2.2.10 Penetapan Fungsi Tunai</a></li>
                         </ul>
                     </li>
                      <li>
@@ -89,42 +131,42 @@
                     <li>
                         <a href="#pelanggan" data-toggle="collapse" aria-expanded="false">Pelanggan</a>
                         <ul class="collapse list-unstyled" id="pelanggan">
-                            <li><a href="#templat-emel-pendaftaran-pelanggan">Tetapan Templat Emel Pendaftaran</a></li>
-                            <li><a href="#templat-emel-pendaftaran-admin-pelanggan">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-pelanggan">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-emel-ucapan-hari-lahir-pelanggan">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-emel-pendaftaran-pelanggan" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-pelanggan" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-pelanggan" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-pelanggan" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#affiliate" data-toggle="collapse" aria-expanded="false">Affiliate</a>
                         <ul class="collapse list-unstyled" id="affiliate">
-                            <li><a href="#templat-emel-pendaftaran-affiliate">Tetapan Templat Emel Pendaftaran</a></li>
-                            <li><a href="#templat-emel-pendaftaran-admin-affiliate">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-affiliate">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-emel-pengesahan-komisyen-affiliate">Tetapan Templat Emel Pengesahan Komisyen</a></li>
-                            <li><a href="#templat-emel-pembayaran-komisyen-affiliate">Tetapan Templat Emel Pembayaran Komisyen</a></li>
-                            <li><a href="#templat-emel-ucapan-hari-lahir-affiliate">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-emel-pendaftaran-affiliate" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-affiliate" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-affiliate" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-pengesahan-komisyen-affiliate" id="subtopic">Tetapan Templat Emel Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-emel-pembayaran-komisyen-affiliate" id="subtopic">Tetapan Templat Emel Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-affiliate" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#dropship" data-toggle="collapse" aria-expanded="false">Dropship</a>
                         <ul class="collapse list-unstyled" id="dropship">
-                            <li><a href="#templat-emel-pendaftaran-dropship">Tetapan Templat Emel Pendaftaran</a></li>
-                            <li><a href="#templat-emel-pendaftaran-admin-dropship">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-dropship">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-emel-pengesahan-komisyen-dropship">Tetapan Templat Emel Pengesahan Komisyen</a></li>
-                            <li><a href="#templat-emel-pembayaran-komisyen-dropship">Tetapan Templat Emel Pembayaran Komisyen</a></li>
-                            <li><a href="#templat-emel-ucapan-hari-lahir-dropship">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-emel-pendaftaran-dropship" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-dropship" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-dropship" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-pengesahan-komisyen-dropship" id="subtopic">Tetapan Templat Emel Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-emel-pembayaran-komisyen-dropship" id="subtopic">Tetapan Templat Emel Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-dropship" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#pengedar" data-toggle="collapse" aria-expanded="false">Pengedar</a>
                         <ul class="collapse list-unstyled" id="pengedar">
-                            <li><a href="#templat-emel-pendaftaran-pengedar">Tetapan Templat Emel Pendaftaran</a></li>
-                            <li><a href="#templat-emel-pendaftaran-admin-pengedar">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-emel-pengaktifan-akaun-pengedar">Tetapan Templat Emel Pengaktifan</a></li>
-                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-pengedar">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-emel-ucapan-hari-lahir-pengedar">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-emel-pendaftaran-pengedar" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-pengedar" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-pengaktifan-akaun-pengedar" id="subtopic">Tetapan Templat Emel Pengaktifan</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-pengedar" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-pengedar" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                         </ul>
@@ -135,42 +177,42 @@
                             <li>
                         <a href="#pelanggan1" data-toggle="collapse" aria-expanded="false">Pelanggan</a>
                         <ul class="collapse list-unstyled" id="pelanggan1">
-                            <li><a href="#templat-sms-pendaftaran-pelanggan">Tetapan Templat SMS Pendaftaran</a></li>
-                            <li><a href="#templat-sms-pendaftaran-admin-pelanggan">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-pelanggan">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-sms-ucapan-hari-lahir-pelanggan">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-sms-pendaftaran-pelanggan" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-pelanggan" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-pelanggan" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-pelanggan" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#affiliate1" data-toggle="collapse" aria-expanded="false">Affiliate</a>
                         <ul class="collapse list-unstyled" id="affiliate1">
-                            <li><a href="#templat-sms-pendaftaran-affiliate">Tetapan Templat SMS Pendaftaran</a></li>
-                            <li><a href="#templat-sms-pendaftaran-admin-affiliate">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-affiliate">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-sms-pengesahan-komisyen-affiliate">Tetapan Templat SMS Pengesahan Komisyen</a></li>
-                            <li><a href="#templat-sms-pembayaran-komisyen-affiliate">Tetapan Templat SMS Pembayaran Komisyen</a></li>
-                            <li><a href="#templat-sms-ucapan-hari-lahir-affiliate">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-sms-pendaftaran-affiliate" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-affiliate" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-affiliate" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-pengesahan-komisyen-affiliate" id="subtopic">Tetapan Templat SMS Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-sms-pembayaran-komisyen-affiliate" id="subtopic">Tetapan Templat SMS Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-affiliate" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#dropship1" data-toggle="collapse" aria-expanded="false">Dropship</a>
                         <ul class="collapse list-unstyled" id="dropship1">
-                            <li><a href="#templat-sms-pendaftaran-dropship">Tetapan Templat SMS Pendaftaran</a></li>
-                            <li><a href="#templat-sms-pendaftaran-admin-dropship">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-dropship">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-sms-pengesahan-komisyen-dropship">Tetapan Templat SMS Pengesahan Komisyen</a></li>
-                            <li><a href="#templat-sms-pembayaran-komisyen-dropship">Tetapan Templat SMS Pembayaran Komisyen</a></li>
-                            <li><a href="#templat-sms-ucapan-hari-lahir-dropship">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-sms-pendaftaran-dropship" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-dropship" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-dropship" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-pengesahan-komisyen-dropship" id="subtopic">Tetapan Templat SMS Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-sms-pembayaran-komisyen-dropship" id="subtopic">Tetapan Templat SMS Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-dropship" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#pengedar1" data-toggle="collapse" aria-expanded="false">Pengedar</a>
                         <ul class="collapse list-unstyled" id="pengedar1">
-                            <li><a href="#templat-sms-pendaftaran-pengedar">Tetapan Templat SMS Pendaftaran</a></li>
-                            <li><a href="#templat-sms-pendaftaran-admin-pengedar">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
-                            <li><a href="#templat-sms-pengaktifan-akaun-pengedar">Tetapan Templat SMS Pengaktifan</a></li>
-                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-pengedar">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
-                            <li><a href="#templat-sms-ucapan-hari-lahir-pengedar">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                            <li><a href="#templat-sms-pendaftaran-pengedar" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-pengedar" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-pengaktifan-akaun-pengedar" id="subtopic">Tetapan Templat SMS Pengaktifan</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-pengedar" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-pengedar" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
                         </ul>
                     </li>
                         </ul>
@@ -178,33 +220,33 @@
                     <li>
                         <a href="#kurier" data-toggle="collapse" aria-expanded="false">2.5 Tetapan Penghantar<br>/ Kurier</a>
                         <ul class="collapse list-unstyled" id="kurier">
-                            <li><a href="#tambah-kurier">2.5.1 Tambah Kurier</a></li>
-                            <li><a href="#kemaskini-padam-kurier">2.5.2 Kemaskini / Padam Kurier</a></li>
+                            <li><a href="#tambah-kurier" id="subtopic">2.5.1 Tambah Kurier</a></li>
+                            <li><a href="#kemaskini-padam-kurier" id="subtopic">2.5.2 Kemaskini / Padam Kurier</a></li>
                         </ul>
                     </li>
                     <li>
                         <a href="#label" data-toggle="collapse" aria-expanded="false">2.6 Label Penghantaran</a>
                         <ul class="collapse list-unstyled" id="label">
-                            <li><a href="#tetapan-saiz-cetakan-kertas-khas">2.6.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a></li>
-                            <li><a href="#isi-maklumat-anda-dalam-borang-pos-laju">2.6.2 Isi Maklumat Anda kedalam Borang Pos Laju</a></li>
-                            <li><a href="#cara-cetak-label-penghantaran-pelanggan">2.6.3 Cara Cetak Label Penghantaran Pelanggan</a></li>
+                            <li><a href="#tetapan-saiz-cetakan-kertas-khas" id="subtopic">2.6.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a></li>
+                            <li><a href="#isi-maklumat-anda-dalam-borang-pos-laju" id="subtopic">2.6.2 Isi Maklumat Anda kedalam Borang Pos Laju</a></li>
+                            <li><a href="#cara-cetak-label-penghantaran-pelanggan" id="subtopic">2.6.3 Cara Cetak Label Penghantaran Pelanggan</a></li>
                         </ul>
                     </li>
                      <li>
                         <a href="#pihak-ketiga" data-toggle="collapse" aria-expanded="false">2.7 Integrasi Pihak Ketiga</a>
                         <ul class="collapse list-unstyled" id="pihak-ketiga">
-                            <li><a href="#easyparcel">2.7.1 EasyParcel</a></li>
-                            <li><a href="#myparcelasia">2.7.2 MyParcelAsia</a></li>
+                            <li><a href="#easyparcel" id="subtopic">2.7.1 EasyParcel</a></li>
+                            <li><a href="#myparcelasia" id="subtopic">2.7.2 MyParcelAsia</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="#senarai-hitam-id-ejen">2.8 Senarai Hitam ID Ejen</a>
+                        <a href="#senarai-hitam-id-ejen" id="subtopic">2.8 Senarai Hitam ID Ejen</a>
                     </li>
                     <li>
-                        <a href="#profil-akaun">2.9 Profil Akaun</a>
+                        <a href="#profil-akaun" id="subtopic">2.9 Profil Akaun</a>
                     </li>
                     <li>
-                        <a href="#tukar-kata-laluan">2.10 Tukar Kata Laluan</a>
+                        <a href="#tukar-kata-laluan" id="subtopic">2.10 Tukar Kata Laluan</a>
                     </li>
                 </ul>
             </nav>
@@ -615,6 +657,15 @@
     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/Topik 2/2-billplz_1.jpg" data-target="#image-gallery">
     <img class="img-responsive" src="img/Topik 2/2-billplz_1.jpg" alt="Another alt text">
     </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-paydibs" class="subtopic col-md-12">
+    <h4><strong>2.2.6 Penetapan Akaun Paydibs</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun Paydibs</div>
+      <div class="panel-body">
+      
       </div>
     </div>
 </div>
@@ -4276,13 +4327,14 @@
 </div>
 </div>
 
-         <button onclick="topFunction()" id="myBtn" title="Go to top"><span class="glyphicon glyphicon-arrow-up"></span></button>
+        <a href="#0" class="cd-top js-cd-top">Top</a>
 
         <div class="overlay"></div>
 
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
         <!-- Bootstrap Js CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -4295,7 +4347,7 @@
                     theme: "minimal"
                 });
 
-                $('#dismiss, .overlay').on('click', function () {
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
                     $('#sidebar').removeClass('active');
                     $('.overlay').fadeOut();
                 });
@@ -4373,24 +4425,5 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();   
 });
 </script>
-<script>
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function() {scrollFunction()};
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                document.getElementById("myBtn").style.display = "block";
-            } else {
-                document.getElementById("myBtn").style.display = "none";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-        }
-
-        </script>
     </body>
 </html>
