@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 8 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+        
+        .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 8 : Pengurusan Jualan</p>
+                    <li>
+                        <a href="#jualan" data-toggle="collapse" aria-expanded="false">8.1 Memahami Jadual<br> Senarai Jualan</a>
+                        <ul class="collapse list-unstyled" id="jualan">
+                            <li><a href="#penerangan-fungsi-paparan" id="subtopic">8.1.1 Penerangan Fungsi Paparan</a></li>
+                            <li><a href="#penerangan-kolum-jadual" id="subtopic">8.1.2 Penerangan Kolum Jadual</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                             <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li class="active"><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li class="active"><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="penerangan-fungsi-paparan" class="subtopic col-md-12">
+    <h2>Topik 8 : Pengurusan Jualan</h2><hr><br>
+    <h4><strong>8.1.1 Penerangan Fungsi Paparan</strong> Lokasi ( Jualan )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p><h3>Paparan</h3>
+        <strong>Fungsi paparan adalah untuk menapis senarai jualan mengikut status jualan.</strong><br><br>
+
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-senarai-papar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-senarai-papar.jpg" alt="Another alt text">
+            </a>
+
+        <strong>Langkah untuk menapis jualan</strong>
+        1. Tekan dropdown pilihan tapisan paparan. <strong style="color: red">(kotak merah)</strong><br><br>
+
+        2. Pilih status jualan yang ingin dipaparkan. Antara jenis status paparan yang ada adalah:<br><br>
+        i. Semua jualan<br>
+        ii. Jualan yang telah disahkan<br>
+        iii. Jualan yang belum disahkan<br>
+        iv. Jualan yang telah dibatalkan<br>
+        v. Jualan yang telah dibuat penghantaran<br>
+        vi. Jualan yang belum dibuat penghantaran<br>
+        vii. Komisyen yang telah dibayar<br>
+        viii. Komisyen yang telah disahkan<br>
+        ix. Komisyen yang belum disahkan<br><br>
+
+        Setelah pilihan dibuat, senarai akan disusun (refresh) kembali mengikut kepada pilihan anda.</p><br>
+
+        <h3>Tapisan / Carian</h3>
+        <p><strong>Fungsi tapisan adalah untuk menapis senarai jualan dengan menggunakan kata kunci. Dalam kata lain, fungsi tapisan adalah juga fungsi carian. Terdapat dua faktor utama dalam fungsi carian ini, iaitu kategori tapisan dan kata kunci tapisan.</strong><br><br>
+ 
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-senarai-tapis.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-senarai-tapis.jpg" alt="Another alt text">
+            </a>
+
+        <strong>Langkah untuk menapis jualan</strong>
+        1. Pilih kategori tapisan menggunakan menu pilihan <strong style="color: red">(kotak merah)</strong> seperti di bawah.<br>
+        2. Isi kata kunci carian/tapisan dalam kotak input <strong style="color: green">(kotak hijau)</strong><br>
+        3. Tekan "ENTER" atau tekan butang tapisan.</p>
+
+      </div>
+    </div>
+</div>
+<div id="penerangan-kolum-jadual" class="subtopic col-md-12">
+    <h4><strong>8.1.2 Penerangan Kolum Jadual</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+      <h3>Maklumat kolum</h3>
+        1. <strong>Indeks</strong><br><br>
+        - Kolum ini berfungsi untuk mengindekskan (membilang) senarai rekod yang dipaparkan.<br> 
+        - Kolum ini juga mempunyai checkbox untuk menyenangkan proses pengurusan rekod secara pukal.
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-indeks-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-indeks-kolum.jpg" alt="Another alt text">
+        </a>
+        2. <strong>Pelanggan</strong><br><br>
+        - Kolum ini menyenaraikan maklumat pelanggan seperti:<br>
+        i- Nama<br>
+        ii- Emel<br>
+        iii- No. Telefon<br> 
+        iv- Alamat<br>
+        v- Maklumat Tambahan - (maklumat tambahan boleh ditambah kepada borang semasa proses pembinaan borang)
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-pelanggan-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-pelanggan-kolum.jpg" alt="Another alt text">
+        </a>
+        3. <strong>Pembelian</strong><br><br> 
+        - Kolum ini menyenaraikan maklumat pembelian seperti:<br>
+        i- Nombor Invois<br>
+        ii- Kuantiti<br>
+        iii- Jumlah Nilai<br>
+        iv- Senarai Pembelian<br>
+        v- Senarai Peserta<br>
+        vi- Fail Invois/Resit
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-beli-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-beli-kolum.jpg" alt="Another alt text">
+        </a>
+        4.<strong>Pembayaran</strong><br><br>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-bayar-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-bayar-kolum.jpg" alt="Another alt text">
+        </a> 
+        - Kolum ini menyenaraikan maklumat pembayaran seperti:<br>
+        i- <strong>Medium Pembayaran</strong> 
+        a- Medium pembayaran SenangPay / BillPlz / MOLPay / iPay88 / lain-lain diwakili ikon <strong>Monitor Komputer</strong><br>
+        b- Medium pembayaran Paypal diwakili ikon <strong>PayPal</strong><br>
+        c- Manakala pembayaran terus kepada bank adalah diwakili oleh ikon <strong>Bank</strong><br> 
+        -  Terdapat dua kaedah pemindahan dana iaitu melalui <strong>Perbankan Internet</strong> atau melalui <strong>Mesin Deposit Tunai</strong>.<br><br>
+
+        ii- <strong>Masa Pembayaran</strong><br><br> 
+        - Diwakili dalam format jam/minit/saat dan waktu hari (AM/PM).<br> 
+        - Contoh : 12:20:43 AM<br><br>
+
+        iii- <strong>Tarikh Pembayaran</strong><br><br>
+        - Diwakili dalam format hari-bulan-tahun.<br> 
+        - Contoh : 27-05-2015<br><br>
+
+        iv- <strong>Log/Bukti Pembayaran</strong><br> 
+        - Bagi penggunaan medium pembayaran atas talian online seperti SenangPay/iPay88/MOLPay/perbankan internet, rekod log pembayaran disimpan dalam pautan di tepi <strong style="color: blue">kotak biru</strong><br> 
+        - Bagi penggunaan mesin pendeposit tunai, pelanggan diminta untuk memuat naik bukti pemindahan dana iaitu resit. Resit ini dipaparkan dalam pautan di tepi <strong style="color: purple">kotak ungu</strong><br><br>
+
+        5. <strong>Jualan</strong><br><br>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-jual-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-jual-kolum.jpg" alt="Another alt text">
+        </a>
+        - Kolum ini menyenaraikan maklumat jualan seperti:<br>
+         i- Jenis Jualan (Produk/Acara)<br>
+         ii- Cara Jualan<br><br>
+        5 kategori jualan utama iaitu :<br><br>
+        1.Direct - iaitu terus.<br>
+        2.Affiliate - Melalui link yang dipromosikan oleh ejen affiliate.<br>
+        3.Staf<br>
+        4.Dropship<br>
+        5.Pengedar<br><br>
+        Maklumat affiliate yang dipaparkan:<br> 
+         a- ID Ejen <strong style="color: yellow">(kotak kuning)</strong><br>
+         b- Nilai Komisyen <strong style="color: green">(kotak hijau)</strong><br>
+         c- Status Komisyen Ejen <strong style="color: blue">(kotak biru)</strong><br>
+         d- Pengesahan Komisyen <strong style="color: red">(kotak merah)</strong><br><br>
+
+        6. <strong>Info</strong><br><br>
+        - Kolum ini menyenaraikan maklumat rekod invois / pengisian borang seperti:<br> 
+         i- Masa Jualan<br>
+         ii- Tarikh Jualan<br>
+         iii- Alamat IP<br>
+         iv- Bilangan Follow Up<br>
+         v- URL Status - URL Status adalah URL yang diberikan kepada pelanggan untuk track status pembelian pelanggan. Sila berikan url ini sekiranya pelanggan kehilangan url tracking pembeliannya.
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-info-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-info-kolum.jpg" alt="Another alt text">
+        </a>
+
+        7. <strong>Status Jualan</strong><br><br>
+        Anda perlu menekan butang pengesahan jualan di kolum seterusnya untuk mengubah status jualan Status Jualan diwakili oleh:<br>
+        <strong style="color: red">MENUNGGU</strong><br>
+        <strong style="color: green">DISAHKAN</strong><br>
+        <strong style="color: orange">DIBATALKAN</strong><br><br>
+
+        Tambahan status untuk Easy Parcel dan My Parcel Asia
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-status-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-status-kolum.jpg" alt="Another alt text">
+        </a>
+
+
+        8. <strong>Tindakan</strong><br><br>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-tindakan-kolum.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-tindakan-kolum.jpg" alt="Another alt text">
+        </a>
+        Antara tindakan pengurusan rekod jualan yang ada adalah:<br>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 8/8-butang.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 8/8-butang.jpg" alt="Another alt text">
+        </a>
+         1.<strong>Kemaskini</strong> Kemaskini Rekod Jualan<br> 
+        - Anda akan dibawa kepada halaman pengemaskinian rekod.<br><br> 
+         2. Sahkan Jualan<br> 
+        - <strong>Sah Jualan</strong> Status Jualan akan berubah kepada <strong style="color: green">DISAHKAN</strong><br><br> 
+         3. Batalkan Jualan<br> 
+        - <strong>Batal Jualan</strong> Status Jualan akan berubah kepada <strong>DIBATALKAN</strong><br><br>
+         4. Pulihkan Jualan<br>
+        - <strong>Pulih Jualan</strong> Status Jualan akan kembali kepada <strong style="color: orange">MENUNGGU</strong><br><br>
+         5. Follow UP<br> 
+        - Butang ini akan menghantar notifikasi untuk membuat pembayaran kepada pelanggan.<br><br>
+         6. Notifikasi<br> 
+        - Butang ini akan menghantar notifikasi bahawa jualan telah disahkan kepada pelanggan.<br><br> 
+         7. Jana Label<br> 
+        - Butang ini akan menjana label penghantaran mengikut jenis borang kurier yang ada.<br>  
+        - Maklumat label boleh dikemaskini di bahagian Tetapan > Label Penghantaran.<br><br>
+         8. <strong>Maklumat Kurier</strong> Kemaskini Maklumat Penghantaran<br> 
+        - Sila isikan maklumat penghataran seperti Nombor Tracking kurier/parcel.<br><br>
+         9. Easy Parcel & My Parcel Asia<br>
+         -Anda boleh menggunakan khidmat kurier Easy Parcel dan My Parcel Asia dengan klik butang <strong>EasyParcel</strong> atau <strong>MyParcelAsia</strong>
+      </div>
+    </div>
+</div>
+
+ 
+   
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>

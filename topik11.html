@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 11 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+        
+        .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 11 : Jana Laporan ( Jualan + Peserta )</p>
+                    <li>
+                        <a href="#jana-laporan1" data-toggle="collapse" aria-expanded="false">11.1 : Laporan Jualan dan Peserta</a>
+                        <ul class="collapse list-unstyled" id="jana-laporan1">
+                           <li><a href="#pilih-medan-kategori-status" id="subtopic">11.1.1 Pilih Medan + Kategori Status yang ingin dipaparkan</a></li>
+                          <li><a href="#tapis-maklumat-yang-ingin-dipaparkan" id="subtopic">11.1.2 Tapis maklumat yang ingin dipaparkan</a></li>
+                           <li><a href="#ubah-rekabentuk" id="subtopic">11.1.3 Ubah Rekabentuk</a></li>
+                           <li><a href="#jana-laporan" id="subtopic">11.1.4 Jana Laporan</a></li>
+                        </ul>
+                    </li>  
+                    <li>
+                       <a href="#laporan-ltv-pelanggan" id="subtopic">11.2 Laporan LTV Pelanggan (Lifetime Value)</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                             <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li class="active"><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li class="active"><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="pilih-medan-kategori-status" class="subtopic col-md-12">
+    <h2>Topik 11 : Jana Laporan ( Jualan + Peserta )</h2><hr><br>
+     <div class="panel panel-info">
+      <div class="panel-heading">INFO : Kegunaan Jana Laporan</div>
+      <div class="panel-body">
+       <p>Fungsi utama Jana Laporan adalah untuk menjana laporan penuh tentang maklumat jualan/peserta anda. Secara dasarnya, Jana Laporan hanya akan menjana laporan berdasarkan maklumat dari senarai rekod data, tetapi kami benarkan anda untuk memilih data apa yang ingin dimasukkan kedalam laporan anda. Dalam kata lain, anda boleh memilih kolum mana untuk dimasukkan kedalam laporan. Anda boleh akses halaman jana laporan ini melalui menu dropdown <strong>Analisis</strong> dari navigation bar di atas.</p>
+      </div>
+    </div>
+    <h4><strong>11.1.1  Pilih Medan + Kategori Status yang ingin dipaparkan</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Pilih Medan + Kategori Status yang ingin dipaparkan</div>
+      <div class="panel-body">
+       <p>Sila pilih medan yang ingin dipaparkan didalam laporan menggunakan checkbox yang disediakan.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-medan-laporan.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-medan-laporan.jpg" alt="Another alt text">
+        </a>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-medan-peserta.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-medan-peserta.jpg" alt="Another alt text">
+        </a>
+      </div>
+    </div>
+</div>
+<div id="tapis-maklumat-yang-ingin-dipaparkan" class="subtopic col-md-12">
+    <h4><strong>11.1.2 Tapis maklumat yang ingin dipaparkan</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tapis maklumat yang ingin dipaparkan</div>
+      <div class="panel-body">
+        <p><strong>Sila gunakan kotak hijau untuk menapis rekod yang ingin dimasukkan kedalam laporan anda.<br>
+        Sila pilih kategori dan masukkan kata kunci yang ingin digunakan.<br>
+        Sila pilih julat tarikh yang ingin digunakan dalam penjanaan maklumat.</strong></p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-tapis-laporan.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-tapis-laporan.jpg" alt="Another alt text">
+        </a>
+      </div>
+    </div>
+      </div>
+<div id="ubah-rekabentuk" class="subtopic col-md-12">
+    <h4><strong>11.1.3 Ubah Rekabentuk</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>Sila pilih rekabentuk yang ingin digunakan didalam laporan menggunakan kotak input yang disediakan.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-ubah-bentuk.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-ubah-bentuk.jpg" alt="Another alt text">
+        </a>
+      </div>
+    </div>
+</div>
+<div id="jana-laporan" class="subtopic col-md-12">
+    <h4><strong>11.1.4 Jana Laporan</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Jana Laporan</div>
+      <div class="panel-body">
+        <p><strong>1. Sila tekan butang <strong style="color: blue">Jana Laporan Jualan</strong> untuk menjana laporan.</strong><br> 
+        - Butang ini juga akan menjana preview kepada laporan yang bakal dijana. Sila rujuk preview di bawah sebelum memuat turun laporan demi menjamin ketepatan.</p>
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-jana-laporan1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-jana-laporan1.jpg" alt="Another alt text">
+        </a>
+        <p>2. Semak preview untuk memastikan laporan yang dijana adalah menepati keperluan anda.<br><br>
+
+        3. MUAT TURUN<br>
+        i- Muat turun sebagai PDF :<br> 
+        ii- Muat turun sebagai fail Excel : 
+        </p>
+      </div>
+    </div>
+</div>
+<div id="laporan-ltv-pelanggan" class="subtopic col-md-12">
+    <h4><strong>11.2 Laporan LTV Pelanggan (Lifetime Value)</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Laporan LTV (Menu : Analisis > Laporan LTV Pelanggan)</div>
+      <div class="panel-body">
+        <p><strong>Apa itu Laporan LTV Pelanggan?</strong></p>
+        <p><li>Laporan LTV atau Lifetime Value Report merujuk kepada laporan yang mewakili 
+        jumlah keuntungan bersih yang sesebuah syarikat dapat daripada pelanggan tertentu.</li><br> 
+        
+        <li>CLV adalah unjuran untuk menganggarkan nilai wang pelanggan kepada perniagaan selepas pemfaktoran dalam nilai hubungan dengan pelanggan dari semasa ke semasa. CLV adalah metrik penting untuk menentukan berapa banyak wang yang ingin dibelanjakan oleh syarikat untuk memperoleh pelanggan baru dan berapa banyak perniagaan berulang yang dapat dijangkakan dari pengguna tertentu.</li><br> 
+
+        <li>Melalui laporan LTV pelanggan juga, pemilik bisnes boleh kenal pasti pelanggan yang kerap membeli dengan mereka dengan lebih mudah.</li><br></p>
+
+        <p>Cara untuk menggunakan Laporan LTV Pelanggan</p>
+        <p>1. Sila pilih medan yang ingin dipaparkan didalam laporan menggunakan checkbox yang disediakan.</p>
+        <p><strong>Nota tambahan : Identiti Unik Berdasarkan adalah untuk menyusun data pelanggan mengikut email atau nombor telefon pelanggan</strong></p>
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-filter-box-laporan-ltv.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-filter-box-laporan-ltv.jpg" alt="Another alt text"></a>
+        <p>2. a) Tapis maklumat yang ingin dipaparkan di dalam laporan tersebut.<br>
+        <strong>Nota Tambahan : </strong><br><br>
+        <strong>Sila gunakan kotak hijau untuk menapis rekod yang ingin dimasukkan kedalam laporan anda.</strong><br>
+        <strong>Sila pilih kategori dan masukkan kata kunci yang ingin digunakan.</strong><br>
+        <strong>Sila pilih julat tarikh yang ingin digunakan dalam penjanaan maklumat.</strong><br>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-tapis-laporan.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-tapis-laporan.jpg" alt="Another alt text">
+        </a>
+
+        b) Sila pilih rekabentuk yang ingin digunakan didalam laporan menggunakan kotak input yang disediakan.
+
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-ubah-bentuk.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-ubah-bentuk.jpg" alt="Another alt text">
+        </a>
+
+       <p>3. Sila tekan butang <strong style="color: blue">Jana Laporan Jualan</strong> untuk menjana laporan.<br> 
+        - Butang ini juga akan menjana preview kepada laporan yang bakal dijana. Sila rujuk preview di bawah sebelum memuat turun laporan demi menjamin ketepatan.</p>
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 11/11-jana-laporan-ltv-pelanggan.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 11/11-jana-laporan-ltv-pelanggan.jpg" alt="Another alt text">
+        </a>
+        <p>4. Semak preview untuk memastikan laporan yang dijana adalah menepati keperluan anda.<br><br>
+
+        5. MUAT TURUN<br>
+        i- Muat turun sebagai PDF :<br> 
+        ii- Muat turun sebagai fail Excel : 
+        </p>
+        </p>
+      </div>
+    </div>
+</div>
+
+ 
+   
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+        
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>

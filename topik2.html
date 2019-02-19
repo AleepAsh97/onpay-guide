@@ -1,0 +1,4455 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 2 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+           
+           .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 2 : Tetapan (Akaun + Sistem + Templat + Pembayaran)</p>
+                    <li>
+                        <a href="#tetapansistem" data-toggle="collapse" aria-expanded="false">2.1 Tetapan Sistem</a>
+                        <ul class="collapse list-unstyled" id="tetapansistem">
+                            <li><a href="#perniagaan" id="subtopic">2.1.1 Perniagaan</a></li>
+                            <li><a href="#staf" id="subtopic">2.1.2 Staf</a></li>
+                            <li><a href="#affiliate" id="subtopic">2.1.3 Affiliate</a></li>
+                            <li><a href="#dropship" id="subtopic">2.1.4 Dropship</a></li>
+                            <li><a href="#pengedar" id="subtopic">2.1.5 Pengedar</a></li>
+                            <li><a href="#kaedah-pembayaran" id="subtopic">2.1.6 Kaedah Pembayaran</a></li>
+                            <li><a href="#emel" id="subtopic">2.1.7 Emel</a></li>
+                            <li><a href="#sms" id="subtopic">2.1.8 SMS</a></li>
+                            <li><a href="#invois" id="subtopic">2.1.9 Invois</a></li>
+                            <li><a href="#cukai" id="subtopic">2.1.10 Cukai</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#kaedah" data-toggle="collapse" aria-expanded="false">2.2 Kaedah Pembayaran</a>
+                        <ul class="collapse list-unstyled" id="kaedah">
+                            <li><a href="#penetapan-akaun-bank" id="subtopic">2.2.1 Penetapan Akaun Bank</a></li>
+                            <li><a href="#penetapan-akaun-paypal" id="subtopic">2.2.2 Penetapan Akaun PayPal</a></li>
+                            <li><a href="#penetapan-akaun-ipay88" id="subtopic">2.2.3 Penetapan Akaun iPay88</a></li>
+                            <li><a href="#penetapan-akaun-molpay" id="subtopic">2.2.4 Penetapan Akaun MOLPay</a></li>
+                            <li><a href="#penetapan-akaun-senangpay" id="subtopic">2.2.5 Penetapan Akaun senangPay</a></li>
+                            <li><a href="#penetapan-akaun-billplz" id="subtopic">2.2.6 Penetapan Akaun BillPlz</a></li>
+                            <li><a href="#penetapan-akaun-paydibs" id="subtopic">2.2.7 Penetapan Akaun Paydibs</a></li>
+                             <li><a href="#penetapan-akaun-2c2p" id="subtopic">2.2.8 Penetapan Akaun 2C2P</a></li>
+                            <li><a href="#penetapan-fungsi-cek" id="subtopic">2.2.9 Penetapan Fungsi Cek</a></li>
+                            <li><a href="#penetapan-fungsi-wang-pos" id="subtopic">2.2.10 Penetapan Fungsi Wang Pos</a></li>
+                            <li><a href="#penetapan-fungsi-tunai" id="subtopic">2.2.11 Penetapan Fungsi Tunai</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#emel" data-toggle="collapse" aria-expanded="false">2.3 Tetapan Templat Emel</a>
+                        <ul class="collapse list-unstyled" id="emel">
+                    <li>
+                        <a href="#pelanggan" data-toggle="collapse" aria-expanded="false">Pelanggan</a>
+                        <ul class="collapse list-unstyled" id="pelanggan">
+                            <li><a href="#templat-emel-pendaftaran-pelanggan" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-pelanggan" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-pelanggan" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-pelanggan" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#affiliate" data-toggle="collapse" aria-expanded="false">Affiliate</a>
+                        <ul class="collapse list-unstyled" id="affiliate">
+                            <li><a href="#templat-emel-pendaftaran-affiliate" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-affiliate" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-affiliate" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-pengesahan-komisyen-affiliate" id="subtopic">Tetapan Templat Emel Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-emel-pembayaran-komisyen-affiliate" id="subtopic">Tetapan Templat Emel Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-affiliate" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#dropship" data-toggle="collapse" aria-expanded="false">Dropship</a>
+                        <ul class="collapse list-unstyled" id="dropship">
+                            <li><a href="#templat-emel-pendaftaran-dropship" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-dropship" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-dropship" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-pengesahan-komisyen-dropship" id="subtopic">Tetapan Templat Emel Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-emel-pembayaran-komisyen-dropship" id="subtopic">Tetapan Templat Emel Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-dropship" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pengedar" data-toggle="collapse" aria-expanded="false">Pengedar</a>
+                        <ul class="collapse list-unstyled" id="pengedar">
+                            <li><a href="#templat-emel-pendaftaran-pengedar" id="subtopic">Tetapan Templat Emel Pendaftaran</a></li>
+                            <li><a href="#templat-emel-pendaftaran-admin-pengedar" id="subtopic">Tetapan Templat Emel Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-emel-pengaktifan-akaun-pengedar" id="subtopic">Tetapan Templat Emel Pengaktifan</a></li>
+                            <li><a href="#templat-emel-tetapan-semula-kata-laluan-pengedar" id="subtopic">Tetapan Templat Emel Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-emel-ucapan-hari-lahir-pengedar" id="subtopic">Tetapan Templat Emel Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#sms" data-toggle="collapse" aria-expanded="false">2.4 Tetapan Templat SMS</a>
+                        <ul class="collapse list-unstyled" id="sms">
+                            <li>
+                        <a href="#pelanggan1" data-toggle="collapse" aria-expanded="false">Pelanggan</a>
+                        <ul class="collapse list-unstyled" id="pelanggan1">
+                            <li><a href="#templat-sms-pendaftaran-pelanggan" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-pelanggan" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-pelanggan" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-pelanggan" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#affiliate1" data-toggle="collapse" aria-expanded="false">Affiliate</a>
+                        <ul class="collapse list-unstyled" id="affiliate1">
+                            <li><a href="#templat-sms-pendaftaran-affiliate" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-affiliate" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-affiliate" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-pengesahan-komisyen-affiliate" id="subtopic">Tetapan Templat SMS Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-sms-pembayaran-komisyen-affiliate" id="subtopic">Tetapan Templat SMS Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-affiliate" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#dropship1" data-toggle="collapse" aria-expanded="false">Dropship</a>
+                        <ul class="collapse list-unstyled" id="dropship1">
+                            <li><a href="#templat-sms-pendaftaran-dropship" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-dropship" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-dropship" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-pengesahan-komisyen-dropship" id="subtopic">Tetapan Templat SMS Pengesahan Komisyen</a></li>
+                            <li><a href="#templat-sms-pembayaran-komisyen-dropship" id="subtopic">Tetapan Templat SMS Pembayaran Komisyen</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-dropship" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pengedar1" data-toggle="collapse" aria-expanded="false">Pengedar</a>
+                        <ul class="collapse list-unstyled" id="pengedar1">
+                            <li><a href="#templat-sms-pendaftaran-pengedar" id="subtopic">Tetapan Templat SMS Pendaftaran</a></li>
+                            <li><a href="#templat-sms-pendaftaran-admin-pengedar" id="subtopic">Tetapan Templat SMS Pendaftaran (Admin)</a></li>
+                            <li><a href="#templat-sms-pengaktifan-akaun-pengedar" id="subtopic">Tetapan Templat SMS Pengaktifan</a></li>
+                            <li><a href="#templat-sms-tetapan-semula-kata-laluan-pengedar" id="subtopic">Tetapan Templat SMS Tetapan Semula Kata Laluan</a></li>
+                            <li><a href="#templat-sms-ucapan-hari-lahir-pengedar" id="subtopic">Tetapan Templat SMS Ucapan Hari Lahir</a></li>
+                        </ul>
+                    </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#kurier" data-toggle="collapse" aria-expanded="false">2.5 Tetapan Penghantar<br>/ Kurier</a>
+                        <ul class="collapse list-unstyled" id="kurier">
+                            <li><a href="#tambah-kurier" id="subtopic">2.5.1 Tambah Kurier</a></li>
+                            <li><a href="#kemaskini-padam-kurier" id="subtopic">2.5.2 Kemaskini / Padam Kurier</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#label" data-toggle="collapse" aria-expanded="false">2.6 Label Penghantaran</a>
+                        <ul class="collapse list-unstyled" id="label">
+                            <li><a href="#tetapan-saiz-cetakan-kertas-khas" id="subtopic">2.6.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</a></li>
+                            <li><a href="#isi-maklumat-anda-dalam-borang-pos-laju" id="subtopic">2.6.2 Isi Maklumat Anda kedalam Borang Pos Laju</a></li>
+                            <li><a href="#cara-cetak-label-penghantaran-pelanggan" id="subtopic">2.6.3 Cara Cetak Label Penghantaran Pelanggan</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#pihak-ketiga" data-toggle="collapse" aria-expanded="false">2.7 Integrasi Pihak Ketiga</a>
+                        <ul class="collapse list-unstyled" id="pihak-ketiga">
+                            <li><a href="#easyparcel" id="subtopic">2.7.1 EasyParcel</a></li>
+                            <li><a href="#myparcelasia" id="subtopic">2.7.2 MyParcelAsia</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#senarai-hitam-id-ejen" id="subtopic">2.8 Senarai Hitam ID Ejen</a>
+                    </li>
+                    <li>
+                        <a href="#profil-akaun" id="subtopic">2.9 Profil Akaun</a>
+                    </li>
+                    <li>
+                        <a href="#tukar-kata-laluan" id="subtopic">2.10 Tukar Kata Laluan</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                            <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li class="active"><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li class="active"><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="perniagaan" class="subtopic col-md-12">
+    <h2>Topik 2 : Tetapan (Akaun + Sistem + Templat + Pembayaran)</h2><hr><br>
+    <h4><strong>2.1.1 Perniagaan</strong> Lokasi(Tetapan > Sistem)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p><strong>a) Isikan maklumat anda.</strong><br> 
+        - Item bertanda * adalah wajib diisi.<br>
+        - Isikan kesemua bahagian ini dengan lengkap. Ini bertujuan untuk digunakan di dalam template sistem (ex: emel, invois etc).</p>
+
+        <p><strong>b) Laman Web Perniagaan</strong><br> 
+        - Isi sekiranya anda mempunyai laman web mempromosikan / mempamerkan produk anda seperti blog atau lain.</p>
+
+        <p><strong>c) Matawang</strong><br> 
+        - Ringgit Malaysia : RM</p>
+
+        <p><strong>d) Maklumat Tambahan</strong><br> 
+        - Tandakan kotak "Paparkan maklumat utama di halaman utama" demi memaparkan maklumat tambahan di halaman utama subdomain anda.</p>
+
+        <p><strong>Simpan maklumat.</strong><br> 
+        - Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Perniagaan"  data-image="img/Topik 2/2-ruangan-perniagaan.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-ruangan-perniagaan.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="staf" class="subtopic col-md-12">
+    <h4><strong>2.1.2 Staf</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+        <div class="panel panel-primary">
+      <div class="panel-heading">Tandakan tick jika anda ingin mengaktifkan fungsi staf.</div>
+      <div class="panel-body">
+      <p>Staf anda boleh melihat carta Top 10 Staf dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Staf" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+      <p>Formula Nombor Invois Komisyen<br>
+        Formula ini akan digunakan untuk menentukan format nombor invois bagi komisyen ejen anda. Anda boleh menentukan formatnya menggunakan kod pemboleh ubah yang disediakan.<br><br>
+        Contohnya:<br><br>
+        Formula:<br> 
+        @tahun_penuh@bulan@hari-@nombor_komisyen<br><br>
+        Dimana:<br><br>
+        @tahun_pendek = 16<br> 
+        @tahun_penuh = 2016<br>
+        @bulan = 03<br>
+        @hari = 26<br>
+        @nombor_komisyen = 139<br><br> 
+        akan menghasilkan:
+        20160326-139</p>
+        <p><strong>Simpan maklumat.</strong><br> 
+        - Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Staf"  data-image="img/Topik 2/2-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-staf.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="affiliate" class="subtopic col-md-12">
+    <h4><strong>2.1.3 Affiliate</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Maklumat Konsep Komisen</div>
+      <div class="panel-body">
+      <p>Secara dasarnya, website akan menyimpan cookies.<br><br>
+      Untuk lebih memahami konsep pembayaran "Pertama" / "Terkini",<br><br>
+
+        1) Ejen A mempromosikan link affiliate-nya kepada seorang pelanggan bernama Abu, namun Abu membatalkan hasratnya untuk membeli.<br>
+        Disini, Ejen A akan disimpan di dalam senarai cookies sebagai penama komisen "pertama".<br><br> 
+
+        2) Pada masa yang lain pula, Ejen B juga mempromosikan link affiliate-nya kepada pelanggan yang sama, iaitu Abu, tetapi kali ini, Ejen B berjaya CLOSE SALE. 
+        Ejen B juga akan disimpan di dalam senarai cookies sebagai penama terakhir / "terkini".
+        Jadi, Pilihan Konsep Komisyen:<br><br> 
+        <strong>Pertama</strong> : Ejen A - dibayar komisyen    (kerana menimbulkan kesedaran kepada pelanggan)<br><br>
+        <strong>Terkini</strong> : Ejen B - dibayar komisyen (kerana berjaya CLOSE SALE)<br><br>
+        <strong>Anda bebas untuk memilih konsep komisyen yang anda gemari.</strong></p>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Maklumat Hayat Cookie</div>
+      <div class="panel-body">
+      <p>Cookies yang disimpan pelayar web seperti Chrome, Firefox dan sebagainya mempunyai tarikh luput. Anda boleh menetapkan tempoh aktif cookie tersebut.<br><br>
+      Selain itu, Cookies juga boleh dipadamkan melalui cara manual, ataupun melalui penggunaan software pihak ketiga seperti software pembersih komputer "CCleaner".</p>
+      </div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">Terma dan Syarat</div>
+      <div class="panel-body">
+      <p>Tujuan terma & syarat sebagai penetapan dan pematuhan kepada undang-undang oleh semua ejen di saat pengguna mendaftar sebagai ejen. Terma dan syarat menyelamatkan penganjur dari terjebak dari tuntutan diluar jangkaan. Terma dan syarat juga boleh digunakan untuk meletakkan batasan terhadap khidmat yang dianjurkan. </p>
+       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Affiliate"  data-image="img/Topik 2/2-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-affiliate.jpg" alt="Another alt text">
+            </a>
+         <p><strong>Simpan maklumat.</strong><br> 
+    - Setelah selesai mengisi maklumat, tekan butang "Simpan Tetapan" di bahagian atas kanan borang.</p>
+      </div>
+    </div>
+   
+</div>
+<div id="dropship" class="subtopic col-md-12">
+    <h4><strong>2.1.4 Dropship</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Dropship</div>
+      <div class="panel-body">
+      <p>Dropship anda boleh melihat carta Top 10 Ejen dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+      </div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">Terma dan Syarat</div>
+      <div class="panel-body">
+      <p>Tujuan terma & syarat sebagai penetapan dan pematuhan kepada undang-undang oleh semua ejen di saat pengguna mendaftar sebagai ejen. Terma dan syarat menyelamatkan penganjur dari terjebak dari tuntutan diluar jangkaan. Terma dan syarat juga boleh digunakan untuk meletakkan batasan terhadap khidmat yang dianjurkan. </p>
+       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Dropship"  data-image="img/Topik 2/2-dropship.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-dropship.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="pengedar" class="subtopic col-md-12">
+    <h4><strong>2.1.5 Pengedar</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Pengedar</div>
+      <div class="panel-body">
+      <p>Pengedar anda boleh melihat carta Top 10 Ejen dengan tick kotak "Papar carta top 10 staf" dan klik paparan di "Julat Data Carta Top 10 Ejen" samada mahukan data secara keseluruhan,tahunan,bulanan atau custom (tetap sendiri tarikh julat data dikumpul)</p>
+      </div>
+    </div>
+    <div class="panel panel-success">
+      <div class="panel-heading">Terma dan Syarat</div>
+      <div class="panel-body">
+      <p>Tujuan terma & syarat sebagai penetapan dan pematuhan kepada undang-undang oleh semua ejen di saat pengguna mendaftar sebagai ejen. Terma dan syarat menyelamatkan penganjur dari terjebak dari tuntutan diluar jangkaan. Terma dan syarat juga boleh digunakan untuk meletakkan batasan terhadap khidmat yang dianjurkan. </p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Pengedar"  data-image="img/Topik 2/2-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-pengedar.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kaedah-pembayaran" class="subtopic col-md-12">
+    <h4><strong>2.1.6 Kaedah Pembayaran</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-success">
+      <div class="panel-heading">Panduan Kaedah Pembayaran</div>
+      <div class="panel-body">
+      <p>- Tick ruangan "Paparkan Logo" jika anda mahu paparkan logo.<br><br>
+         <strong>Kedudukan kaedah pembayaran boleh diubah secara drag and drop dengan memegang pada nombor</strong></p>
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Kaedah Pembayaran"  data-image="img/Topik 2/2-kaedah_pembayaran.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-kaedah_pembayaran.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="emel" class="subtopic col-md-12">
+    <h4><strong>2.1.7 Emel</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Emel</div>
+      <div class="panel-body">
+      <p>1. Anda perlu mengisi ruangan penerima notifikasi dengan emel anda.</p>
+        <p><strong>*** Anda dibenarkan mengisi sebanyak 3 emel sahaja. ***</strong></p>
+        <p>2. Di bahagian notifikasi anda boleh custom notifikasi untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Emel"  data-image="img/Topik 2/2-emel.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-emel.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="sms" class="subtopic col-md-12">
+    <h4><strong>2.1.8 SMS</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan SMS</div>
+      <div class="panel-body">
+      <p>Sebelum anda menggunakan fungsi SMS, pastikan anda mempunyai kredit yang mencukupi untuk menghantar SMS.</p>
+        <p><strong>*** Anda boleh topup kredit anda di menu utama OnPay ***</strong></p>
+        <p>2. Di bahagian notifikasi anda boleh custom notifikasi SMS untuk jualan, pelanggan, affiliate, dropship, pengedar</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan SMS"  data-image="img/Topik 2/2-sms.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-sms.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="invois" class="subtopic col-md-12">
+    <h4><strong>2.1.9 Invois</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Invois</div>
+      <div class="panel-body">
+      <p>1. Tetapkan Pilihan Templat Kepala Invois dan Masukkan Gambar<br>
+      2. Isikan Teks Status Pembayaran<br>
+      3. Tekan Butang Previu untuk paparkan contoh invois</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Invois"  data-image="img/Topik 2/2-invois.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-invois.jpg" alt="Another alt text">
+            </a>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 1"  data-image="img/Topik 2/2-header_invois.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-header_invois.jpg" alt="Another alt text">
+            </a>
+            <p>Langkah 1</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 2"  data-image="img/Topik 2/2-status_invois.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-status_invois.jpg" alt="Another alt text">
+            </a>
+            <p>Langkah 2</p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 3"  data-image="img/Topik 2/2-contoh_invois.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-contoh_invois.jpg" alt="Another alt text">
+            </a>
+            <p>Langkah 3</p>
+      </div>
+    </div>
+</div>
+<div id="cukai" class="subtopic col-md-12">
+    <h4><strong>2.1.10 Cukai</strong> Lokasi ( Tetapan > Sistem )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Invois</div>
+      <div class="panel-body">
+      <p>Ruangan yang bertanda <strong style="color: red;">*</strong> wajib diisi sepenuhnya.</p>
+        <p><strong>** Kadar cukai dalam bentuk peratusan sahaja **</strong></p><br>
+        <p>1. Untuk ruangan Jenis Cukai anda boleh tekan samada Ekslusif atau Inklusif</p>
+        <p>2. Jika anda klik kotak Kos Penghantaran, kos tersebut akan dikira secara automatik di dalam pengiraan cukai</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Cukai"  data-image="img/Topik 2/2-cukai.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-cukai.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-bank" class="subtopic col-md-12">
+    <h4><strong>2.2.1 Penetapan Akaun Bank</strong> Lokasi ( Tetapan > Akaun Bank )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Penetapan Akaun Bank</div>
+      <div class="panel-body">
+      <p>Anda boleh tetapkan Akaun Bank anda di menu <strong>"Tetapan"</strong> kemudian <strong>"Akaun Bank"</strong>.<br><br>
+      1.Sila pilih nama bank anda, diikuti dengan nama akaun anda serta nombor akaun anda<br>
+      2.Setelah selesai, sila tekan butang <strong>"Tambah Akaun Bank"</strong></p>
+      <p>Anda boleh kemaskini maklumat akaun bank anda dengan menekan butang <strong>"Kemaskini"</strong> atau memadam maklumat akaun bank anda dengan menekan butang <strong>"Buang"</strong></p>
+       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Akaun Bank"  data-image="img/Topik 2/2-akaun_bank.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-akaun_bank.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-paypal" class="subtopic col-md-12">
+    <h4><strong>2.2.2 Penetapan Akaun PayPal</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Cara mendapatkan Token Identity Paypal:</div>
+      <div class="panel-body">
+        <p>1. Log Masuk akaun PayPal</p>
+        <p>2. Setelah berjaya akses halaman profil anda, sila tekan butang <strong>"My Selling Tools"</strong></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/Topik 2/2-paypal_profile_navbar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-paypal_profile_navbar.jpg" alt="Another alt text">
+            </a>
+            <p>3. Tekan <strong>"Update"</strong> pada pilihan <strong>"Instant Payment Notification"</strong></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/Topik 2/2-paypal_ipn.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-paypal_ipn.jpg" alt="Another alt text">
+            </a>
+            <p>- Tekan butang "Choose IPN setting" di bahagian paling bawah.<br>
+            - Masukkan URL IPN dari halaman tetapan paypal:</p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/Topik 2/2-paypal_kod_ar_ipn.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-paypal_kod_ar_ipn.jpg" alt="Another alt text">
+            </a>
+            <p>- Save untuk simpan tetapan paypal.</p>
+            <p>4. Tekan <strong>"Update"</strong>  pada pilihan <strong>"Website Preference"</strong></p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/Topik 2/2-paypal_web_preference.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-paypal_web_preference.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Aktifkan "Auto Return"</div>
+      <div class="panel-body">
+      <p>1. Isikan "Return URL": Copy dari halaman tetapan paypal:</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/Topik 2/2-paypal_kod_ar_ipn.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-paypal_kod_ar_ipn.jpg" alt="Another alt text">
+            </a>    
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Aktifkan "Payment Data Transfer". </div>
+      <div class="panel-body">
+      <p>- ubah setting "Encrypted Website Payment" : OFF<br> 
+      - ubah setting "Paypal Account Optional" : ON<br>
+      - ubah setting "Contact Telephone Number" : OFF<br>
+      - ubah setting "Express Checkout" : NO<br><br>
+      5) Save dan copy Kod Token Identiti.<br>
+      - Gunakan kod yang di"copy" kedalam tetapan paypal OnPay.</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun PayPal"  data-image="img/Topik 2/2-cas.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-cas.jpg" alt="Another alt text">
+            </a>
+            <p><a href="https://www.paypal.com/my/webapps/mpp/paypal-fees">Rujuk Cas Transaksi PayPal</a></p>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-ipay88" class="subtopic col-md-12">
+    <h4><strong>2.2.3 Penetapan Akaun iPay88</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>  
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun iPay88 </div>
+      <div class="panel-body">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun iPay88"  data-image="img/Topik 2/2-borang_tetapan_ipay88.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_ipay88.jpg" alt="Another alt text">
+            </a>
+            <p>1. Isikan Kod Pedagang iPay88 dan Kod Kunci Pedagang iPay88 kedalam kotak berkaitan.<br> 
+            2. masukkan caj pengendalian sekiranya diperlukan.</p>
+
+            <p>Saranan Kadar Cas Pengendalian :<br>
+            - Credit Card : 4%<br> 
+            - Interbank-Transfer : 4%</p>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-molpay" class="subtopic col-md-12">
+    <h4><strong>2.2.4 Penetapan Akaun MOLPay</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun MOLPay </div>
+      <div class="panel-body">
+          <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun MOLPay"  data-image="img/Topik 2/2-borang_tetapan_molpay.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_molpay.jpg" alt="Another alt text">
+            </a>
+            <p>1. Log masuk ke akaun MOLPay anda.<br> 
+            2. Tetapkan Return URL seperti di dalam halaman "Tetapan MOLPay" di OnPay.<br> 
+            3. Tetapkan Notification URL seperti di dalam halaman "Tetapan MOLPay" di OnPay.<br> 
+            4. Tetapkan Callback URL seperti di dalam halaman "Tetapan MOLPay" di OnPay.<br> 
+            5. Masukkan ID Pedagang dan Kunci Pengesahan ke dalam tetapan MOLPay di OnPay.</p>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-senangpay" class="subtopic col-md-12">
+    <h4><strong>2.2.5 Penetapan Akaun senangPay</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun senangPay </div>
+      <div class="panel-body">
+        <p>1. Log masuk ke akaun senangPay anda dan buka halaman tetapan profil senangPay.</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun senangPay"  data-image="img/Topik 2/2-senangpay_1.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-senangpay_1.jpg" alt="Another alt text">
+    </a>
+        <p>2. Tetapkan Return URL seperti di dalam halaman "Tetapan senangPay" di OnPay.<br>
+            3. Tetapkan Callback URL seperti di dalam halaman "Tetapan senangPay" di OnPay.<br> 
+            4. Masukkan ID Pedagang dan Kunci Pengesahan ke dalam tetapan senangPay di OnPay.</p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun senangPay"  data-image="img/Topik 2/2-senangpay_2.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-senangpay_2.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-billplz" class="subtopic col-md-12">
+    <h4><strong>2.2.6 Penetapan Akaun BillPlz</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun BillPlz</div>
+      <div class="panel-body">
+      <p>1. Log masuk ke akaun BillPlz anda dan buka halaman tetapan profil anda.</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/Topik 2/2-billplzmenu.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-billplzmenu.jpg" alt="Another alt text">
+        </a>
+    <p>2. Sila isikan ruangan Kunci Rahsia API dan ID Kutipan. Anda boleh dapatkan Kunci Rahsia API dan ID Kutipan di akaun BillPlz anda</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/Topik 2/2-billplz.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-billplz.jpg" alt="Another alt text">
+    </a>
+    <p>Menu untuk mendapatkan Kunci Rahsia API</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/Topik 2/2-apikey.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-apikey.jpg" alt="Another alt text">
+    </a>
+    <p>Menu untuk mendapatkan ID Kutipan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun BillPlz"  data-image="img/Topik 2/2-billplz_1.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-billplz_1.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-paydibs" class="subtopic col-md-12">
+    <h4><strong>2.2.6 Penetapan Akaun Paydibs</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun Paydibs</div>
+      <div class="panel-body">
+      <p>1. Log masuk ke akaun Paydibs anda</p>
+      <p>2. Dapatkan ID Pedagang, Kata Laluan Pedagang dan URL Pembayaran untuk integrasi Paydibs ke sistem OnPay</p>
+      <p>3. Copy ID Pedagang, Kata Laluan Pedagang dan URL Pembayaran, dan paste ke ruangan menu Paydibs di sistem OnPay</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun Paydibs"  data-image="img/Topik 2/2-menu-paydibs-onpay.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-menu-paydibs-onpay.jpg" alt="Another alt text">
+        </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-akaun-2c2p" class="subtopic col-md-12">
+    <h4><strong>2.2.6 Penetapan Akaun 2C2P</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Akaun 2C2P</div>
+      <div class="panel-body">
+      <p>1. Log masuk ke akaun 2C2P anda</p>
+      <p>2. Dapatkan ID Pedagang dan Kunci Rahsia untuk integrasi 2C2P ke sistem OnPay</p>
+      <p>3. Copy ID Pedagang, Kunci Rahsia dan paste ke ruangan menu 2C2P di sistem OnPay</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun 2C2P"  data-image="img/Topik 2/2-id-pedagang-2c2p.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-id-pedagang-2c2p.jpg" alt="Another alt text">
+        </a>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun 2C2P"  data-image="img/Topik 2/2-kunci-rahsia-2c2p.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-kunci-rahsia-2c2p.jpg" alt="Another alt text">
+        </a>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Penetapan Akaun 2C2P"  data-image="img/Topik 2/2-menu-2c2p.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-menu-2c2p.jpg" alt="Another alt text">
+        </a>
+      </div>
+    </div>
+</div>
+<div id="penetapan-fungsi-cek" class="subtopic col-md-12">
+    <h4><strong>2.2.7 Penetapan Fungsi Cek</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Fungsi Cek</div>
+      <div class="panel-body">
+      <p>1. Isikan keterangan yang anda ingin paparkan di bahagian keterangan cek pada borang anda.</p>
+      </div>
+    </div>
+</div>
+<div id="penetapan-fungsi-wang-pos" class="subtopic col-md-12">
+    <h4><strong>2.2.8 Penetapan Fungsi Wang Pos</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Fungsi Wang Pos</div>
+      <div class="panel-body">
+      <p>1. Isikan keterangan yang anda ingin paparkan di bahagian keterangan Wang Pos pada borang anda.</p>
+      </div>
+    </div>
+</div>
+<div id="penetapan-fungsi-tunai" class="subtopic col-md-12">
+    <h4><strong>2.2.9 Penetapan Fungsi Tunai</strong> Lokasi ( Tetapan > Kaedah Pembayaran Lain )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Penetapan Fungsi Tunai</div>
+      <div class="panel-body">
+      <p>1. Isikan keterangan yang anda ingin paparkan di bahagian keterangan Tunai pada borang anda.</p>
+      </div>
+    </div>
+</div>
+<div id="templat-emel-pendaftaran-pelanggan" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran (Pelanggan)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran (Pelanggan)</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pelanggan : Pendaftaran Pelanggan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran Pelanggan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Pelanggan"  data-image="img/Topik 2/2-contoh-emel-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-contoh-emel-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-admin-pelanggan" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran Admin (Pelanggan)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+   <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran (Admin) Pelanggan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pelanggan : Pendaftaran (Admin) Pelanggan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+    
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran (Admin) Pelanggan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Pelanggan"  data-image="img/Topik 2/2-contoh-emel-admin.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-contoh-emel-admin.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-tetapan-semula-kata-laluan-pelanggan" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Penetapan Semula Kata Laluan (Pelanggan)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Penetapan Semula Kata Laluan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi ejen : Penetapan Semula Kata Laluan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{kata_laluan_baru}</strong></td>
+                <td>Kata laluan baru pelanggan yang dijana secara automatik</td>
+          </tr>
+           <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+           <tr>
+                <td><strong>{ip_pelanggan}</strong></td>
+                <td>Alamat IP pelanggan</td>
+          </tr>
+           <tr>
+                <td><strong>{browser_pelanggan}</strong></td>
+                <td>Browser yang digunakan oleh pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+
+    <p>Contoh Penulisan Templat Emel Penetapan Semula Kata Laluan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-emel-pass-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-pass-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+
+<div id="templat-emel-ucapan-hari-lahir-pelanggan`" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Lahir (Pelanggan)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Ucapan Hari Lahir</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pelanggan : Ucapan Hari Lahir.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+    
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{umur_pelanggan}</strong></td>
+                <td>Umur pelanggan</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_lahir_pelanggan}</strong></td>
+                <td>Tarikh lahir pelanggan</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Hari Lahir Pelanggan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Ucapan Hari Lahir"  data-image="img/Topik 2/2-emel-birthday-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-birthday-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran (Affiliate)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi affiliate : Pendaftaran Affiliate.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran Affiliate</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Affiliate"  data-image="img/Topik 2/2-emel-daftar-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-daftar-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-admin-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran Admin (Affiliate)</strong> Lokasi (Tetapan > Templat Emel Pengguna )</h4><br>
+   <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran (Admin) Affiliate</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi affiliate : Pendaftaran (Admin) Affiliate.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran (Admin) Affiliate</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Affiliate"  data-image="img/Topik 2/2-emel-admin-daftar-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-admin-daftar-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-tetapan-semula-kata-laluan-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Penetapan Semula Kata Laluan (Affiliate)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Penetapan Semula Kata Laluan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi affiliate : Penetapan Semula Kata Laluan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Penetapan Semula Kata Laluan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-emel-reset-pass-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-reset-pass-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pengesahan-komisyen-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pengesahan Komisyen (Affiliate)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Pengesahan Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi affiliate : Penetapan Pengesahan Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nilai_komisyen}</strong></td>
+                <td>Nilai komisyen yang disahkan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+
+    <p>Contoh Penulisan Templat Emel Pengesahan Komisyen</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-emel-sah-komisyen-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-sah-komisyen-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pembayaran-komisyen-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pembayaran Komisyen (Affiliate)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Pembayaran Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi affiliate : Penetapan Pembayaran Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nilai_pembayaran}</strong></td>
+                <td>Nilai pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nota_pembayaran}</strong></td>
+                <td>Nota pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+
+    <p>Contoh Penulisan Templat Emel Pembayaran Komisyen</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-emel-bayar-komisyen-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-bayar-komisyen-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-ucapan-hari-lahir-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Lahir (Affiliate)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Ucapan Hari Lahir</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi affiliate : Ucapan Hari Lahir.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{umur_ejen}</strong></td>
+                <td>Umur ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_lahir_ejen}</strong></td>
+                <td>Tarikh lahir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+
+    <p>Contoh Penulisan Templat Emel Hari Lahir Affiliate</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Ucapan Hari Lahir"  data-image="img/Topik 2/2-emel-birthday-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-birthday-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran (Dropship)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi dropship : Pendaftaran Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran Dropship</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Dropship"  data-image="img/Topik 2/2-emel-daftar-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-daftar-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-admin-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran Admin (Dropship)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+   <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran (Admin) Dropship</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi dropship : Pendaftaran (Admin) Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran (Admin) Dropship</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Dropship"  data-image="img/Topik 2/2-emel-daftar-admin-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-daftar-admin-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-tetapan-semula-kata-laluan-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Penetapan Semula Kata Laluan (Dropship)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Penetapan Semula Kata Laluan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi dropship : Penetapan Semula Kata Laluan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+
+    <p>Contoh Penulisan Templat Emel Penetapan Semula Kata Laluan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-emel-reset-pass-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-reset-pass-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pengesahan-komisyen-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pengesahan Komisyen (Dropship)</strong> Lokasi ( Tetapan > Templat Emel Pengguna)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Pengesahan Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi dropship : Penetapan Pengesahan Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nilai_komisyen}</strong></td>
+                <td>Nilai komisyen yang disahkan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pengesahan Komisyen</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-sah_komisen_dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sah_komisen_dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+</div>
+<div id="templat-emel-pembayaran-komisyen-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pembayaran Komisyen (Dropship)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Pembayaran Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi dropship : Penetapan Pembayaran Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nilai_pembayaran}</strong></td>
+                <td>Nilai pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nota_pembayaran}</strong></td>
+                <td>Nota pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pembayaran Komisyen</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-bayar_komisen_dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-bayar_komisen_dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-ucapan-hari-lahir-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Lahir (Dropship)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Ucapan Hari Lahir</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi dropship : Ucapan Hari Lahir.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+      
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{umur_ejen}</strong></td>
+                <td>Umur ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_lahir_ejen}</strong></td>
+                <td>Tarikh lahir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Hari Lahir Dropship</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Ucapan Hari Lahir"  data-image="img/Topik 2/2-emel-birthday-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-birthday-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran (Pengedar)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pengedar : Pendaftaran Pengedar.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Pengedar"  data-image="img/Topik 2/2-emel-daftar-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-daftar-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pendaftaran-admin-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pendaftaran Admin (Pengedar)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+   <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pendaftaran (Admin) Pengedar</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pengedar : Pendaftaran (Admin) Pengedar.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+    
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pendaftaran (Admin) Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pendaftaran Pengedar"  data-image="img/Topik 2/2-emel-daftar-admin-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-daftar-admin-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-pengaktifan-akaun-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Pengaktifan Akaun (Pengedar)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+   <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Emel Pengaktifan Akaun Pengedar</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pengedar : Pengaktifan Akaun Pengedar.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Pengaktifan Akaun Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Pengaktifan Akaun"  data-image="img/Topik 2/2-emel-aktif-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-aktif-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-tetapan-semula-kata-laluan-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Penetapan Semula Kata Laluan (Pengedar)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Penetapan Semula Kata Laluan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pengedar : Penetapan Semula Kata Laluan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Penetapan Semula Kata Laluan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Penetapan Semula Kata Laluan"  data-image="img/Topik 2/2-emel-reset-pass-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-reset-pass-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-ucapan-hari-lahir-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Lahir (Pengedar)</strong> Lokasi ( Tetapan > Templat Emel Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat Ucapan Hari Lahir</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam emel notifikasi pengedar : Ucapan Hari Lahir.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat emel anda:</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama  ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{umur_ejen}</strong></td>
+                <td>Umur ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_lahir_ejen}</strong></td>
+                <td>Tarikh lahir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat Emel Hari Lahir Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat Emel Ucapan Hari Lahir"  data-image="img/Topik 2/2-emel-birthday-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-emel-birthday-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-pelanggan" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran Pelanggan</strong> Lokasi ( Tetapan > Templat SMS Pengguna)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran Pelanggan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pelanggan : Pendaftaran Pelanggan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran Pelanggan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Pelanggan"  data-image="img/sms-daftar-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-admin-pelanggan" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran (Admin) Pelanggan</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran (Admin) Pelanggan</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pelanggan : Pendaftaran (Admin) Pelanggan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran (Admin) Pelanggan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Pelanggan"  data-image="img/Topik 2/2-sms-daftar-admin-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-admin-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-tetapan-semula-kata-laluan-pelanggan" class="subtopic col-md-12">
+    <h4><strong>2.4.2 Tetapan Templat SMS Tetapan Semula Kata Laluan (Pelanggan)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Tetapan Semula Kata Laluan (Pelanggan)</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pelanggan : Penetapan Semula Kata Laluan Pelanggan.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+           <tr>
+                <td><strong>{kata_laluan_baru}</strong></td>
+                <td>Kata laluan baru pelanggan yang dijana secara automatik</td>
+          </tr>
+          <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_pelanggan}</strong></td>
+                <td>Alamat IP pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_pelanggan}</strong></td>
+                <td>Browser yang digunakan oleh pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Tetapan Semula Kata Laluan Pelanggan</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Pelanggan"  data-image="img/Topik 2/2-sms-pass-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-pass-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-emel-ucapan-hari-lahir-pelanggan" class="subtopic col-md-12">
+    <h4><strong>2.4.4 Tetapan Templat SMS Ucapan Hari Jadi (Pelanggan)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Ucapan Hari Jadi</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pelanggan : Ucapan Hari Jadi.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pelanggan}</strong></td>
+                <td>Nama pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{url_pelanggan}</strong></td>
+                <td>URL bahagian pelanggan</td>
+          </tr>
+          <tr>
+                <td><strong>{umur_pelanggan}</strong></td>
+                <td>Umur pelanggan</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_lahir_pelanggan}</strong></td>
+                <td>Tarikh lahir pelanggan</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Ucapan Hari Jadi</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Ucapan Hari Jadi"  data-image="img/Topik 2/2-sms-birthday-pelanggan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-birthday-pelanggan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran Affiliate</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran Affiliate</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi affiliate : Pendaftaran Affiliate.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran Affiliate</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Affiliate"  data-image="img/Topik 2/2-sms-daftar-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-admin-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran (Admin) Affiliate</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran (Admin) Affiliate</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi affiliate : Pendaftaran (Admin) Affiliate.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran (Admin) Affiliate</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Affiliate"  data-image="img/Topik 2/2-sms-daftar-admin-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-admin-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-tetapan-semula-kata-laluan-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Tetapan Semula Kata Laluan (Affiliate)</strong> Lokasi (Tetapan > Templat SMS Pengguna)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Tetapan Semula Kata Laluan (Affiliate)</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi affiliate : Penetapan Semula Kata Laluan Affiliate.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+     
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{kata_laluan_baru}</strong></td>
+                <td>Kata laluan baru ejen yang dijana secara automatik</td>
+          </tr>
+          <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Tetapan Semula Kata Laluan Affiliate</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-pass-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-pass-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pengesahan-komisyen-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pengesahan Komisyen (Affiliate)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pengesahan Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi affiliate : Pengesahan Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nilai_komisyen}</strong></td>
+                <td>Nilai komisyen yang disahkan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pengesahan Komisyen (Affiliate)</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-sah-komisyen.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-sah-komisyen.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pembayaran-komisyen-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pembayaran Komisyen (Affiliate)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pembayaran Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi affiliate : Pembayaran Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nilai_pembayaran}</strong></td>
+                <td>Nilai pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nota_pembayaran}</strong></td>
+                <td>Nota pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pembayaran Komisyen (Affiliate)</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-bayar-komisyen.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-bayar-komisyen.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-ucapan-hari-lahir-affiliate" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Jadi (Affiliate)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Ucapan Hari Jadi</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi affiliate : Ucapan Hari Jadi.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+     
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{umur_ejen}</strong></td>
+                <td>Umur ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_lahir_ejen}</strong></td>
+                <td>Tarikh lahir ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Ucapan Hari Jadi</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Ucapan Hari Jadi"  data-image="img/Topik 2/2-sms-birthday-affiliate.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-birthday-affiliate.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran Dropship</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran Dropship</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi dropship : Pendaftaran Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran Dropship</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Dropship"  data-image="img/Topik 2/2-sms-daftar-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-admin-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran (Admin) Dropship</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran (Admin) Dropship</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi dropship : Pendaftaran (Admin) Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran (Admin) Dropship</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-daftar-admin-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-admin-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-tetapan-semula-kata-laluan-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Tetapan Semula Kata Laluan (Dropship)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Tetapan Semula Kata Laluan (Dropship)</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi dropship : Penetapan Semula Kata Laluan Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{kata_laluan_baru}</strong></td>
+                <td>Kata laluan baru ejen yang dijana secara automatik</td>
+          </tr>
+          <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Tetapan Semula Kata Laluan Dropship</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/sms-pass-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-pass-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pengesahan-komisyen-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pengesahan Komisyen (Dropship)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pengesahan Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi dropship : Pengesahan Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nilai_komisyen}</strong></td>
+                <td>Nilai komisyen yang disahkan</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pengesahan Komisyen (Dropship)</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-sah-komisyen.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-sah-komisyen.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pembayaran-komisyen-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pembayaran Komisyen (Dropship)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pembayaran Komisyen</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi dropship : Pembayaran Komisyen.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+     
+         <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nilai_pembayaran}</strong></td>
+                <td>Nilai pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nota_pembayaran}</strong></td>
+                <td>Nota pembayaran komisyen yang dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    </a>
+    <p>Contoh Penulisan Templat SMS Pembayaran Komisyen (Dropship)</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-bayar-komisyen.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-bayar-komisyen.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-ucapan-hari-lahir-dropship" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Jadi (Dropship)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Ucapan Hari Jadi</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi dropship : Ucapan Hari Jadi.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+        
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_pertama_ejen}</strong></td>
+                <td>Nama pertama ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{nama_akhir_ejen}</strong></td>
+                <td>Nama akhir ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{umur_ejen}</strong></td>
+                <td>Umur ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_lahir_ejen}</strong></td>
+                <td>Tarikh lahir ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Ucapan Hari Jadi</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Ucapan Hari Jadi"  data-image="img/Topik 2/2-sms-birthday-dropship.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-birthday-dropship.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran Pengedar</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran Pengedar</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pengedar : Pendaftaran Pengedar.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+    
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tetapan Templat SMS Pendaftaran Pengedar"  data-image="img/Topik 2/2-sms-daftar-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pendaftaran-admin-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pendaftaran (Admin) Pengedar</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pendaftaran (Admin) Pengedar</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pengedar : Pendaftaran (Admin) Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pendaftaran (Admin) Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-daftar-admin-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-daftar-admin-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-pengaktifan-akaun-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Pengaktifan Akaun Pengedar</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Pengaktifan Akaun Pengedar</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pengedar : Pengaktifan Akaun Dropship.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+     
+      <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Pengaktifan Akaun Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-daftar-admin-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-aktif-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-tetapan-semula-kata-laluan-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat SMS Tetapan Semula Kata Laluan (Pengedar)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Tetapan Semula Kata Laluan (Pengedar)</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pengedar : Penetapan Semula Kata Laluan Pengedar.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{kata_laluan_baru}</strong></td>
+                <td>Kata laluan baru ejen yang dijana secara automatik</td>
+          </tr>
+          <tr>
+                <td><strong>{masa}</strong></td>
+                <td>Masa permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh}</strong></td>
+                <td>Tarikh permohonan dibuat</td>
+          </tr>
+          <tr>
+                <td><strong>{ip_ejen}</strong></td>
+                <td>Alamat IP ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{browser_ejen}</strong></td>
+                <td>Browser yang digunakan oleh ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Tetapan Semula Kata Laluan Pengedar</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-image="img/Topik 2/2-sms-pass-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-pass-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="templat-sms-ucapan-hari-lahir-pengedar" class="subtopic col-md-12">
+    <h4><strong>Tetapan Templat Emel Ucapan Hari Lahir (Pengedar)</strong> Lokasi ( Tetapan > Templat SMS Pengguna )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Templat SMS Ucapan Hari Lahir</div>
+      <div class="panel-body">
+      <p>1. Isikan penulisan templat yang anda ingin paparkan ke dalam SMS notifikasi pengedar : Ucapan Hari Jadi.</p>
+      <p>Anda boleh menggunakan pembolehubah di bawah dalam penulisan templat SMS anda:</p>
+      
+       <table class="table">
+        <thead>
+          <tr>
+          <th>Tag</th>
+          <th>Penerangan</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+                <td><strong>{nama_ejen}</strong></td>
+                <td>Nama ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{id_ejen}</strong></td>
+                <td>ID ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{no_ejen}</strong></td>
+                <td>Nombor pendaftaran ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{url_ejen}</strong></td>
+                <td>URL bahagian ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{umur_ejen}</strong></td>
+                <td>Umur ejen</td>
+          </tr>
+          <tr>
+                <td><strong>{tarikh_lahir_ejen}</strong></td>
+                <td>Tarikh lahir ejen</td>
+          </tr>
+           <tr>
+                <td><strong>{tarikh_hari_lahir}</strong></td>
+                <td>Tarikh sambutan hari lahir</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_pemilik}</strong></td>
+                <td>Nama anda</td>
+          </tr>
+          <tr>
+                <td><strong>{nama_perniagaan}</strong></td>
+                <td>Nama perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{laman_web_perniagaan}</strong></td>
+                <td>Laman web perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{emel_perniagaan}</strong></td>
+                <td>Alamat emel perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_tel_perniagaan}</strong></td>
+                <td>Nombor telefon perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{no_henset_perniagaan}</strong></td>
+                <td>Nombor henset perniagaan anda</td>
+          </tr>
+          <tr>
+                <td><strong>{matawang}</strong></td>
+                <td>Unit matawang yang digunakan</td>
+          </tr>
+      </tbody>
+      </table>
+
+    <p>Contoh Penulisan Templat SMS Ucapan Hari Jadi</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Ucapan Hari Jadi"  data-image="img/Topik 2/2-sms-birthday-pengedar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-sms-birthday-pengedar.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="tambah-kurier" class="subtopic col-md-12">
+    <h4><strong>2.5.1 Tambah Kurier</strong> Lokasi ( Tetapan > Penghantar / Kurier )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tambah Kurier</div>
+      <div class="panel-body">
+      <p>Sila gunakan borang di bawah untuk menambah kurier. Isikan maklumat dengan tepat. </p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/Topik 2/2-borang_tetapan_kurier.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_kurier.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="kemaskini-padam-kurier" class="subtopic col-md-12">
+    <h4><strong>2.5.2 Kemaskini/Padam Kurier</strong> Lokasi ( Tetapan > Penghantar / Kurier )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Kemaskini/Padam Kurier</div>
+      <div class="panel-body">
+      <p><strong>KEMASKINI:</strong></p>    
+    <p>1. Tekan butang <strong>Kemaskini</strong> disebelah kiri .<br> 
+    2. Borang tambah kurier akan bertukar menjadi borang kemaskini kurier. Pilihan kurier yang sedang dikemaskini akan ditanda dengan warna biru seperti gambar di bawah.<br> 
+    3. Kemaskini maklumat yang diinginkan dan tekan butang <strong>Kemaskini Penghantar</strong></p> 
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Kemaskini Kurier"  data-image="img/Topik 2/2-borang_tetapan_kurier_kemaskini.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_kurier_kemaskini.jpg" alt="Another alt text">
+    </a>
+    <p><strong>PADAM:</strong></p> 
+    <p>1. Tekan butang <strong>x</strong> pada pilihan kurier yang ingin dipadam.<br>
+    2). Tekan <strong>Ya</strong> di kotak popup pengesahan pemadaman.</p> 
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Kemaskini Kurier"  data-image="img/Topik 2/2-borang_tetapan_kurier_padam.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_kurier_padam.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="tetapan-saiz-cetakan-kertas-khas" class="subtopic col-md-12">
+    <h4><strong>2.6.1 Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</strong> Lokasi ( Tetapan > Label Penghantaran) </h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tetapan Saiz Cetakan Kertas Khas (Saiz Borang Pos Laju) (Lebar × Tinggi = 210 mm × 101mm)</div>
+      <div class="panel-body">
+      <p>Anda boleh rujuk tutorial Bahasa Inggeris di bawah:</p>
+      <li><a href="http://windowsitpro.com/windows-7/q-how-do-i-create-custom-paper-size-printing-windows-7">http://windowsitpro.com/windows-7/q-how-do-i-create-custom-paper-size-printing-windows-7</a></li>
+      <li><a href="https://support.apple.com/kb/PH18619?locale=en_US">https://support.apple.com/kb/PH18619?locale=en_US</a></li><br><br>
+      <p><strong>Tutorial dalam Bahasa Melayu</strong></p>
+      <p><strong>1. Buka Control Panel</strong></p>
+      <p>(Windows vista - Windows 10) = Tekan "start" dan taip "Control Panel"</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-control_panel_10.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-control_panel_10.jpg" alt="Another alt text">
+    </a>
+    <p>(Windows XP) = Tekan "start" > "settings" > "Control Panel"</p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-control_panel_xp.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-control_panel_xp.jpg" alt="Another alt text">
+    </a>
+    <p>Mana mana windows = Buka "My Computer" > Taip "Control Panel" pada "address bar".</p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-control_panel_addressbar.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-control_panel_addressbar.jpg" alt="Another alt text">
+    </a>
+    <p><strong>2. Tekan "View Devices and Printers"</strong></p>
+    <p><strong>3. Buka "Print Server Properties"</strong></p>
+    <li> Tekan mana-mana printer yang ada.</li> 
+    <li> Tekan "Print Server Properties" pada bahagian atas.</li>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-control_panel_print_server.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-control_panel_print_server.jpg" alt="Another alt text">
+    </a>
+    <p><strong>4. Tandakan kotak "Create New Form". Isikan saiz (Lebar × Tinggi = 21 cm × 10.1 cm)</strong></p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-control_panel_print_server_new.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-control_panel_print_server_new.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+</div>
+<div id="isi-maklumat-anda-dalam-borang-pos-laju" class="subtopic col-md-12">
+    <h4><strong>2.6.2 Isi Maklumat Anda kedalam Borang Pos Laju</strong> Lokasi ( Tetapan > Label Penghantaran )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Isi Maklumat Anda kedalam Borang Pos Laju</div>
+      <div class="panel-body">
+      <p>Sila isikan maklumat anda dengan lengkap. Maklumat ini akan digunakan bagi setiap percetakan borang pos laju.<br> 
+        Maklumat pelanggan akan di masukkan secara automatik apabila anda menekan butang <strong>Jana Label</strong> di Senarai Jualan.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-borang_tetapan_label_penghantaran_poslaju.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_label_penghantaran_poslaju.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+</div>
+<div id="cara-cetak-label-penghantaran-pelanggan" class="subtopic col-md-12">
+    <h4><strong>2.6.3 Cara Cetak Label Penghantaran Pelanggan</strong> Lokasi ( Tetapan > Label Penghantaran)</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Cara Cetak Label Penghantaran Pelanggan</div>
+      <div class="panel-body">
+      <p>Anda boleh mencetak label pos laju pelanggan melalui :<br> 
+        1. Log masuk kepada halaman dashboard admin anda.<br> 
+        2. Buka Senarai Jualan.<br>
+        3. Tekan butang <strong>Jana Label</strong> bagi pelanggan yang dikehendaki.<br>
+        4. Pilih Pos Laju.<br>
+        5. Tekan butang <strong>Jana Label</strong>.</p>
+        <p><strong>Nota : Hanya pembayaran yang disahkan sahaja dibenarkan untuk menjana label penghantaran.</strong></p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-senarai_jualan.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-senarai_jualan.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="easyparcel" class="subtopic col-md-12">
+    <h4><strong>2.7 Integrasi Pihak Ketiga</strong> Lokasi ( Tetapan > Integrasi Pihak Ketiga )</h4><br>
+    <p><strong>EasyParcel</strong></p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Integrasi Pihak Ketiga</div>
+      <div class="panel-body">
+        <p><strong>Integrasi Pihak Ketiga (EasyParcel)</strong> Lokasi(Tetapan > Integrasi Pihak Ketiga)</p>
+    <p><strong>EasyParcel</strong></p>
+    <p>1. Log Masuk ke akaun EasyParcel anda, pergi ke menu Integration dan pilih menu Add New Store<br>
+    2. Klik pada pilihan OnPay.<br>
+    3. Isi maklumat pada kotak yang disediakan dan tekan submit. Anda boleh copy integration key yang disediakan.</p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/Topik 2/2-easyparcel1.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-easyparcel1.jpg" alt="Another alt text">
+    </a>
+    <p>4. Paste integration key anda pada ruangan integration di sistem OnPay anda. Klik butang <strong>Simpan</strong> selepas selesai.</p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/Topik 2/2-easyparcel2.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-easyparcel2.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="myparcelasia" class="subtopic col-md-12">
+    <p><strong>MyParcelAsia</strong></p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Integrasi Pihak Ketiga</div>
+      <div class="panel-body">
+        <p><strong>Integrasi Pihak Ketiga (MyParcelAsia)</strong> Lokasi ( Tetapan > Integrasi Pihak Ketiga)</p>
+    <p><strong>MyParcelAsia</strong></p>
+    <li>Anda perlu dapatkan <strong>Kunci API</strong> dan <strong>Kunci Rahsia</strong> di akaun MyParcelAsia anda</li>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/Topik 2/2-myparcelasia1.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-myparcelasia.jpg" alt="Another alt text">
+    </a>
+    <p>1. Log Masuk ke akaun MyParcelAsia dan pergi ke menu <strong>My Account</strong><br>
+        2. Reka Kunci Api yang baru pada kotak 2 dan tekan butang submit.<br>
+        3. Copy Api key dan Secret key, kemudian paste di ruangan Api key and Secret key di menu MyParcelAsia pada sistem onpay anda.</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Tambah Kurier"  data-image="img/Topik 2/2-ruanganparcelasia1.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-ruanganparcelasia1.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="senarai-hitam-id-ejen" class="subtopic col-md-12">
+    <h4><strong>2.8 Senarai Hitam ID Ejen</strong> Lokasi ( Tetapan > Senarai Hitam ID Ejen )</h4><br>
+    <p><strong>Fungsi Senarai Hitam ID Ejen</strong></p>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Senarai Hitam ID Ejen</div>
+      <div class="panel-body">
+    <p>Fungsi ini membolehkan anda menetapkan ID Ejen yang tidak boleh digunakan oleh ejen-ejen anda sebagai ID mereka.<br> 
+    Hal ini adalah demi mengelakkan penipuan yang mungkin berlaku terhadap pelanggan. Contohnya, sekiranya ejen mendaftar sebagai admin, maka mereka boleh menyamar sebagai admin/pemilik bisnes anda dan menipu pelanggan. 
+    Contoh-contohnya ayat yang tidak boleh digunakan adalah:<br><br>
+    admin<br>
+    owner<br>
+    pemilik<br>
+    billing<br>
+    janganreply<br>
+    mail<br>
+    help<br>
+    customerservice<br>
+    service<br><br>
+
+    Atau sebagainya mengikut keperluan anda.</p><br>
+    <p><strong>Tambah Rekod Senarai Hitam</strong><br><br> 
+    1. Isikan ID Ejen yang ingin disenarai hitam.<br> 
+    2. Tekan butang <strong>Tambah</strong>.<br><br> 
+
+
+    <strong>Padam Rekod Senarai Hitam</strong><br><br> 
+    1. Tekan butang <strong>x</strong> pada lajur id ejen yang ingin dipadamkan rekod senarai hitam.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-senarai-hitam-id.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-senarai-hitam-id.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="profil-akaun" class="subtopic col-md-12">
+    <h4><strong>2.9 Profil Akaun (Kemaskini maklumat akaun)</strong> Lokasi ( Tetapan > Profil Akaun )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Profil Akaun</div>
+      <div class="panel-body">
+      <p>1. Anda boleh mengemaskini maklumat akaun anda melalui borang tetapan ini.<br>
+        2. Sila lengkapkan borang ini dan tekan butang <strong>Kemaskini Profil</strong></p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-borang_tetapan_profil.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_profil.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+<div id="tukar-kata-laluan" class="subtopic col-md-12">
+    <h4><strong>2.10 Tukar Kata Laluan (Kemaskini Kata Laluan)</strong> Lokasi ( Tetapan > Tukar Kata Laluan )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Tukar Kata Laluan</div>
+      <div class="panel-body">
+        <p>1. Sila isikan kata laluan sekarang pada kotak pertama, dan isikan kata laluan baru kedalam kotak kedua dan ketiga.<br>
+        - Kata laluan mestilah sekurang-kurangnya 8 huruf<br>
+        2. Sila lengkapkan borang ini dan tekan butang <strong>Tukar</strong></p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 2/2-borang_tetapan_tukar_password.jpg" data-target="#image-gallery">
+    <img class="img-responsive" src="img/Topik 2/2-borang_tetapan_tukar_password.jpg" alt="Another alt text">
+    </a>
+      </div>
+    </div>
+    
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>

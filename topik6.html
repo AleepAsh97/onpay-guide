@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 6 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+        
+        .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 6 : Prospek</p>
+                    <li>
+                        <a href="#kumpulan-prospek" data-toggle="collapse" aria-expanded="false">6.1 Kumpulan Prospek</a>
+                        <ul class="collapse list-unstyled" id="kumpulan-prospek">
+                            <li><a href="#tambah-kumpulan-prospek" id="subtopic">6.1.1 Tambah Kumpulan Prospek</a></li>
+                            <li><a href="#kemaskini-rekod-kumpulan-prospek" id="subtopic">6.1.2 Kemaskini Rekod Kumpulan Prospek</a></li>
+                            <li><a href="#padam-rekod-prospek" id="subtopic">6.1.3 Padam Rekod Prospek</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#borang" data-toggle="collapse" aria-expanded="false">6.2 Borang Prospek</a>
+                        <ul class="collapse list-unstyled" id="borang">
+                            <li><a href="#tambah-borang-prospek" id="subtopic">5.2.1 Tambah Borang Prospek</a></li>
+                            <li><a href="#kemaskini-borang-prospek" id="subtopic">5.2.2 Kemaskini Borang Prospek</a></li>
+                            <li><a href="#padam-borang-prospek" id="subtopic">5.2.3 Padam Borang Prospek</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#prospek" data-toggle="collapse" aria-expanded="false">6.3 Senarai Nama Prospek</a>
+                        <ul class="collapse list-unstyled" id="prospek">
+                            <li><a href="#tambah-prospek-baru" id="subtopic">6.3.1 Tambah Prospek Baru</a></li>
+                            <li><a href="#kemaskini-rekod-prospek" id="subtopic">6.3.2 Kemaskini Rekod Prospek</a></li>
+                            <li><a href="#padam-rekod-prospek" id="subtopic">6.3.3 Padam Rekod Prospek</a></li>
+                        </ul>
+                    </li>
+                     
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                             <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li class="active"><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li class="active"><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="tambah-kumpulan-prospek" class="subtopic col-md-12">
+    <h2>Topik 6 : Prospek</h2><hr><br>
+    <h4><strong>6.1.1 Tambah Kumpulan Prospek</strong> Lokasi ( Senarai > Prospek > Kumpulan )</h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Kegunaan Fungsi Prospek</div>
+      <div class="panel-body">
+      <p>Fungsi prospek adalah semata mata untuk mendapatkan senarai prospek, iaitu pengguna yang berminat dengan produk/servis yang anda tawarkan.<br>
+        <h3><strong>Kami menawarkan</strong></h3> 
+        <h3><strong>1) fungsi pemungutan data prospek ini melalui borang.</strong></h3>
+        <h3><strong>2) fungsi pengurusan data prospek ini.</strong></h3>
+        Anda boleh menggunakan pangkalan data prospek ini untuk tujuan promosi atau marketing anda. Contoh kegunaan senarai ini adalah untuk email/sms blasting demi memudahkan proses promosi anda.</p>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+      <p>Masukkan nama kumpulan prospek yang sesuai. Anda dinasihatkan untuk menggunakan nama yang releven bagi kumpulan prospek dengan borang dan prospek anda.</p>
+      <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-kumpulan-prospek.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-kumpulan-prospek.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+ <div id="kemaskini-rekod-kumpulan-prospek" class="subtopic col-md-12">
+    <h4><strong>6.1.2 Kemaskini Rekod Kumpulan Prospek</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) prospek yang ingin dikemaskini.<br><br>
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-kemaskini-kumpulan-prospek.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-kemaskini-kumpulan-prospek.jpg" alt="Another alt text">
+            </a>
+        <p>3. Isi nama kumpulan prospek.<br><br>  
+
+        4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat prospek anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-prospek" class="subtopic col-md-12">
+    <h4><strong>6.1.3 Padam Rekod Prospek</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) prospek yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-padam-kumpulan-prospek.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-padam-kumpulan-prospek.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-kump-prospek-ya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-kump-prospek-ya.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="tambah-borang-prospek" class="subtopic col-md-12">
+    <h4><strong>6.2.1 Tambah Borang Prospek</strong> Lokasi ( Senarai > Prospek > Borang )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p><h3>Sila pastikan ruangan bertanda <strong style="color: red">*</strong> adalah diisi dengan lengkap.</h3>
+
+        - <strong>Kumpulan</strong> adalah dipilih berdasarkan senarai kumpulan prospek yang telah dicipta terlebih dahulu. Sekiranya anda masih belum mencipta kumpulan prospek, sila berbuat demikian di senarai > Prospek > Kumpulan. Rujuk 6.1.<br>
+        - <strong>Kod Borang</strong> adalah unik. Sila masukkan kod yang berlainan bagi setiap borang.<br> 
+        - <strong>Pilihan checkbox</strong> adalah bertujuan untuk mengaktifkan fungsi didalam borang. Sila tandakan checkbox yang ingin diaktifkan.<br> 
+        - Isikan ruangan lain seperti yang dikehendaki.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-senarai-borang-prospek.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-senarai-borang-prospek.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-borang-prospek" class="subtopic col-md-12">
+    <h4><strong>6.2.2 Kemaskini Borang Prospek</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) borang prospek yang ingin dikemaskini.<br><br>
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-kemaskini-borang-prospek.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-kemaskini-borang-prospek.jpg" alt="Another alt text">
+            </a>
+        <p>2) Isi maklumat borang prospek.<br><br> 
+        - Pastikan semua kotak bertanda <strong style="color: red">*</strong> diisi dengan lengkap.<br> 
+        - Kod Borang Prospek adalah Kata Kunci Unik. Pastikan anda mengisi kod prospek berlainan bagi setiap prospek.<br><br> 
+
+        3) Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat prospek anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-borang-prospek" class="subtopic col-md-12">
+    <h4><strong>6.2.3 Padam Borang Prospek</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) borang prospek yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-padam-borang-prospek.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-padam-borang-prospek.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-borang-prospek-ya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-borang-prospek-ya.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="tambah-prospek-baru" class="subtopic col-md-12">
+    <h4><strong>6.3.1 Tambah Prospek Baru</strong> Lokasi ( Senarai > Prospek > Nama )</h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Penerangan Fungsi ( Eksport + Import + Paparan + Carian )</div>
+      <div class="panel-body">
+        <p><h4>Eksport</h4>
+        i- Fungsi ini adalah untuk backup senarai prospek anda untuk simpanan anda. Butang eksport akan muat turun senarai prospek anda kepada komputer anda.<br>
+        ii- Langkah untuk muat naik senarai prospek adalah:<br>
+        1. Tekan butang <strong>Eksport Prospek</strong><br>
+        2. Pilih Kumpulan Prospek (Nota: Sila muat turun senarai prospek berdasarkan kumpulan prospek demi proses memuat naik kembali senarai prospek di masa hadapan ke dalam sistem)<br>
+        3. Sila tandakan "Letakkan nama medan pada baris pertama" sekiranya anda memuat turun senarai bersama tajuk kolum<br>
+        4. Tekan butang <strong>Muat Turun</strong><br><br>
+
+        <h4>Import</h4>
+        i- Fungsi ini adalah untuk memuat naik senarai prospek dari backup yang telah dimuat turun sebelum ini.<br>
+        ii- Langkah untuk muat naik senarai prospek adalah:<br>
+        1. Tekan butang <strong>Import Prospek</strong><br>
+        2. Pilih Kumpulan Prospek<br>
+        3. Pilih Fail (hanya fail berjenis .csv sahaja yang dibenarkan)<br>
+        4. Sila tandakan "abaikan baris pertama" sekiranya anda memuat turun senarai bersama baris pertama tajuk kolum<br>
+        Tekan butang <strong>Muat Turun</strong><br><br>
+
+        <h4>Paparan</h4>
+        Sila tekan kotak pilihan paparan senarai prospek untuk mengubah paparan senarai prospek. Pada asalnya, senarai akan memaparkan semua prospek dari semua kumpulan.<br><br>
+
+        <h4>Carian</h4>
+        Kotak carian adalah untuk mencari prospek yang sepadan dengan kata kunci yang dicari. Tips: Anda boleh mengisi apa jua kata kunci dan sistem akan mencari semua padanan kata kunci dari semua kolum (nama kumpulan, nama prospek, emel, no telefon).</p>
+      </div>
+    </div>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Pilih kumpulan prospek yang anda ingin masukkan<br>
+            2. Isi ruangan dengan maklumat yang sesuai.<br>
+            3. Tekan Butang "Simpan" setelah selesai mengisi maklumat prospek anda.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-senarai-prospek-baru1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-senarai-prospek-baru1.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-rekod-prospek" class="subtopic col-md-12">
+    <h4><strong>6.3.2 Kemaskini Rekod Prospek</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) prospek yang ingin dikemaskini.<br><br> 
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-kemaskini-prospek-baru1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-kemaskini-prospek-baru1.jpg" alt="Another alt text">
+            </a>
+        <p>3. Isi maklumat prospek.<br><br> 
+
+        4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat prospek anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-prospek" class="subtopic col-md-12">
+    <h4><strong>6.3.3 Padam Rekod Prospek</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) prospek yang ingin dipadam.<br><br> 
+
+        2. Tekan butang  untuk memadam rekod.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 6/6-padam-prospek-baru1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 6/6-padam-prospek-baru1.jpg" alt="Another alt text">
+            </a>
+
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod. </p>
+      </div>
+    </div>
+</div>
+
+
+   
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>

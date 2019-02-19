@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<title>Halaman Utama : Tutorial OnPay</title>
+
+		<!-- Bootstrap CSS CDN -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+		<!-- Our Custom CSS -->
+		<link rel="stylesheet" href="style-new.css">
+		<!-- Scrollbar Custom CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+		<style>
+		
+		.cd-top {
+		  display: inline-block;
+		  height: 40px;
+		  width: 40px;
+		  position: fixed;
+		  bottom: 40px;
+		  right: 10px;
+		  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+				  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+		  /* image replacement properties */
+		  overflow: hidden;
+		  text-indent: 100%;
+		  white-space: nowrap;
+		  background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+		  visibility: hidden;
+		  opacity: 0;
+		  -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+		  transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+		}
+
+		.cd-top.cd-top--show,
+		.cd-top.cd-top--fade-out,
+		.cd-top:hover {
+		  -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+		  transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+		}
+
+		.cd-top.cd-top--show {
+		  /* the button becomes visible */
+		  visibility: visible;
+		  opacity: 1;
+		}
+
+		.cd-top.cd-top--fade-out {
+		  /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+		  opacity: .5;
+		}
+
+		.cd-top:hover {
+		  background-color: #e86256;
+		  opacity: 1;
+		}
+
+		@media only screen and (min-width: 768px) {
+		  .cd-top {
+			right: 20px;
+			bottom: 20px;
+		  }
+		}
+
+		@media only screen and (min-width: 1024px) {
+		  .cd-top {
+			height: 60px;
+			width: 60px;
+			right: 30px;
+			bottom: 30px;
+		  }
+		}
+
+		a:link {
+		  text-decoration: none;
+		}
+
+		a:visited {
+		  text-decoration: none;
+		}
+
+		a:hover {
+		  text-decoration: underline;
+		}
+
+		a:active {
+		  text-decoration: underline;
+		}
+		li {
+		 color: #337AB7;
+		}
+
+	 </style>    
+	</head>
+	<body>
+
+		<div class="wrapper">
+			<!-- Sidebar Holder -->
+
+			<!-- Page Content Holder -->
+			<div id="content">
+
+				<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="container-fluid">
+
+						<div class="navbar-header">
+							<a class="btn btn-info navbar-btn">
+								<span>Tutorial OnPay</span>
+							</a>
+							 <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							</button>
+						</div>
+
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+								<li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+								<li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+								<li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+								<li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+								<li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+								<li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+								<li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+								<li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+								<li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+								<li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+								<li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+							</ul>
+						</div>
+						 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+							<ul class="nav navbar-toggle">
+								<li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+								<li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+								<li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+								<li><a href="topik4.html">Topik 4 : Staf</a></li>
+								<li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+								<li><a href="topik6.html">Topik 6 : Prospek</a></li>
+								<li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+								<li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+								<li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+								<li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+								<li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+								<li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+
+				<div class="container" style="margin-top: 60px">
+				<div class="row">
+				<h2><strong><a href="topik1.html">TOPIK 1 : PENDAFTARAN + PENGAKTIFAN + LOG MASUK</a></strong></h2>
+				<p>Topik 1 akan membantu anda dalam :</p>
+				<li><a href="topik1.html#layari-laman-onpay">Pendaftaran OnPay</a></li>
+				<li><a href="topik1.html#semak-emel-pendaftaran-onpay">Pengaktifan Akaun OnPay</a></li>
+				<li><a href="topik1.html#layari-halaman-log-masuk-akaun">Log Masuk Akaun OnPay</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik2.html">TOPIK 2 : TETAPAN (AKAUN + SISTEM + TEMPLAT + PEMBAYARAN)</a></strong></h2>
+				<p>Topik 2 akan membantu anda dalam :</p>
+				<li><a href="topik2.html#perniagaan">Tetapan Sistem</a></li>
+				<li><a href="topik2.html#penetapan-akaun-bank">Kaedah Pembayaran</a></li>
+				<li><a href="topik2.html#templat-emel-pendaftaran-pelanggan">Tetapan Templat Emel</a></li>
+				<li><a href="topik2.html#templat-sms-pendaftaran-pelanggan">Tetapan Templat SMS</a></li>
+				<li><a href="topik2.html#tambah-kurier">Tetapan Penghantar / Kurier</a></li>
+				<li><a href="topik2.html#tetapan-saiz-cetakan-kertas-khas">Label Penghantaran (Poslaju)</a></li>
+				<li><a href="topik2.html#integrasi-pihak-ketiga">Integrasi Pihak Ketiga (EasyParcel & MyParceAsia)</a></li>
+				<li><a href="topik2.html#senarai-hitam-id-ejen">Senarai Hitam ID Ejen</a></li>
+				<li><a href="topik2.html#profil-akaun">Kemaskini Profil Akaun</a></li>
+				<li><a href="topik2.html#tukar-kata-laluan">Tukar Kata Laluan</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik3.html">TOPIK 3 : PRODUK + KUPON + BORANG</a></strong></h2>
+				<p>Topik 3 akan membantu anda dalam :</p>
+				<li><a href="topik3.html#tambah-rekod-produk">Menambah, Mengemaskini dan Memadam Produk</a></li>
+				<li><a href="topik3.html#tambah-rekod-kupon">Menambah, Mengemaskini dan Memadam Kupon</a></li>
+				<li><a href="topik3.html#tambah-rekod-borang">Menambah, Mengemaskini dan Memadam Borang</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik4.html">TOPIK 4 : STAF</a></strong></h2>
+				<p>Topik 4 akan membantu anda dalam :</p>
+				<li><a href="topik4.html#tambah-kumpulan-staf">Menambah, Mengemaskini dan Memadam Kumpulan Staf</a></li>
+				<li><a href="topik4.html#tambah-staf-baru">Menambah, Mengemaskini, Memadam dan Menggantung Staf</a></li>
+				<li><a href="topik4.html#whatsapp-link">Menggunakan Whatsapp Link (Opy.la)</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik5.html">TOPIK 5 : EJEN (AFFILIATE + DROPSHIP + PENGEDAR)</a></strong></h2>
+				<p>Topik 5 akan membantu anda dalam :</p>
+				<li><a href="topik5.html#tambah-affiliate-baru">Menambah Ejen Affiliate, Dropship dan Pengedar</a></li>
+				<li><a href="topik5.html#kemaskini-rekod-affiliate">Mengemaskini Maklumat Ejen Affiliate, Dropship dan Pengedar</a></li>
+				<li><a href="topik5.html#padam-rekod-affiliate">Memadam Maklumat Ejen Affiliate, Dropship dan Pengedar</a></li>
+				<li><a href="topik5.html#gantung-affiliate">Menggantung Ejen Affiliate, Dropship dan Pengedar</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik6.html">TOPIK 6 : PROSPEK</a></strong></h2>
+				<p>Topik 6 akan membantu anda dalam :</p>
+				<li><a href="topik6.html#tambah-kumpulan-prospek">Menambah, Mengemaskini dan Memadam Kumpulan Prospek</a></li>
+				<li><a href="topik6.html#tambah-borang-prospek">Menambah, Mengemaskini dan Memadam Borang Prospek</a></li>
+				<li><a href="topik6.html#tambah-prospek-baru">Menambah, Mengemaskini dan Memadam Senarai Nama Prospek</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik7.html">TOPIK 7 : PELANGGAN + PESERTA</a></strong></h2>
+				<p>Topik 7 akan membantu anda dalam :</p>
+				<li><a href="topik7.html#tambah-pelanggan-baru">Menambah, Mengemaskini dan Memadam Rekod Pelanggan</a></li>
+				<li><a href="topik7.html#kemaskini-peserta">Menambah, Mengemaskini dan Memadam Rekod Peserta</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik8.html">TOPIK 8 : PENGURUSAN JUALAN</a></strong></h2>
+				<p>Topik 8 akan membantu anda dalam :</p>
+				<li><a href="topik8.html#penerangan-fungsi-paparan">Memahami Fungsi Paparan</a></li>
+				<li><a href="topik8.html#penerangan-kolum-jadual">Memahami Kolum Jadual</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik9.html">TOPIK 9 : PENGURUSAN AFIILIATE</a></strong></h2>
+				<p>Topik 9 akan membantu anda dalam :</p>
+				<li><a href="topik9.html#media-affiliate">Menambah Media Affiliate</a></li>
+				<li><a href="topik9.html#trafik">Melihat Trafik Dari Affiliate</a></li>
+				<li><a href="topik9.html#komisyen">Mengurus Pembayaran Komisyen Affiliate</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik10.html">TOPIK 10 : ANALISIS - STATISTIK</a></strong></h2>
+				<p>Topik 10 akan membantu anda dalam :</p>
+				<li><a href="topik10.html">Melihat Statistik</a></li>
+				<li><a href="topik10.html">Mengubah paparan statistik</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik11.html">TOPIK 11 : JANA LAPORAN</a></strong></h2>
+				<p>Topik 11 : akan membantu anda dalam :</p>
+				<li><a href="topik11.html#pilih-medan-kategori-status">Pilih Medan dan Kategori Status yang ingin dipaparkan</a></li>
+				<li><a href="topik11.html#tapis-maklumat-yang-ingin-dipaparkan">Tapis maklumat yang ingin dipaparkan</a></li>
+				<li><a href="topik11.html#ubah-rekabentuk">Ubah rekabentuk laporan</a></li>
+				<li><a href="topik11.html#jana-laporan">Jana laporan</a></li>
+
+				<div class="line"></div>
+
+				<h2><strong><a href="topik12.html">TOPIK 12 : HEBAHAN</a></strong></h2>
+				<p>Topik 12 : akan membantu anda dalam :</p>
+				<li><a href="topik12.html#pilih-medium-penjanaan-senarai-penerima">Pilih Medium Penjanaan Senarai Penerima</a></li>
+				<li><a href="topik12.html#ubahsuai-kandungan-hebahan">Ubahsuai kandungan hebahan</a></li>
+				<li><a href="topik12.html#papar-sejarah-dan-status-hebahan">Papar sejarah dan status hebahan</a></li>
+			</div>
+		</div>
+
+		<a href="#0" class="cd-top js-cd-top">Top</a>
+
+		<div class="overlay"></div>
+
+
+		<!-- jQuery CDN -->
+		<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<!-- Bootstrap Js CDN -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<!-- jQuery Custom Scroller CDN -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+		<script type="text/javascript">
+			$(document).ready(function () {
+				$("#sidebar").mCustomScrollbar({
+					theme: "minimal"
+				});
+
+				$('#dismiss, .overlay').on('click', function () {
+					$('#sidebar').removeClass('active');
+					$('.overlay').fadeOut();
+				});
+
+				$('#sidebarCollapse').on('click', function () {
+					$('#sidebar').addClass('active');
+					$('.overlay').fadeIn();
+					$('.collapse.in').toggleClass('in');
+					$('a[aria-expanded=true]').attr('aria-expanded', 'false');
+				});
+			});
+		</script>
+		<script>
+		$(document).ready(function(){
+			$('[data-toggle="tooltip"]').tooltip();   
+		});
+		</script>
+		<script>
+		// When the user scrolls down 20px from the top of the document, show the button
+		window.onscroll = function() {scrollFunction()};
+
+		function scrollFunction() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById("myBtn").style.display = "block";
+			} else {
+				document.getElementById("myBtn").style.display = "none";
+			}
+		}
+
+		// When the user clicks on the button, scroll to the top of the document
+		function topFunction() {
+			document.body.scrollTop = 0; // For Safari
+			document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+		}
+
+		</script>
+	</body>
+</html>

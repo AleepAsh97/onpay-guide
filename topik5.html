@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 5 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+           
+        .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 5 : Ejen (Affiliate + Dropship + Pengedar)</p>
+                    <li>
+                        <a href="#affiliate" data-toggle="collapse" aria-expanded="false">5.1 Affiliate</a>
+                        <ul class="collapse list-unstyled" id="affiliate">
+                            <li><a href="#tambah-affiliate-baru" id="subtopic">5.1.1 Tambah Affiliate Baru</a></li>
+                            <li><a href="#kemaskini-rekod-affiliate" id="subtopic">5.1.2 Kemaskini Rekod Affiliate</a></li>
+                            <li><a href="#padam-rekod-affiliate" id="subtopic">5.1.3 Padam Rekod Affiliate</a></li>
+                            <li><a href="#gantung-affiliate" id="subtopic">5.1.4 Gantung Affiliate</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#dropship" data-toggle="collapse" aria-expanded="false">5.2 Dropship</a>
+                        <ul class="collapse list-unstyled" id="dropship">
+                            <li><a href="#tambah-dropship-baru" id="subtopic">5.2.1 Tambah Dropship Baru</a></li>
+                            <li><a href="#kemaskini-rekod-dropship" id="subtopic">5.2.2 Kemaskini Rekod Dropship</a></li>
+                            <li><a href="#padam-rekod-dropship" id="subtopic">5.2.3 Padam Rekod Dropship</a></li>
+                            <li><a href="#gantung-dropship" id="subtopic">5.2.4 Gantung Dropship</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#pengedar" data-toggle="collapse" aria-expanded="false">5.3 Pengedar</a>
+                        <ul class="collapse list-unstyled" id="pengedar">
+                            <li><a href="#tambah-kumpulan-pengedar" id="subtopic">5.3.1 Tambah Kumpulan Pengedar</a></li>
+                            <li><a href="#kemaskini-kumpulan-pengedar" id="subtopic">5.3.2 Kemaskini Kumpulan Pengedar</a></li>
+                            <li><a href="#padam-kumpulan-pengedar" id="subtopic">5.3.3 Padam Kumpulan Pengedar</a></li>
+                            <li><a href="#tambah-pengedar-baru" id="subtopic">5.3.4 Tambah Pengedar Baru</a></li>
+                            <li><a href="#kemaskini-rekod-pengedar" id="subtopic">5.3.5 Kemaskini Rekod Pengedar</a></li>
+                            <li><a href="#padam-rekod-pengedar" id="subtopic">5.3.6 Padam Rekod Pengedar</a></li>
+                            <li><a href="#gantung-pengedar" id="subtopic">5.3.7 Gantung Pengedar</a></li>
+                        </ul>
+                    </li>
+                     
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                             <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li class="active"><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li><a href="index.html">Menu Utama</a></li>
+                                <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li class="active"><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="tambah-affiliate-baru" class="subtopic col-md-12">
+    <h2>Topik 5 : Ejen (Affiliate + Dropship + Pengedar)</h2><hr><br>
+    <h4><strong>5.1.1 Tambah Affiliate Baru</strong> Lokasi ( Affiliate > Ejen )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>Isi ruangan dengan maklumat yang sesuai.<br> 
+        <strong>Langkah menambah affiliate</strong><br>
+        1. Anda boleh pilih sama ada untuk menambah affiliate secara satu persatu atau eksport senarai ejen.<br>
+        2. Isikan maklumat affiliate. Pastikan ID affiliate adalah unik dan berlainan dari affiliate lain.<br> 
+        3. Isi kata laluan atau jana kata laluan secara rawak. Jumlah karakter minimum bagi kata laluan adalah 8 karakter.<br> 
+        ID dan kata laluan diberikan kepada affiliate anda sebagai maklumat daftar masuk sistem affiliate anda.<br>
+        4. Tekan butang <strong>Simpan</strong>.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-senarai-nama-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-senarai-nama-affiliate.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-rekod-affiliate" class="subtopic col-md-12">
+    <h4><strong>5.1.2 Kemaskini Rekod Affiliate</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) affiliate yang ingin dikemaskini.<br><br>
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-kemaskini-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-kemaskini-affiliate.jpg" alt="Another alt text">
+            </a>
+        <p>2. Isi Maklumat affiliate.<br><br> 
+
+        3. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat affiliate anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-affiliate" class="subtopic col-md-12">
+    <h4><strong>5.1.3 Padam Rekod Affiliate</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) affiliate yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-affiliate.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-ya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-ya.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="gantung-affiliate" class="subtopic col-md-12">
+    <h4><strong>5.1.4 Gantung Affiliate</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1) Cari baris (row) affiliate yang ingin digantung.<br><br>
+
+        2) Tekan butang <strong>Gantung</strong> untuk menggantung affiliate.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-gantung-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-gantung-affiliate.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses menggantung affiliate.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-ya-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-ya-affiliate.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="tambah-dropship-baru" class="subtopic col-md-12">
+    <h4><strong>5.2.1 Tambah Dropship Baru</strong> Lokasi ( Dropship > Ejen )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>Isi ruangan dengan maklumat yang sesuai.<br> 
+        <strong>Langkah menambah dropship</strong><br>
+        1. Anda boleh pilih sama ada untuk menambah dropship secara satu persatu atau eksport senarai ejen.<br>
+        2. Isikan maklumat dropship. Pastikan ID dropship adalah unik dan berlainan dari dropship lain.<br> 
+        3. Isi kata laluan atau jana kata laluan secara rawak. Jumlah karakter minimum bagi kata laluan adalah 8 karakter.<br> 
+        ID dan kata laluan diberikan kepada dropship anda sebagai maklumat daftar masuk sistem dropship anda.<br>
+        4. Tekan butang <strong>Simpan</strong>.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-senarai-nama-dropship.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-senarai-nama-dropship.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-rekod-dropship" class="subtopic col-md-12">
+    <h4><strong>5.2.2 Kemaskini Rekod Dropship</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) dropship yang ingin dikemaskini.<br><br>
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-kemaskini-nama-dropship.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-kemaskini-nama-dropship.jpg" alt="Another alt text">
+            </a>
+        <p>2. Isi Maklumat dropship.<br><br> 
+
+        3. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat dropship anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-dropship" class="subtopic col-md-12">
+    <h4><strong>5.2.3 Padam Rekod Dropship</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+       <p>1. Cari baris (row) dropship yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-nama-dropship.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-nama-dropship.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-ya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-ya.jpg" alt="Another alt text">
+            </a> 
+      </div>
+    </div>
+</div>
+<div id="gantung-dropship" class="subtopic col-md-12">
+    <h4><strong>5.2.4 Gantung Dropship</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1) Cari baris (row) dropship yang ingin digantung.<br><br>
+
+        2) Tekan butang <strong>Gantung</strong> untuk menggantung dropship.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-gantung-nama-dropship.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-gantung-nama-dropship.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses menggantung dropship.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-ya-affiliate.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-ya-affiliate.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="tambah-kumpulan-pengedar" class="subtopic col-md-12">
+    <h4><strong>5.3.1 Tambah Kumpulan Pengedar</strong> Lokasi ( Pengedar > Kumpulan )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Isikan Nama Kumpulan Pengedar. Contohnya Stokis KL.<br>
+        3. Tekan Butang <strong>Simpan</strong></p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-senarai-kumpulan-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-senarai-kumpulan-pengedar.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-kumpulan-pengedar" class="subtopic col-md-12">
+    <h4><strong>5.3.2 Kemaskini Kumpulan Pengedar</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) kumpulan pengedar yang ingin dikemaskini.<br><br> 
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-kemaskini-kumpulan-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-kemaskini-kumpulan-pengedar.jpg" alt="Another alt text">
+            </a>
+        <p>3. Isi Nama Kumpulan Baru.<br> 
+
+        4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat staf anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-kumpulan-pengedar" class="subtopic col-md-12">
+    <h4><strong>5.3.3 Padam Kumpulan Pengedar</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+         <p>1. Cari baris (row) kumpulan pengedar yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-kumpulan-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-kumpulan-pengedar.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-pengedar.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="tambah-pengedar-baru" class="subtopic col-md-12">
+    <h4><strong>5.3.4 Tambah Pengedar Baru</strong> Lokasi ( Pengedar > Ejen )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>Isi ruangan dengan maklumat yang sesuai.<br> 
+        <strong>Langkah menambah pengedar</strong><br>
+        1. Anda boleh pilih sama ada untuk menambah pengedar secara satu persatu atau eksport senarai ejen.<br>
+        2. Isikan maklumat pengedar. Pastikan ID pengedar adalah unik dan berlainan dari pengedar lain.<br> 
+        3. Isi kata laluan atau jana kata laluan secara rawak. Jumlah karakter minimum bagi kata laluan adalah 8 karakter.<br> 
+        ID dan kata laluan diberikan kepada pengedar anda sebagai maklumat daftar masuk sistem pengedar anda.<br>
+        4. Tekan butang <strong>Simpan</strong>.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-senarai-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-senarai-pengedar.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-rekod-pengedar" class="subtopic col-md-12">
+    <h4><strong>5.3.5 Kemaskini Rekod Pengedar</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+         <p>1. Cari baris (row) pengedar yang ingin dikemaskini.<br><br>
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-kemaskini-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-kemaskini-pengedar.jpg" alt="Another alt text">
+            </a>
+        <p>2. Isi Maklumat pengedar.<br><br> 
+
+        3. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat pengedar anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-pengedar" class="subtopic col-md-12">
+    <h4><strong>5.3.6 Padam Rekod Pengedar</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) pengedar yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-padam-pengedar1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-padam-pengedar1.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-ya-pengedar1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-ya-pengedar1.jpg" alt="Another alt text">
+            </a> 
+      </div>
+    </div>
+</div>
+<div id="gantung-pengedar" class="subtopic col-md-12">
+    <h4><strong>5.3.7 Gantung Pengedar</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+         <p>1) Cari baris (row) pengedar yang ingin digantung.<br><br>
+
+        2) Tekan butang <strong>Gantung</strong> untuk menggantung pengedar.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-gantung-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-gantung-pengedar.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses menggantung pengedar.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 5/5-ya-pengedar.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 5/5-ya-pengedar.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+</div>
+</div>
+
+   
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>

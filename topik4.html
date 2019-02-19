@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 4 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+        
+        <style>
+           
+            .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 4 : Staf</p>
+                    <li>
+                        <a href="#kumpulanstaf" data-toggle="collapse" aria-expanded="false">4.1 Kumpulan Staf</a>
+                        <ul class="collapse list-unstyled" id="kumpulanstaf">
+                            <li><a href="#tambah-kumpulan-staf" id="subtopic">4.1.1 Tambah Kumpulan Staf</a></li>
+                            <li><a href="#kemaskini-kumpulan-staf" id="subtopic">4.1.2 Kemaskini Kumpulan Staf</a></li>
+                            <li><a href="#padam-rekod-kumpulan-staf" id="subtopic">4.1.3 Padam Rekod Kumpulan Staf</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#staf" data-toggle="collapse" aria-expanded="false">4.2 Staf</a>
+                        <ul class="collapse list-unstyled" id="staf">
+                            <li><a href="#tambah-staf-baru" id="subtopic">4.2.1 Tambah Staf Baru</a></li>
+                            <li><a href="#kemaskini-rekod-staf" id="subtopic">4.2.2 Kemaskini Rekod Staf</a></li>
+                            <li><a href="#padam-rekod-staf" id="subtopic">4.2.3 Padam Rekod Staf</a></li>
+                            <li><a href="#gantung-staf" id="subtopic">4.2.4 Gantung Staf</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                       <a href="#whatsapp-link" id="subtopic">4.3 Whatsapp Link (Opy.la)</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                             <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li class="active"><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li class="active"><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+    <div class="container" style="margin-top: 60px">
+    <div class="row">
+    <div id="tambah-kumpulan-staf" class="subtopic col-md-12">
+    <h2>Topik 4 : Staf</h2><hr><br>
+    <h4><strong>4.1.1 Tambah Kumpulan Staf Baru</strong> Lokasi ( Staf > Kumpulan )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Isikan Nama Kumpulan Staf. Contohnya Bahagian Operasi.<br>
+        2. Tandakan checkbox fungsi yang ingin diaktifkan untuk kumpulan staf tersebut.<br>
+        3. Tekan Butang <strong>Simpan</strong></p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-tambah-kumpulan-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-tambah-kumpulan-staf.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="kemaskini-kumpulan-staf" class="subtopic col-md-12">
+    <h4><strong>4.1.2 Kemaskini Kumpulan Staf</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) kumpulan staf yang ingin dikemaskini.<br><br> 
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-kemaskini-kumpulan-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-kemaskini-kumpulan-staf.jpg" alt="Another alt text">
+            </a>
+        <p>3. Isi nama kumpulan staf.<br> 
+        - Tandakan checkbox fungsi yang ingin diaktifkan untuk kumpulan staf tersebut.<br><br> 
+
+        4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat staf anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-kumpulan-staf" class="subtopic col-md-12">
+    <h4><strong>4.1.3 Padam Rekod Kumpulan Staf</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) kumpulan staf yang ingin dipadam.<br><br> 
+
+        2. Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-padam-kumpulan-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-padam-kumpulan-staf.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-1-popup_pengesahan_padam.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-1-popup_pengesahan_padam.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="tambah-staf-baru" class="subtopic col-md-12">
+    <h4><strong>4.2.1 Tambah Staf Baru</strong> Lokasi ( Staf > Nama )</h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <h3>Penerangan Carian</h3>
+        <p>Kotak carian adalah untuk mencari staf yang sepadan dengan kata kunci yang dicari. Tips: Anda boleh mengisi apa jua kata kunci dan sistem akan mencari semua padanan kata kunci dari semua kolum (ID, nama, emel, kumpulan).</p><br><br>
+
+        <p>Isi ruangan dengan maklumat yang sesuai.<br> 
+        <strong>Langkah menambah staf</strong><br>
+        1. Pilih kumpulan staf dari senarai dropdown. Senarai ini dicipta secara automatik apabila anda mencipta kumpulan staf.<br>
+        2. Isikan maklumat staf. Pastikan ID staf adalah unik dan berlainan dari staf lain.<br> 
+        3. Isi kata laluan atau jana kata laluan secara rawak. Jumlah karakter minimum bagi kata laluan adalah 8 karakter.<br> 
+        ID dan kata laluan diberikan kepada staf anda sebagai maklumat daftar masuk sistem pengurusan bisnes anda.<br>
+        4. Tekan butang <strong>Simpan</strong></p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-tambah-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-tambah-staf.jpg" alt="Another alt text">
+            </a> 
+      </div>
+    </div>
+</div>
+<div id="kemaskini-rekod-staf" class="subtopic col-md-12">
+    <h4><strong>4.2.2 Kemaskini Rekod Staf</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1. Cari baris (row) staf yang ingin dikemaskini.<br><br> 
+
+        2. Tekan butang <strong>Kemaskini</strong> untuk mula kemaskini.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-kemaskini-staf1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-kemaskini-staf1.jpg" alt="Another alt text">
+            </a>
+        <p>3. Isi Maklumat staf.<br><br> 
+
+        4. Tekan Butang <strong>Simpan</strong> setelah selesai mengisi maklumat staf anda.</p>
+      </div>
+    </div>
+</div>
+<div id="padam-rekod-staf" class="subtopic col-md-12">
+    <h4><strong>4.2.3 Padam Rekod Staf</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1) Cari baris (row) staf yang ingin dipadam.<br><br> 
+
+        2) Tekan butang <strong>Padam</strong> untuk memadam rekod.<br> 
+        - Lokasi : pada lajur "Tindakan" di hujung baris. </p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-padam-nama-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-padam-nama-staf.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses memadam rekod.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-2-popup_pengesahan_padam.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-2-popup_pengesahan_padam.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="gantung-staf" class="subtopic col-md-12">
+    <h4><strong>4.2.4 Gantung Staf</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <p>1) Cari baris (row) staf yang ingin digantung.<br><br>
+
+        2) Tekan butang <strong>Gantung</strong> untuk menggantung staf.<br>
+        - Lokasi : pada lajur "Tindakan" di hujung baris.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-gantung-nama-staf.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-gantung-nama-staf.jpg" alt="Another alt text">
+            </a>
+        <p>3. Tekan Butang <strong>Ya</strong> pada popup yang keluar untuk mengesahkan proses menggantung staf.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-ya-gantung.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-ya-gantung.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div id="whatsapp-link" class="subtopic col-md-12">
+    <h4><strong>4.3 Whatsapp Link (Opy.la)</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan</div>
+      <div class="panel-body">
+        <h4><strong>Apa tu Whatsapp link?</strong></h4>
+        <p>Bila anda buat post di FB, ig, ads atau web, letak 1 link URL Whatsap opy.la, nanti leads yang masuk sistem opy.la akan bahagikan leads kepada senarai team sales/staff anda secara berturut. Anda sebagai HQ boleh monitor berapa jumpa klik/leads masuk berbanding sales mereka.</p>
+         <h4><strong>Macam mana nak guna Whatsapp link?</strong></h4>
+         <p>1- Klik ke Staff > Link Whatsapp.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-navigate_whatsapp_link.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-navigate_whatsapp_link.jpg" alt="Another alt text">
+            </a>
+        <p>2- Klik Daftar Akaun Opy.la. Register akaun anda. <strong style="color: red"> MAAF akaun tidak boleh ditukar selepas ini</strong>. Pilih yang terbaik & tidak semestinya sama dengan akaun onpay anda. Boleh jadi apa sahaja kecuali yang dah diregister pengguna lain. Boleh jadi nama bisnes, nama pendek atau nama produk. Nama akaun bergantung kepada siapa cepat dia dapat.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-daftar_whatsapp_link.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-daftar_whatsapp_link.jpg" alt="Another alt text">
+            </a>
+        <p>3- Masukkan nama subdomain pilihan anda. Kemudian tekan Daftar. Link opy.la anda akan jadi seperti <strong style="color: blue">https://opy.la/subdomain.</strong><br><br>
+
+        4- Klik Tambah Link Baru.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-tambah_link_baru.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-tambah_link_baru.jpg" alt="Another alt text">
+            </a>
+        <p>5- Isikan semua maklumat diperlukan. Anda boleh masukkan staff seramai mungkin. Tekan Simpan. Nanti nombor fon whatsap mereka akan dipusing secara berturut oleh sistem opy.la.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-form_link_whatsapp.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-form_link_whatsapp.jpg" alt="Another alt text">
+            </a>
+        <p>6- Pada link opy.la ini anda boleh semak berapa klik/leads dah masuk dengan tekan gambar "mata".</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-papar_link_whatsapp.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-papar_link_whatsapp.jpg" alt="Another alt text">
+            </a>
+        <p>7- Pada borang staff boleh pilih untuk masukkan link whatsapp dia yg mana yang buat sale tu. Jadi HQ boleh track yang mana convert sale lebih banyak.</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title=""  data-image="img/Topik 4/4-view_link_whatsapp.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 4/4-view_link_whatsapp.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+
+    
+</div>
+</div>
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>

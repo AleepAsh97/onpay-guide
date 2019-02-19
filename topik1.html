@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Topik 1 : Tutorial OnPay</title>
+
+        <!-- Bootstrap CSS CDN -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <link rel='shortcut icon' type='image/x-icon' href='img/favicon.ico' />
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="style-new.css">
+        <!-- Scrollbar Custom CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+        <style>
+           
+           .cd-top {
+          display: inline-block;
+          height: 40px;
+          width: 40px;
+          position: fixed;
+          bottom: 40px;
+          right: 10px;
+          -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+          /* image replacement properties */
+          overflow: hidden;
+          text-indent: 100%;
+          white-space: nowrap;
+          background: rgba(232, 98, 86, 0.8) url(img/cd-top-arrow.svg) no-repeat center 50%;
+          visibility: hidden;
+          opacity: 0;
+          -webkit-transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s .3s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show,
+        .cd-top.cd-top--fade-out,
+        .cd-top:hover {
+          -webkit-transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+          transition: opacity .3s 0s, visibility 0s 0s, background-color .3s 0s;
+        }
+
+        .cd-top.cd-top--show {
+          /* the button becomes visible */
+          visibility: visible;
+          opacity: 1;
+        }
+
+        .cd-top.cd-top--fade-out {
+          /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+          opacity: .5;
+        }
+
+        .cd-top:hover {
+          background-color: #e86256;
+          opacity: 1;
+        }
+
+        @media only screen and (min-width: 768px) {
+          .cd-top {
+            right: 20px;
+            bottom: 20px;
+          }
+        }
+
+        @media only screen and (min-width: 1024px) {
+          .cd-top {
+            height: 60px;
+            width: 60px;
+            right: 30px;
+            bottom: 30px;
+          }
+        }
+
+        </style>
+        
+    </head>
+    <body>
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div id="dismiss">
+                    <i class="glyphicon glyphicon-arrow-left"></i>
+                </div>
+
+                <div class="sidebar-header">
+                    <h3>Tutorial OnPay</h3>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <p>Topik 1 : Pendaftaran + Pengaktifan + Log Masuk</p>
+                    <li>
+                        <a href="#daftar" data-toggle="collapse" aria-expanded="false">1.1 Pendaftaran OnPay</a>
+                        <ul class="collapse list-unstyled" id="daftar">
+                            <li><a href="#layari-laman-onpay" id="subtopic">1.1.1 Layari Laman Web</a></li>
+                            <li><a href="#pilih-subdomain" id="subtopic">1.1.2 Pilih Subdomain</a></li>
+                            <li><a href="#pilih-emel" id="subtopic">1.1.3 Pilih Emel</a></li>
+                            <li><a href="#pilih-ID-dan-kata-laluan" id="subtopic">1.1.4 Pilih ID dan Kata Laluan</a></li>
+                            <li><a href="#isi-maklumat-profil-diri" id="subtopic">1.1.5 Isi Maklumat Profil Diri</a></li>
+                            <li><a href="#pengesahan-spam" id="subtopic">1.1.6 Pengesahan Spam/Robot (reCAPTCHA)</a></li>
+                            <li><a href="#klik-butang-daftar" id="subtopic">1.1.7 Klik Butang Daftar</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#aktif" data-toggle="collapse" aria-expanded="false">1.2 Pengaktifan Akaun</a> 
+                        <ul class="collapse list-unstyled" id="aktif">
+                            <li><a href="#semak-emel-pendaftaran-onpay" id="subtopic">1.2.1 Semak Emel "Pendaftaran Akaun OnPay"</a></li>
+                            <li><a href="#tekan-hyperlink-pengaktifan-akaun" id="subtopic">1.2.2 Tekan Hyperlink Pengaktifan Akaun</a></li>
+                            <li><a href="#pengaktifan-akaun-onpay-berjaya" id="subtopic">1.2.3 Pengaktifan Akaun Berjaya</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                        <a href="#logmasuk" data-toggle="collapse" aria-expanded="false">1.3 Log Masuk Akaun OnPay</a>
+                        <ul class="collapse list-unstyled" id="logmasuk">
+                            <li><a href="#layari-halaman-log-masuk-akaun" id="subtopic">1.3.1 Layari Halaman Log Masuk Akaun Anda</a></li>
+                            <li><a href="#masukkan-id-admin-dan-kata-laluan" id="subtopic">1.3.2 Masukkan ID Admin dan Kata Laluan</a></li>
+                            <li><a href="#log-masuk-akaun-onpay-berjaya" id="subtopic">1.3.3 Log Masuk OnPay Berjaya</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span>Tutorial OnPay</span>
+                            </button>
+                              <button type="button" class="btn btn-info navbar-btn"><a href="index.html" data-toggle="tooltip" title="Menu Utama" data-placement="bottom"><span class="glyphicon glyphicon-home"></span></a></button>
+                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="active"><a href="topik1.html" data-toggle="tooltip" title="Pendaftaran, Pengaktifan dan Log Masuk" data-placement="bottom">Topik 1</a></li>
+                                <li><a href="topik2.html" data-toggle="tooltip" title="Tetapan Akaun, Sistem, Templat dan Pembayaran" data-placement="bottom">Topik 2</a></li>
+                                <li><a href="topik3.html" data-toggle="tooltip" title="Produk, Kupon dan Barang" data-placement="bottom">Topik 3</a></li>
+                                <li><a href="topik4.html" data-toggle="tooltip" title="Staf" data-placement="bottom">Topik 4</a></li>
+                                <li><a href="topik5.html" data-toggle="tooltip" title="Affiliate, Dropship dan Pengedar" data-placement="bottom">Topik 5</a></li>
+                                <li><a href="topik6.html" data-toggle="tooltip" title="Prospek" data-placement="bottom">Topik 6</a></li>
+                                <li><a href="topik7.html" data-toggle="tooltip" title="Pelanggan dan Peserta" data-placement="bottom">Topik 7</a></li>
+                                <li><a href="topik8.html" data-toggle="tooltip" title="Pengurusan Jualan" data-placement="bottom">Topik 8</a></li>
+                                <li><a href="topik9.html" data-toggle="tooltip" title="Pengurusan Affiliate" data-placement="bottom">Topik 9</a></li>
+                                <li><a href="topik10.html" data-toggle="tooltip" title="Analisis Statistik" data-placement="bottom">Topik 10</a></li>
+                                <li><a href="topik11.html" data-toggle="tooltip" title="Jana Laporan" data-placement="bottom">Topik 11</a></li>
+                                <li><a href="topik12.html" data-toggle="tooltip" title="Hebahan" data-placement="bottom">Topik 12</a></li>
+                            </ul>
+                        </div>
+                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                            <ul class="nav navbar-toggle">
+                                <li class="active"><a href="topik1.html">Topik 1 : Pendaftaran, Pengaktifan dan Log Masuk</a></li>
+                                <li><a href="topik2.html">Topik 2 : Tetapan Akaun, Sistem, Templat dan Pembayaran</a></li>
+                                <li><a href="topik3.html">Topik 3 : Produk, Kupon dan Barang</a></li>
+                                <li><a href="topik4.html">Topik 4 : Staf</a></li>
+                                <li><a href="topik5.html">Topik 5 : Affiliate, Dropship dan Pengedar</a></li>
+                                <li><a href="topik6.html">Topik 6 : Prospek</a></li>
+                                <li><a href="topik7.html">Topik 7 : Pelanggan dan Peserta</a></li>
+                                <li><a href="topik8.html">Topik 8 : Pengurusan Jualan</a></li>
+                                <li><a href="topik9.html">Topik 9 : Pengurusan Affiliate</a></li>
+                                <li><a href="topik10.html">Topik 10 : Analisis Statistik</a></li>
+                                <li><a href="topik11.html">Topik 11 : Jana Laporan</a></li>
+                                <li><a href="topik12.html">Topik 12 : Hebahan</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+
+<div class="container" style="margin-top: 60px">
+<div class="row">
+<div class="subtopic col-md-12" id="layari-laman-onpay">
+    <h2>Topik 1 : Pendaftaran + Pengaktifan + Log Masuk</h2><hr><br>
+    <h4><strong>1.1.1 Layari laman web untuk mendaftar.</strong></h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Langkah Pertama</div>
+      <div class="panel-body"><p>1. Anda perlu melayari laman web <a style="color: red" href="https://onpay.my/register">https://onpay.my/register</a> untuk mendaftar isi semua maklumat di dalam borang tersebut</p>
+        <p>2. Selepas itu, anda akan dibawa ke halaman Borang Pendaftaran OnPay</p></div>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pendaftaran OnPay"  data-image="img/Topik 1/1-daftar-akaun.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-daftar-akaun.jpg" alt="Another alt text">
+            </a>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="pilih-subdomain">
+    <h4><strong>1.1.2 Pilih Subdomain</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Memilih Subdomain</div>
+      <div class="panel-body">
+            <p>1) Subdomain mestilah unik.</p>
+            <p>2) Minimum 3 karakter huruf.</p>
+            <p>3) Maksimum 30 karakter huruf.</p> 
+            <p>4) Nama subdomain hendaklah mengandungi kombinasi abjad, nombor, dash dan underscore sahaja.</p></div>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Subdomain"  data-image="img/Topik 1/1-subdomain.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-subdomain.jpg" alt="Another alt text">
+            </a>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Cadangan Pemilihan Subdomain</div>
+      <div class="panel-body">
+        <p>1) Nama Syarikat anda</p> 
+        <p>2) Nama Produk anda</p> 
+        <p>3) Nama Bisnes anda</p> 
+        <p>Contohnya, sekiranya anda mengisi "carimakan" didalam kotak subdomain, maka alamat url anda ialah carimakan.onpay.my</p>
+      </div>
+    </div>
+    <div class="panel panel-danger">
+      <div class="panel-heading"><strong>PERINGATAN</strong></div>
+      <div class="panel-body">
+        <p>1) <strong>Subdomain adalah unik.</strong> Anda tidak dibenarkan mendaftar subdomain yang sama dengan subdomain yang telah didaftarkan.</p> 
+        <p>2) Anda hanya dibenarkan mendaftar satu <strong>subdomain bagi setiap akaun.</strong></p> 
+        <p>3) Subdomain <strong>tidak boleh di tukar</strong> selepas pendaftaran.</p>
+        <p>Sebarang kesilapan dalam pengisian borang akan dipaparkan kesilapan yang berlaku. Sila rujuk paparan tersebut untuk memperbetulkan kesilapan anda.</p>
+</div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="pilih-emel">
+    <h4><strong>1.1.3 Pilih Emel</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Mengisi Emel</div>
+      <div class="panel-body">
+        <p>1) Hanya emel yang sah format sahaja diterima:</p> 
+        <p>Format emel: nama_emel@domain.suffix</p> 
+        <p>Contoh emel : ahmad@gmail.com</p> 
+        <p>2) Hanya emel yang belum didaftarkan sahaja yang dibenarkan. Emel yang telah wujud di dalam pangkalan data tidak akan dibenarkan untuk digunakan.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Emel"  data-image="img/Topik 1/1-emel.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-emel.jpg" alt="Another alt text">
+        </a>
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body"><p><strong>Anda juga boleh menggunakan emel sebagai ID Admin semasa proses Log Masuk (Log In) sekiranya anda terlupa ID Admin anda.</strong></p></div>
+    </div>
+    <div class="panel panel-danger">
+      <div class="panel-heading"><strong>PERINGATAN</strong></div>
+      <div class="panel-body"><p>Sekiranya anda telah memilih "ahmad@gmail.com", maka emel notifikasi tentang pendaftaran akaun akan dihantar kepada emel tersebut. 
+      <strong>Anda perlu mengakses emel ini demi mengesahkan pendaftaran akaun anda.</strong></p></div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="pilih-ID-dan-kata-laluan">
+    <h4><strong>1.1.4 Pilih ID dan Kata Laluan</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Memilih ID dan Kata Laluan</div>
+      <div class="panel-body">
+        <p><strong>ID:</strong></p> 
+        <p>1) ID mestilah unik.</p> 
+        <p>2) ID Admin hendaklah mengandungi kombinasi abjad, nombor, dash dan underscore sahaja.</p> 
+        <p>3) Demi tujuan keselamatan, anda dinasihatkan untuk memilih ID yang hanya diketahui oleh anda.</p> 
+        <p>4) Hanya 30 kombinasi karakter sahaja yang dibenarkan.</p> 
+
+        <p><strong>Kata Laluan:</strong></p> 
+        <p>1) Anda dibenarkan memilih apa sahaja kombinasi kata laluan yang anda inginkan.</p> 
+        <p>2) Demi tujuan keselamatan, anda dinasihatkan untuk memilih Kata Laluan yang hanya diketahui oleh anda.</p> 
+        <p>3) Hanya 30 kombinasi karakter sahaja yang dibenarkan.</p> 
+        <p>4) Sila isikan kombinasi kata laluan yang sama demi tujuan pengesahan di kotak pengesahan kata laluan.</p>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan ID dan Kata Laluan"  data-image="img/Topik 1/1-idpass.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-idpass.jpg" alt="Another alt text">
+        </a>
+        </div>
+    </div>
+     <div class="panel panel-danger">
+      <div class="panel-heading"><strong>PERINGATAN</strong></div>
+      <div class="panel-body"><p><strong>*JANGAN KONGSI ID DAN KATA LALUAN KEPADA PIHAK KETIGA.*</strong>.</p>
+        <p>1) ID adalah unik bagi subdomain anda. ID yang wujud di dalam subdomain lain masih boleh digunakan bagi subdomain anda kerana ID didaftarkan unik di bawah setiap subdomain.</p>
+        <p>2) Anda boleh mengubah ID Admin anda selepas Log Masuk (log in) dan mengakses "Profil Akaun" melalui menu "Tetapan" di bahagian atas kanan menu navigasi (navbar).</p>
+        <p>3) Kata Laluan juga boleh diubah melalui menu "navbar" "Tetapan" > "Tukar Kata Laluan" di bawah menu "Profil Akaun".</p>
+    </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="isi-maklumat-profil-diri">
+    <h4><strong>1.1.5 Isi Maklumat Profil Diri</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Mengisi Maklumat Profil Diri</div>
+      <div class="panel-body">
+        <p><strong>Nama:</strong></p> 
+        <p>1) Anda dibenarkan untuk mengisi apa-apa sahaja kombinasi karakter yang diinginkan.</p> 
+
+        <p><strong>Nombor HP:</strong></p> 
+        <p>1) Nombor HP hanya akan menerima kombinasi nombor, dash (-) dan tambah (+).</p> 
+        <p>2) Sila masukkan Nombor HP mengikut salah satu format di bawah:</p>
+        <p>i) prefix+suffix 0123456789</p>
+        <p>ii) prefix+(-)+suffix012-3456789</p>
+        <p>iii) "Kod Negara"+(-)+prefix+suffix6012-3456789</p>
+        <p>iv) (+)+"Kod Negara"+(-)+prefix+suffix+6012-3456789</p>
+        
+        <p><strong>Jantina:</strong></p> 
+        <p>Sila pilih antara Lelaki atau Perempuan.</p> 
+
+        <p><strong>Tarikh Lahir:</strong></p> 
+        <p>Sila tekan kotak input atau ikon kalendar untuk memaparkan kalendar bagi memudahkan proses pemilihan tarikh.  Format tarikh yang terbaik adalah seperti berikut: "30 Mac 2016"</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan Maklumat Diri"  data-image="img/Topik 1/1-profilanda.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-profilanda.jpg" alt="Another alt text">
+        </a>      
+      </div>
+    </div>
+    <div class="panel panel-info">
+      <div class="panel-heading">Cadangan pengisian Profil Pengguna:</div>
+      <div class="panel-body"><p>1) <strong>Nama anda perlulah NAMA PENUH ANDA untuk tujuan rasmi Syarikat seperti Invois, email dan lain-lain.</strong><br>
+      2) <strong>Pastikan No. HP anda boleh dihubungi jika terdapat masalah berkenaan akaun anda jika tidak dapat</strong></p></div>
+    </div>
+    <div class="panel panel-danger">
+      <div class="panel-heading"><strong>PERINGATAN</strong></div>
+      <div class="panel-body"><p>1) Anda boleh mengubah maklumat profil anda selepas Log Masuk (log in) dan mengakses "Profil Akaun" melalui menu "Tetapan" di bahagian atas kanan menu navigasi (navbar).</p></div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="pengesahan-spam">
+    <h4><strong>1.1.6 Pengesahan spam/robot (reCAPTCHA)</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Mengenai Pengesahan SPAM/Robot (reCAPTCHA)</div>
+      <div class="panel-body"><li>Sila tandakan kotak "Saya Bukan Robot" untuk memaparkan soalan pengesahan.</li>
+        <li>Jawab soalan dengan betul untuk mengesahkan bahawa anda bukan robot/spam.</li></div>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar reCAPTCHA"  data-image="img/Topik 1/1-reCAPTCHA.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-reCAPTCHA.jpg" alt="Another alt text">
+        </a>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Borang Pengesahan Robot"  data-image="img/Topik 1/1-pengesahanrobot.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-pengesahanrobot.jpg" alt="Another alt text">
+        </a>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="klik-butang-daftar">
+    <h4><strong>1.1.7 Klik Butang Daftar</strong></h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body"><p>Setelah butang "Daftar" ditekan, anda akan dibawa kepada halaman pengesahan penerimaan pendaftaran. Anda akan menerima mesej seperti berikut: </p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Mesej Terima Kasih"  data-image="img/Topik 1/1-terima-kasih-mesej.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-terima-kasih-mesej.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+            <p>Klik untuk melihat gambar</p>
+        </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="semak-emel-pendaftaran-onpay">
+    <h4><strong>1.2.1 Semak Emel Bertajuk "Pendaftaran Akaun OnPay"</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body"><p>1. Sila semak di emel anda emel bertajuk "Pendaftaran Akaun OnPay"</p>
+        <p>2. Sila buka emel dari "admin@onpay.my" yang bertajuk <strong>"Pendaftaran Akaun OnPay"</strong>.</p>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Email Pendaftaran Akaun OnPay"  data-image="img/Topik 1/1-email-popup.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-email-popup.jpg" alt="Another alt text">
+    </a>
+     <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Contoh Emel Pendaftaran Akaun OnPay"  data-image="img/Topik 1/1-emel-daftar-akaun.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-emel-daftar-akaun.jpg" alt="Another alt text">
+    </a>
+    </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="tekan-hyperlink-pengaktifan-akaun">
+    <h4><strong>1.2.2 Tekan Hyperlink Pengaktifan Akaun</strong></h4><br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Panduan Pengaktifan Akaun</div>
+      <div class="panel-body"><p>1. Sila Tekan hyperlink pengaktifan seperti di Gambar 1</p>
+        <p>2) Sekiranya hyperlink (#1) gagal berfungsi, sila klik hyperlink (2.1) untuk pengaktifan secara manual. Copy kod pengaktifan dari Gambar 2 dan gunakan di halaman pengaktifan.</p>
+        <p>Sila pastikan anda copy & paste kod pengaktifan demi mengelakkan ralat <strong>"kod pengaktifan tidak sah"</strong> seperti di Gambar 3.</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/hyperlink1.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-hyperlink1.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 1</p>
+    <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/hyperlink2.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-hyperlink2.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 2</p>
+            <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 3"  data-image="img/Topik 1/1-kod_salah.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-kod_salah.jpg" alt="Another alt text">
+            </a>
+            <p>Gambar 3</p>
+    </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="pengaktifan-akaun-onpay-berjaya">
+    <h4><strong>1.2.3 Pengaktifan Akaun OnPay Berjaya</strong></h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body"><p>Pengaktifan Akaun anda berjaya apabila keluar mesej seperti di dalam Gambar Pengaktifan Akaun</p>
+       <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Pengaktifan Akaun"  data-image="img/Topik 1/1-pengaktifan_berjaya.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-pengaktifan_berjaya.jpg" alt="Another alt text">
+            </a>
+    </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="layari-halaman-log-masuk-akaun">
+    <h4><strong>1.3.1 Layari Halaman Log Masuk Akaun anda</strong></h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body">
+        <p>Terdapat dua cara untuk melayari halaman log masuk untuk akaun anda:<br>
+        1) Layari halaman utama anda "subdomain_anda.onpay.my"<br>
+        i- Contoh: demo.onpay.my<br>
+        ii- Tekan butang "Admin" di bahagian atas kanan halaman utama anda.</p>
+        <p>2) Layari "subdomain_anda.onpay.my/admin"<br>
+        Contoh: demo.onpay.my/admin<br>
+        Anda akan dibawa ke halaman seperti di bawah:</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 1"  data-image="img/main-menu.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-main-menu.jpg" alt="Another alt text">
+            </a>
+         <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Langkah 2"  data-image="img/admin-login.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-admin-login.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="masukkan-id-admin-dan-kata-laluan">
+    <h4><strong>1.3.2 Masukkan ID Admin dan Kata Laluan</strong></h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body"><p>Letakkan ID dan Kata Laluan di ruangan "ID Admin" dan "Kata Laluan".</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar Ruangan ID Admin dan Kata Laluan"  data-image="img/Topik 1/1-admin-login.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-admin-login.jpg" alt="Another alt text">
+            </a>
+      </div>
+    </div>
+</div>
+<div class="subtopic col-md-12" id="log-masuk-akaun-onpay-berjaya">
+    <h4><strong>1.3.3 Log Masuk Akaun OnPay Berjaya</strong></h4><br>
+    <div class="panel panel-info">
+      <div class="panel-heading">Info</div>
+      <div class="panel-body"><p>Sekiranya proses log masuk berjaya, anda akan dibawa ke halaman Dashboard Admin seperti di Gambar 1:</p>
+        <p>Sekiranya ralat "ID atau Kata Laluan salah" terpapar seperti di Gambar 2, sila:<br>
+                            1.Isikan semula ID dan Kata Laluan<br>
+                            2.Tekan hyperlink Terlupa Kata Laluan</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 1"  data-image="img/Topik 1/1-main-page-onpay.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-main-page-onpay.jpg" alt="Another alt text">
+            </a>
+        <p>Gambar 1</p>
+        <a class="thumbnail" href="#" data-image-id="" data-toggle="modal" data-title="Gambar 2"  data-image="img/Topik 1/1-ralat_log_gagal.jpg" data-target="#image-gallery">
+                <img class="img-responsive" src="img/Topik 1/1-ralat_log_gagal.jpg" alt="Another alt text">
+            </a>
+        <p>Gambar 2</p>
+    </div>
+    </div>
+</div>
+</div>
+</div>
+
+    
+
+    <div class="modal fade" id="image-gallery" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="image-gallery-title"></h4>
+            </div>
+            <div class="modal-body">
+                <img id="image-gallery-image" class="img-responsive" src="">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+        <a href="#0" class="cd-top js-cd-top">Top</a>
+
+        <div class="overlay"></div>
+
+        <!-- jQuery CDN -->
+        <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <!-- Bootstrap Js CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- jQuery Custom Scroller CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#sidebar").mCustomScrollbar({
+                    theme: "minimal"
+                });
+
+                $('#dismiss, .overlay, #subtopic').on('click', function () {
+                    $('#sidebar').removeClass('active');
+                    $('.overlay').fadeOut();
+                });
+
+                $('#sidebarCollapse').on('click', function () {
+                    $('#sidebar').addClass('active');
+                    $('.overlay').fadeIn();
+                    $('.collapse.in').toggleClass('in');
+                    $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+                });
+            });
+        </script>
+        <script>
+
+    $(document).ready(function(){
+
+    loadGallery(true, 'a.thumbnail');
+
+    //This function disables buttons when needed
+    function disableButtons(counter_max, counter_current){
+        $('#show-previous-image, #show-next-image').show();
+        if(counter_max == counter_current){
+            $('#show-next-image').hide();
+        } else if (counter_current == 1){
+            $('#show-previous-image').hide();
+        }
+    }
+
+    /**
+     *
+     * @param setIDs        Sets IDs when DOM is loaded. If using a PHP counter, set to false.
+     * @param setClickAttr  Sets the attribute for the click handler.
+     */
+
+    function loadGallery(setIDs, setClickAttr){
+        var current_image,
+            selector,
+            counter = 0;
+
+        $('#show-next-image, #show-previous-image').click(function(){
+            if($(this).attr('id') == 'show-previous-image'){
+                current_image--;
+            } else {
+                current_image++;
+            }
+
+            selector = $('[data-image-id="' + current_image + '"]');
+            updateGallery(selector);
+        });
+
+        function updateGallery(selector) {
+            var $sel = selector;
+            current_image = $sel.data('image-id');
+            $('#image-gallery-caption').text($sel.data('caption'));
+            $('#image-gallery-title').text($sel.data('title'));
+            $('#image-gallery-image').attr('src', $sel.data('image'));
+            disableButtons(counter, $sel.data('image-id'));
+        }
+
+        if(setIDs == true){
+            $('[data-image-id]').each(function(){
+                counter++;
+                $(this).attr('data-image-id',counter);
+            });
+        }
+        $(setClickAttr).on('click',function(){
+            updateGallery($(this));
+        });
+    }
+});
+
+</script>
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+    </body>
+</html>
